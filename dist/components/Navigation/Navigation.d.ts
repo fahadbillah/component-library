@@ -113,3 +113,5 @@ export interface AppNavbarProps extends React.HTMLAttributes<HTMLElement> {
     children?: React.ReactNode;
 }
 export declare const AppNavbar: React.ForwardRefExoticComponent<AppNavbarProps & React.RefAttributes<HTMLElement>>;
+export declare const Navbar: React.ForwardRefExoticComponent<AppNavbarProps & React.RefAttributes<HTMLElement>>;
+export type NavbarProps = AppNavbarProps;

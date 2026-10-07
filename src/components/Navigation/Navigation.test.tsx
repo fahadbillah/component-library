@@ -7,6 +7,8 @@ import {
   Breadcrumb,
   MobileWayfinding,
   AppNavbar,
+  Navbar,
+  BottomNav,
 } from './Navigation';
 import {
   HomeIcon,
@@ -258,5 +260,17 @@ describe('AppNavbar Component', () => {
     expect(screen.getByText('Courses & Curriculum')).toBeInTheDocument();
     expect(screen.getByText('Grading Matrix')).toBeInTheDocument();
     expect(screen.getByText('New')).toBeInTheDocument();
+  });
+
+  it('renders correctly via Navbar alias', () => {
+    render(<Navbar brandName="Portal Workspace" menuItems={menuItems} />);
+    expect(screen.getByText('Portal Workspace')).toBeInTheDocument();
+    expect(screen.getByText('Dashboard')).toBeInTheDocument();
+  });
+
+  it('renders correctly via BottomNav alias', () => {
+    const navItems = [{ id: 'tab1', label: 'Tab 1', icon: <span>Icon</span> }];
+    render(<BottomNav value="tab1" items={navItems} />);
+    expect(screen.getByText('Tab 1')).toBeInTheDocument();
   });
 });

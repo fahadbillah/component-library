@@ -785,3 +785,7 @@ export const AppNavbar = React.forwardRef<HTMLElement, AppNavbarProps>(
 );
 
 AppNavbar.displayName = 'AppNavbar';
+
+// Export aliases for shorthand usage
+export const Navbar = AppNavbar;
+export type NavbarProps = AppNavbarProps;
