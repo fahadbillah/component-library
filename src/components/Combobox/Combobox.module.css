@@ -7,10 +7,6 @@
   position: relative;
 }
 
-.size-sm {
-  gap: var(--ui-space-xs);
-}
-
 .label {
   font-family: var(--ui-font-body);
   font-size: var(--ui-text-sm);
@@ -25,14 +21,13 @@
   color: var(--ui-color-danger);
 }
 
-/* Trigger Field */
+/* Trigger & Search Bar */
 .trigger {
   width: 100%;
-  min-height: 48px;
-  padding: 8px 12px;
+  height: 48px;
+  padding: 0 12px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--ui-space-sm);
   background-color: #ffffff;
   border: 1px solid #a1e3f9;
@@ -40,7 +35,7 @@
   font-family: var(--ui-font-body);
   font-size: var(--ui-text-sm);
   color: #0f172a;
-  cursor: pointer;
+  cursor: text;
   outline: none;
   transition: all var(--ui-transition-fast);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -57,81 +52,47 @@
   box-shadow: 0 4px 12px -2px rgba(54, 116, 181, 0.15);
 }
 
-/* Sizes */
-.size-sm .trigger {
-  min-height: 36px;
-  padding: 4px var(--ui-space-sm);
-}
-
-.size-lg .trigger {
-  min-height: 52px;
-  padding: 8px var(--ui-space-lg);
-}
-
-/* Chips container inside trigger */
-.chipContainer {
-  display: flex;
-  flex-wrap: wrap;
+.searchIcon {
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  color: #3674b5;
+  flex-shrink: 0;
+}
+
+.input {
   flex: 1;
   min-width: 0;
-}
-
-.searchInput {
-  flex: 1;
-  min-width: 80px;
+  height: 100%;
   border: none;
   background: transparent;
   font-family: var(--ui-font-body);
   font-size: var(--ui-text-sm);
-  color: var(--ui-text-high);
+  font-weight: 500;
+  color: #0f172a;
   outline: none;
-  padding: 4px 0;
+  padding: 0;
 }
 
-.placeholder {
+.input::placeholder {
   color: var(--ui-text-muted);
 }
 
-.moreCount {
-  height: 28px;
-  padding: 0 8px;
-  border-radius: 8px;
-  background-color: #f1f5f9;
-  color: #475569;
-  font-family: var(--ui-font-mono, monospace);
-  font-size: 11px;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Trailing controls */
-.trailing {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ui-space-sm);
-  flex-shrink: 0;
-}
-
-.clearAllButton {
+.clearButton {
   background: transparent;
   border: none;
-  padding: 2px 4px;
-  font-family: var(--ui-font-mono, monospace);
-  font-size: 10px;
+  padding: 4px;
   color: #94a3b8;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border-radius: var(--ui-radius-full);
   transition: color var(--ui-transition-fast);
 }
 
-.clearAllButton:hover {
-  color: #e11d48;
+.clearButton:hover {
+  color: #0f172a;
 }
 
 .chevron {
@@ -151,36 +112,56 @@
   top: calc(100% + 6px);
   left: 0;
   width: 100%;
-  max-height: 280px;
-  overflow-y: auto;
+  max-height: 320px;
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: var(--ui-radius-lg);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   z-index: var(--ui-z-dropdown);
-  padding: 0;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   box-sizing: border-box;
 }
 
-.empty {
-  padding: var(--ui-space-md);
-  text-align: center;
-  color: var(--ui-text-muted);
-  font-size: var(--ui-text-sm);
+.optionsList {
+  overflow-y: auto;
+  max-height: 270px;
 }
 
-/* Option row */
+/* Group Headers */
+.groupBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.groupHeader {
+  background-color: #f8fafc;
+  padding: 6px 12px;
+  font-family: var(--ui-font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.groupBlock:first-child .groupHeader {
+  border-top: none;
+}
+
+/* Options */
 .option {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
   padding: 10px 12px;
   cursor: pointer;
   transition: background-color var(--ui-transition-fast);
-  user-select: none;
   border-bottom: 1px solid #f1f5f9;
+  user-select: none;
 }
 
 .option:last-child {
@@ -193,119 +174,104 @@
 }
 
 .selected {
-  background-color: #f0fdf9;
+  background-color: rgba(54, 116, 181, 0.06);
 }
 
-.selected.focused,
-.selected:hover {
-  background-color: #e6faf5;
-}
-
-.checkboxSlot {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.checkboxBox {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  border: 1px solid #cbd5e1;
-  background-color: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  transition: all var(--ui-transition-fast);
-}
-
-.checkboxChecked {
-  background-color: #3674b5;
-  border-color: #3674b5;
-}
-
-.avatarSlot {
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.avatarSlot :global(.Avatar_container) {
-  width: 28px !important;
-  height: 28px !important;
-  font-size: 10px !important;
-  font-weight: 700;
-}
-
-.iconSlot {
-  display: inline-flex;
-  align-items: center;
-  color: var(--ui-text-muted);
-  flex-shrink: 0;
-}
-
-.labelCol {
+.optionContent {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 8px;
   min-width: 0;
   flex: 1;
 }
 
-.labelRow {
-  display: flex;
+.optionIcon {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+  color: #3674b5;
+  flex-shrink: 0;
 }
 
 .optionLabel {
   font-size: 13px;
-  font-weight: 700;
-  color: #0f172a;
-  line-height: 1.25;
+  font-weight: 500;
+  color: #334155;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.badge {
+.highlight {
+  font-weight: 700;
+  color: #3674b5;
+}
+
+.optionBadge {
   font-family: var(--ui-font-mono, monospace);
   font-size: 10px;
   font-weight: 600;
+  color: #64748b;
+  background-color: #f1f5f9;
   padding: 1px 6px;
   border-radius: 4px;
-}
-
-.badge-primary {
-  background-color: #eff6ff;
-  color: #1d4ed8;
-}
-
-.badge-success {
-  background-color: #ecfdf5;
-  color: #047857;
-}
-
-.badge-warning {
-  background-color: #fffbeb;
-  color: #b45309;
-}
-
-.badge-neutral {
-  background-color: #f1f5f9;
-  color: #64748b;
-}
-
-.optionDescription {
-  font-size: 11px;
-  color: #64748b;
-  font-family: var(--ui-font-mono, monospace);
-  margin-top: 2px;
+  flex-shrink: 0;
+  margin-left: 8px;
 }
 
 .optionDisabled {
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+/* Empty Fallback Card */
+.emptyFallback {
+  padding: 20px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.emptyIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--ui-radius-full);
+  background-color: #f1f5f9;
+  color: #64748b;
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.emptyTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.emptySubtitle {
+  font-size: 10px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+/* Footer Guide Hints */
+.footerGuide {
+  background-color: #f8fafc;
+  border-top: 1px solid #f1f5f9;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--ui-font-mono, monospace);
+  font-size: 10px;
+  color: #94a3b8;
 }
 
 /* Validation states */
@@ -333,4 +299,3 @@
   cursor: not-allowed;
   pointer-events: none;
 }
-

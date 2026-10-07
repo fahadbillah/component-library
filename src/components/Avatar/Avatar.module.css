@@ -4,14 +4,25 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--ui-radius-full);
-  background-color: var(--ui-primary-tint);
-  color: var(--ui-primary-accent);
   font-family: var(--ui-font-display);
   font-weight: 700;
   user-select: none;
   flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.tint {
+  background-color: var(--ui-primary-tint);
+  color: var(--ui-primary-accent);
   border: 1.5px solid var(--ui-structural-outline);
 }
+
+.solid {
+  background-color: #3674b5;
+  color: #ffffff;
+  border: none;
+}
+
 
 .image {
   width: 100%;

@@ -125,3 +125,14 @@ export const iconMap = {
 };
 
 export const iconOptions = Object.keys(iconMap);
+
+export const avatarMap = {
+  None: undefined,
+  'Robert Vance (RV)': <span className="w-6 h-6 rounded-full bg-[#3674B5] text-white flex items-center justify-center text-[10px] font-bold">RV</span>,
+  'Elena Thorne (ET)': <span className="w-6 h-6 rounded-full bg-[#3674B5] text-white flex items-center justify-center text-[10px] font-bold">ET</span>,
+  'Sophia Miller (SM)': <span className="w-6 h-6 rounded-full bg-[#578FCA] text-white flex items-center justify-center text-[10px] font-bold">SM</span>,
+  'Alexander Chen (AC)': <span className="w-6 h-6 rounded-full bg-[#115B9B] text-white flex items-center justify-center text-[10px] font-bold">AC</span>,
+};
+
+export const avatarOptions = Object.keys(avatarMap);
+

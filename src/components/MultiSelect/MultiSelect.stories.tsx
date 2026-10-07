@@ -6,32 +6,34 @@ const sampleUsers: MultiSelectOption[] = [
   {
     value: 'aria',
     label: 'Aria Thorne',
-    description: 'Senior Instructor · Mathematics',
+    description: '#FAC-1002 • Mathematics',
+    badge: 'Faculty',
+    badgeVariant: 'primary',
     avatar: { initials: 'AT' },
   },
   {
     value: 'marcus',
     label: 'Marcus Vance',
-    description: 'Lab Coordinator · Physics',
+    description: '#FAC-2004 • Physics',
+    badge: 'Lab Head',
+    badgeVariant: 'success',
     avatar: { initials: 'MV' },
   },
   {
     value: 'elena',
     label: 'Elena Rostova',
-    description: 'Department Chair · Computer Science',
+    description: '#FAC-3010 • Computer Science',
+    badge: 'Chair',
+    badgeVariant: 'warning',
     avatar: { initials: 'ER' },
   },
   {
     value: 'david',
     label: 'David Kim',
-    description: 'Teaching Assistant · Robotics',
+    description: '#ST-4020 • Robotics',
+    badge: 'TA',
+    badgeVariant: 'neutral',
     avatar: { initials: 'DK' },
-  },
-  {
-    value: 'sarah',
-    label: 'Sarah Jenkins',
-    description: 'Academic Advisor · Student Affairs',
-    avatar: { initials: 'SJ' },
   },
 ];
 
@@ -62,7 +64,7 @@ export const Default: Story = {
     size: 'md',
   },
   render: (args) => (
-    <div style={{ maxWidth: '480px' }}>
+    <div style={{ maxWidth: '480px', minHeight: '340px' }}>
       <MultiSelect {...args} />
     </div>
   ),
@@ -73,24 +75,32 @@ const masterModerators: MultiSelectOption[] = [
     value: 'elena',
     label: 'Dr. Elena Thorne',
     description: '#FAC-4102 • Biology',
+    badge: 'Lead',
+    badgeVariant: 'primary',
     avatar: { initials: 'ET' },
   },
   {
     value: 'sophia',
     label: 'Sophia Miller',
     description: '#ST-98214 • Grade 10-A',
+    badge: 'Student Lead',
+    badgeVariant: 'success',
     avatar: { initials: 'SM' },
   },
   {
     value: 'alexander',
     label: 'Alexander Chen',
     description: '#ST-98210 • Grade 10-A',
+    badge: 'Student',
+    badgeVariant: 'neutral',
     avatar: { initials: 'AC' },
   },
   {
     value: 'brianna',
     label: 'Brianna Davis',
     description: '#ST-98211 • Grade 10-A',
+    badge: 'Student',
+    badgeVariant: 'neutral',
     avatar: { initials: 'BD' },
   },
 ];
@@ -99,28 +109,36 @@ const masterCohorts: MultiSelectOption[] = [
   {
     value: 'grade-10a',
     label: 'Grade 10-A',
-    description: '32 students enrolled',
+    description: 'General Section',
+    badge: '32 students',
+    badgeVariant: 'neutral',
   },
   {
     value: 'ap-bio',
     label: 'AP Biology',
-    description: '28 students enrolled',
+    description: 'Advanced Placement',
+    badge: '28 students',
+    badgeVariant: 'neutral',
   },
   {
     value: 'grade-10b',
     label: 'Grade 10-B (Mixed)',
-    description: 'Partial • 30 students',
+    description: 'Mixed Section',
+    badge: 'Partial',
+    badgeVariant: 'warning',
   },
   {
     value: 'grade-11',
     label: 'Grade 11 Honors Physics',
-    description: '24 students enrolled',
+    description: 'Honors Track',
+    badge: '24 students',
+    badgeVariant: 'neutral',
   },
 ];
 
 export const MasterDesignModeratorsPicker: Story = {
   render: () => (
-    <div style={{ maxWidth: '540px' }}>
+    <div style={{ maxWidth: '540px', minHeight: '340px' }}>
       <MultiSelect
         label="Assigned Session Moderators"
         placeholder="Select moderators..."
@@ -134,7 +152,7 @@ export const MasterDesignModeratorsPicker: Story = {
 
 export const MasterDesignCohortsPicker: Story = {
   render: () => (
-    <div style={{ maxWidth: '540px' }}>
+    <div style={{ maxWidth: '540px', minHeight: '340px' }}>
       <MultiSelect
         label="Assigned Cohorts & Classes"
         placeholder="Choose classes..."
@@ -145,3 +163,5 @@ export const MasterDesignCohortsPicker: Story = {
     </div>
   ),
 };
+
+

@@ -86,8 +86,10 @@ export function Dashboard() {
 | **`SearchInput`** | Quick access search with shortcut badge | `placeholder`, `shortcutHint` (e.g. `⌘K`), `onClear`, `defaultValue` |
 | **`StatCard`** | KPI card with primary container highlight | `title`, `value`, `trend` (`up`, `down`, `neutral`), `highlighted`, `icon` |
 | **`Drawer`** | Slide-over panel with backdrop blur | `isOpen`, `onClose`, `title`, `placement` (`left`, `right`), `size`, `footer` |
-| **`Chip`** | Removable tag pill with avatar slot | `label`, `avatar`, `icon`, `variant` (`neutral`, `primary`, `outline`), `size` (`sm`, `md`), `onRemove` |
-| **`MultiSelect`** | Multi-item select with Avatars, filter & Chips | `label`, `options` (with `avatar`, `description`), `value`, `placeholder`, `isSearchable`, `maxDisplayedChips` |
+| **`Chip`** | Interactive pill tag with avatar, count badge, & states | `label`, `avatar`, `icon`, `variant` (`neutral`, `primary`, `tonal`, `outline`, `success`, `warning`, `danger`), `size` (`sm`, `md`, `lg`), `selected`, `count`, `onRemove` |
+| **`MultiSelect`** | Multi-item select with Avatars, filter & tonal chips | `label`, `options` (with `avatar`, `badge`, `badgeVariant`, `description`), `value`, `placeholder`, `isSearchable`, `maxDisplayedChips` |
+| **`Combobox`** | Searchable autocomplete filter with category groups | `label`, `placeholder`, `options` (with `group`, `badge`, `icon`), `value`, `onChange`, `helperText`, `errorMessage` |
+
 
 ---
 

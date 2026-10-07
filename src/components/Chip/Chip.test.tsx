@@ -29,4 +29,11 @@ describe('Chip', () => {
     const button = screen.getByRole('button', { name: /remove disabled tag/i });
     expect(button).toBeDisabled();
   });
+
+  it('renders size lg, count badge, and selected state', () => {
+    render(<Chip label="Biology" size="lg" variant="tonal" count="14" selected />);
+    expect(screen.getByText('Biology')).toBeInTheDocument();
+    expect(screen.getByText('14')).toBeInTheDocument();
+  });
 });
+

@@ -23,6 +23,8 @@ export * from './components/StatCard';
 export * from './components/Drawer';
 export * from './components/Chip';
 export * from './components/MultiSelect';
+export * from './components/Combobox';
 
 // Shared Icons
 export * from './components/common/Icons';
+

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useId, useMemo } from 'react';
 import styles from './MultiSelect.module.css';
 import { Chip } from '../Chip';
 import { Avatar, AvatarProps } from '../Avatar';
-import { ChevronDownIcon, CheckIcon, CloseIcon } from '../common/Icons';
+import { ChevronDownIcon, CheckIcon } from '../common/Icons';
 
 export type MultiSelectSize = 'sm' | 'md' | 'lg';
 
@@ -10,6 +10,8 @@ export interface MultiSelectOption {
   value: string;
   label: string;
   description?: string;
+  badge?: string;
+  badgeVariant?: 'primary' | 'success' | 'warning' | 'neutral';
   avatar?: Partial<AvatarProps>;
   icon?: React.ReactNode;
   disabled?: boolean;
@@ -76,7 +78,8 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
     return options.filter(
       (opt) =>
         opt.label.toLowerCase().includes(q) ||
-        (opt.description && opt.description.toLowerCase().includes(q))
+        (opt.description && opt.description.toLowerCase().includes(q)) ||
+        (opt.badge && opt.badge.toLowerCase().includes(q))
     );
   }, [options, searchQuery]);
 
@@ -209,11 +212,13 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
             <Chip
               key={opt.value}
               label={opt.label}
-              size={size === 'lg' ? 'md' : 'sm'}
+              variant="tonal"
+              shape={opt.avatar ? 'pill' : 'rounded'}
+              size={size === 'sm' ? 'sm' : size === 'lg' ? 'lg' : 'md'}
               avatar={
                 opt.avatar ? (
                   <Avatar
-                    size="xs"
+                    size={size === 'sm' ? 'xs' : size === 'lg' ? 'md' : 'xs'}
                     name={opt.label}
                     {...opt.avatar}
                   />
@@ -224,6 +229,8 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
               disabled={disabled}
             />
           ))}
+
+
 
           {remainingCount > 0 && (
             <span className={styles.moreCount}>+{remainingCount} more</span>
@@ -262,11 +269,11 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                 onChange?.([], []);
               }}
             >
-              <CloseIcon size={14} />
+              Clear
             </button>
           )}
           <span className={styles.chevron}>
-            <ChevronDownIcon size={16} />
+            <ChevronDownIcon size={14} />
           </span>
         </div>
       </div>
@@ -303,7 +310,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                 >
                   <div className={styles.checkboxSlot}>
                     <div className={[styles.checkboxBox, isSelected ? styles.checkboxChecked : ''].join(' ')}>
-                      {isSelected && <CheckIcon size={12} />}
+                      {isSelected && <CheckIcon size={11} />}
                     </div>
                   </div>
 
@@ -322,7 +329,19 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                   )}
 
                   <div className={styles.labelCol}>
-                    <div className={styles.optionLabel}>{opt.label}</div>
+                    <div className={styles.labelRow}>
+                      <span className={styles.optionLabel}>{opt.label}</span>
+                      {opt.badge && (
+                        <span
+                          className={[
+                            styles.badge,
+                            styles[`badge-${opt.badgeVariant || 'primary'}`],
+                          ].join(' ')}
+                        >
+                          {opt.badge}
+                        </span>
+                      )}
+                    </div>
                     {opt.description && (
                       <div className={styles.optionDescription}>{opt.description}</div>
                     )}
@@ -339,3 +358,4 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
     </div>
   );
 };
+

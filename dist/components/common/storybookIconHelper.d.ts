@@ -19,3 +19,11 @@ export declare const iconMap: {
     Spinner: React.JSX.Element;
 };
 export declare const iconOptions: string[];
+export declare const avatarMap: {
+    None: undefined;
+    'Robert Vance (RV)': React.JSX.Element;
+    'Elena Thorne (ET)': React.JSX.Element;
+    'Sophia Miller (SM)': React.JSX.Element;
+    'Alexander Chen (AC)': React.JSX.Element;
+};
+export declare const avatarOptions: string[];

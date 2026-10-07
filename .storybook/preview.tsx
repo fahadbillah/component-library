@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/react';
+import React from 'react';
 import '../src/styles/index.css';
 
 const preview: Preview = {
@@ -17,7 +18,21 @@ const preview: Preview = {
         { name: 'deep-slate', value: '#0F172A' },
       ],
     },
+    docs: {
+      story: {
+        inline: true,
+        height: 'auto',
+      },
+    },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ paddingBottom: '160px' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default preview;
+

@@ -5,6 +5,8 @@ export interface MultiSelectOption {
     value: string;
     label: string;
     description?: string;
+    badge?: string;
+    badgeVariant?: 'primary' | 'success' | 'warning' | 'neutral';
     avatar?: Partial<AvatarProps>;
     icon?: React.ReactNode;
     disabled?: boolean;

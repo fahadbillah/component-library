@@ -100,7 +100,7 @@
   top: calc(100% + var(--ui-space-xs));
   left: 0;
   right: 0;
-  z-index: 50;
+  z-index: var(--ui-z-dropdown);
   background-color: var(--ui-surface-container-lowest);
   border: 1px solid var(--ui-border);
   border-radius: var(--ui-radius-lg);

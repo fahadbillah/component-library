@@ -9,3 +9,4 @@ export declare const MinusIcon: React.FC<IconProps>;
 export declare const ChevronDownIcon: React.FC<IconProps>;
 export declare const CloseIcon: React.FC<IconProps>;
 export declare const UserFallbackIcon: React.FC<IconProps>;
+export declare const SearchIcon: React.FC<IconProps>;

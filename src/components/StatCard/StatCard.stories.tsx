@@ -1,12 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { StatCard } from './StatCard';
-import { CalendarIcon, UserFallbackIcon } from '../common/Icons';
+import { UserFallbackIcon } from '../common/Icons';
+import { CalendarIcon, iconMap, iconOptions } from '../common/storybookIconHelper';
 
 const meta: Meta<typeof StatCard> = {
   title: 'Components/StatCard',
   component: StatCard,
   tags: ['autodocs'],
+  argTypes: {
+    icon: {
+      options: iconOptions,
+      mapping: iconMap,
+      control: {
+        type: 'select',
+      },
+      description: 'Select an icon to display on the stat card',
+    },
+  },
 };
+
 
 export default meta;
 type Story = StoryObj<typeof StatCard>;
