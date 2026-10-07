@@ -43,5 +43,8 @@ jobs:
       - name: Build Library Bundle
         run: npm run build
 
+      - name: Validate Package Exports & Types (Publint)
+        run: npm run publint
+
       - name: Build Storybook
         run: npm run build-storybook
