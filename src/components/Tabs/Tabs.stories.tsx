@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Tabs, TabPanel } from './Tabs';
+import { Tabs, TabPanel, TabItem } from './Tabs';
 import { Card, CardContent } from '../Card';
 import {
   Table,
@@ -12,11 +12,24 @@ import {
 } from '../Table';
 import { Badge } from '../Badge';
 
-const sampleTabs = [
+const sampleTabs: TabItem[] = [
   { id: 'overview', label: 'Roster Overview', badge: '36' },
   { id: 'attendance', label: 'Attendance Roll Call' },
   { id: 'evaluations', label: 'Evaluation Matrix' },
   { id: 'archived', label: 'Prior Terms', disabled: true },
+];
+
+const manyTabs: TabItem[] = [
+  { id: 'all', label: 'All Modules (24)' },
+  { id: 'biology', label: 'Cell Biology 101', badge: 'Active' },
+  { id: 'chemistry', label: 'Organic Chemistry Lab' },
+  { id: 'physics', label: 'Quantum Mechanics II' },
+  { id: 'calculus', label: 'Multivariable Calculus', badge: '3' },
+  { id: 'literature', label: 'Modern World Literature' },
+  { id: 'history', label: 'Contemporary European History' },
+  { id: 'cs', label: 'Computer Systems & OS', badge: 'CRN' },
+  { id: 'robotics', label: 'Robotics Mechatronics' },
+  { id: 'ethics', label: 'Bioethics & Law' },
 ];
 
 const meta: Meta<typeof Tabs> = {
@@ -26,9 +39,15 @@ const meta: Meta<typeof Tabs> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['pill', 'underline'],
+      options: ['pill', 'underline', 'segmented'],
+    },
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
     },
     fullWidth: { control: 'boolean' },
+    scrollable: { control: 'boolean' },
+    showScrollButtons: { control: 'boolean' },
   },
 };
 
@@ -116,6 +135,91 @@ export const UnderlineVariant: Story = {
         />
         <div style={{ padding: '16px 0', color: 'var(--ui-text-muted)' }}>
           Active tab content for: <strong>{current}</strong>
+        </div>
+      </div>
+    );
+  },
+};
+
+export const SegmentedContainedVariant: Story = {
+  render: () => {
+    const [current, setCurrent] = useState('overview');
+
+    return (
+      <div style={{ maxWidth: '640px' }}>
+        <Tabs
+          tabs={sampleTabs}
+          activeTab={current}
+          onChange={setCurrent}
+          variant="segmented"
+        />
+        <div style={{ padding: '16px 0', color: 'var(--ui-text-muted)' }}>
+          Active tab content for: <strong>{current}</strong>
+        </div>
+      </div>
+    );
+  },
+};
+
+export const ScrollableNavigationPattern: Story = {
+  render: () => {
+    const [current, setCurrent] = useState('biology');
+
+    return (
+      <div style={{ maxWidth: '540px' }}>
+        <p
+          style={{
+            fontSize: '12px',
+            color: 'var(--ui-text-muted)',
+            marginBottom: '12px',
+          }}
+        >
+          Scrollable navigation container with responsive left/right chevron
+          buttons and gradient edge masks:
+        </p>
+
+        <Tabs
+          tabs={manyTabs}
+          activeTab={current}
+          onChange={setCurrent}
+          variant="pill"
+          scrollable
+          showScrollButtons
+        />
+
+        <div
+          style={{
+            marginTop: '16px',
+            padding: '16px',
+            background: 'var(--ui-surface-container-low)',
+            borderRadius: '8px',
+            border: '1px solid var(--ui-border)',
+          }}
+        >
+          Selected Subject Module: <strong>{current}</strong>
+        </div>
+      </div>
+    );
+  },
+};
+
+export const ScrollableUnderlinePattern: Story = {
+  render: () => {
+    const [current, setCurrent] = useState('physics');
+
+    return (
+      <div style={{ maxWidth: '480px' }}>
+        <Tabs
+          tabs={manyTabs}
+          activeTab={current}
+          onChange={setCurrent}
+          variant="underline"
+          scrollable
+          showScrollButtons
+        />
+
+        <div style={{ padding: '16px 0', color: 'var(--ui-text-muted)' }}>
+          Selected Module: <strong>{current}</strong>
         </div>
       </div>
     );
