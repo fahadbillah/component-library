@@ -1,0 +1,94 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--ui-font-body);
+  font-weight: 500;
+  border-radius: var(--ui-radius-full);
+  border: 1px solid transparent;
+  user-select: none;
+  white-space: nowrap;
+  transition: all var(--ui-transition-fast);
+  box-sizing: border-box;
+}
+
+/* Sizing */
+.md {
+  height: 32px;
+  padding: 0 var(--ui-space-sm);
+  font-size: var(--ui-text-sm);
+  gap: var(--ui-space-sm);
+}
+
+.sm {
+  height: 26px;
+  padding: 0 var(--ui-space-xs);
+  font-size: var(--ui-text-xs);
+  gap: var(--ui-space-xs);
+}
+
+/* Variants */
+.neutral {
+  background-color: var(--ui-surface-container);
+  color: var(--ui-text-high);
+  border-color: var(--ui-outline-variant);
+}
+
+.primary {
+  background-color: var(--ui-surface-dim);
+  color: var(--ui-primary-accent);
+  border-color: var(--ui-structural-outline);
+}
+
+.outline {
+  background-color: var(--ui-surface-container-lowest);
+  color: var(--ui-text-high);
+  border-color: var(--ui-structural-outline);
+}
+
+/* Slots */
+.avatarSlot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -2px;
+  flex-shrink: 0;
+}
+
+.iconSlot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ui-text-muted);
+  flex-shrink: 0;
+}
+
+.label {
+  line-height: 1;
+}
+
+/* Remove button */
+.removeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 2px;
+  margin-right: -2px;
+  border-radius: var(--ui-radius-full);
+  color: var(--ui-text-muted);
+  cursor: pointer;
+  transition: all var(--ui-transition-fast);
+  flex-shrink: 0;
+}
+
+.removeButton:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  color: var(--ui-text-high);
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}

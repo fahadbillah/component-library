@@ -21,6 +21,8 @@ export * from './components/Radio';
 export * from './components/SearchInput';
 export * from './components/StatCard';
 export * from './components/Drawer';
+export * from './components/Chip';
+export * from './components/MultiSelect';
 
 // Shared Icons
 export * from './components/common/Icons';
