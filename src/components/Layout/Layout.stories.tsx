@@ -13,7 +13,17 @@ import {
 import { Button } from '../Button';
 import { Badge } from '../Badge';
 import { Tabs } from '../Tabs';
-import { ChevronLeftIcon } from '../common/Icons';
+import { BottomNavigation, type BottomNavItemConfig } from '../Navigation';
+import {
+  ChevronLeftIcon,
+  HomeIcon,
+  CalendarIcon,
+  ClipboardCheckIcon,
+  SettingsIcon,
+  DocumentIcon,
+  FlaskIcon,
+  DeviceMobileIcon,
+} from '../common/Icons';
 
 const meta: Meta = {
   title: 'Templates/PageContainers',
@@ -170,10 +180,9 @@ export const StandardHubTemplate: Story = {
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginBottom: 16,
-                  fontSize: 24,
                 }}
               >
-                📑
+                <DocumentIcon size={28} />
               </div>
               <h2
                 style={{
@@ -407,10 +416,9 @@ export const DetailSubPageTemplate: Story = {
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginBottom: 16,
-                  fontSize: 24,
                 }}
               >
-                🔬
+                <FlaskIcon size={28} />
               </div>
               <h2
                 style={{
@@ -463,6 +471,20 @@ export const DetailSubPageTemplate: Story = {
  */
 export const MobileBlankViewportTemplate: Story = {
   render: () => {
+    const [activeTab, setActiveTab] = useState('home');
+
+    const mobileNavItems: BottomNavItemConfig[] = [
+      { id: 'home', label: 'Home', icon: <HomeIcon size={20} /> },
+      { id: 'schedule', label: 'Schedule', icon: <CalendarIcon size={20} /> },
+      {
+        id: 'roster',
+        label: 'Roster',
+        icon: <ClipboardCheckIcon size={20} />,
+        badge: 3,
+      },
+      { id: 'settings', label: 'Settings', icon: <SettingsIcon size={20} /> },
+    ];
+
     return (
       <div
         style={{
@@ -512,9 +534,11 @@ export const MobileBlankViewportTemplate: Story = {
                   fontSize: 12,
                 }}
               >
-                CP
+                PW
               </div>
-              <span style={{ fontWeight: 700, fontSize: 14 }}>CampusPulse</span>
+              <span style={{ fontWeight: 700, fontSize: 14 }}>
+                Portal Workspace
+              </span>
             </div>
             <div
               style={{
@@ -562,14 +586,14 @@ export const MobileBlankViewportTemplate: Story = {
                   height: 44,
                   borderRadius: 10,
                   backgroundColor: 'var(--ui-color-info-bg)',
+                  color: 'var(--ui-primary)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: 20,
                   marginBottom: 12,
                 }}
               >
-                📱
+                <DeviceMobileIcon size={22} />
               </div>
               <h3
                 style={{
@@ -595,65 +619,13 @@ export const MobileBlankViewportTemplate: Story = {
             </CardSlot>
           </div>
 
-          {/* Bottom Fixed Navigation Bar */}
-          <div
-            style={{
-              padding: '12px 16px',
-              backgroundColor: 'white',
-              borderTop: '1px solid var(--ui-border)',
-              display: 'flex',
-              justifyContent: 'space-around',
-              fontSize: 11,
-              color: 'var(--ui-text-muted)',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 4,
-                color: 'var(--ui-primary)',
-                fontWeight: 600,
-              }}
-            >
-              <span>🏠</span>
-              <span>Home</span>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 4,
-              }}
-            >
-              <span>📅</span>
-              <span>Schedule</span>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 4,
-              }}
-            >
-              <span>📋</span>
-              <span>Roster</span>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 4,
-              }}
-            >
-              <span>⚙️</span>
-              <span>Settings</span>
-            </div>
-          </div>
+          {/* Pinned Bottom Navigation */}
+          <BottomNavigation
+            isDocked
+            value={activeTab}
+            onChange={setActiveTab}
+            items={mobileNavItems}
+          />
         </div>
       </div>
     );

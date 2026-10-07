@@ -87,6 +87,15 @@ describe('BottomNavigation Component', () => {
     fireEvent.click(customTab);
     expect(handleClick).toHaveBeenCalled();
   });
+
+  it('supports isDocked mode with docked styling class', () => {
+    const { container } = render(
+      <BottomNavigation isDocked value="home" items={items} />
+    );
+
+    const nav = container.querySelector('nav');
+    expect(nav).toHaveClass(/bottomNavigationDocked/);
+  });
 });
 
 describe('NavigationRail Component', () => {

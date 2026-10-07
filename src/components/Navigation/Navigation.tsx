@@ -88,39 +88,62 @@ export interface BottomNavigationProps extends Omit<
   onChange?: (value: string) => void;
   items?: BottomNavItemConfig[];
   children?: React.ReactNode;
+  /** When true, docks flush to the bottom container edge without rounded corners or outer borders */
+  isDocked?: boolean;
 }
 
 export const BottomNavigation = React.forwardRef<
   HTMLElement,
   BottomNavigationProps
->(({ value, onChange, items, children, className = '', ...props }, ref) => {
-  return (
-    <nav
-      ref={ref}
-      role="tablist"
-      aria-label="Mobile Navigation"
-      className={`${styles.bottomNavigation} ${className}`.trim()}
-      {...props}
-    >
-      {items
-        ? items.map((item) => (
-            <BottomNavigationItem
-              key={item.id}
-              id={item.id}
-              label={item.label}
-              icon={item.icon}
-              activeIcon={item.activeIcon}
-              badge={item.badge}
-              isActive={value === item.id}
-              onClick={() => onChange?.(item.id)}
-            />
-          ))
-        : children}
-    </nav>
-  );
-});
+>(
+  (
+    {
+      value,
+      onChange,
+      items,
+      children,
+      isDocked = false,
+      className = '',
+      ...props
+    },
+    ref
+  ) => {
+    const dockedClass = isDocked ? styles.bottomNavigationDocked : '';
+
+    return (
+      <nav
+        ref={ref}
+        role="tablist"
+        aria-label="Mobile Navigation"
+        className={`${styles.bottomNavigation} ${dockedClass} ${className}`.trim()}
+        {...props}
+      >
+        {items
+          ? items.map((item) => (
+              <BottomNavigationItem
+                key={item.id}
+                id={item.id}
+                label={item.label}
+                icon={item.icon}
+                activeIcon={item.activeIcon}
+                badge={item.badge}
+                isActive={value === item.id}
+                onClick={() => onChange?.(item.id)}
+              />
+            ))
+          : children}
+      </nav>
+    );
+  }
+);
 
 BottomNavigation.displayName = 'BottomNavigation';
+
+// Export aliases for shorthand usage
+export const BottomNav = BottomNavigation;
+export const BottomNavItem = BottomNavigationItem;
+export type BottomNavProps = BottomNavigationProps;
+export type BottomNavItemProps = BottomNavigationItemProps;
 
 /* ==========================================================================
    2. NavigationRail (Adaptive Tablet & Desktop Rail - 80px Width)
