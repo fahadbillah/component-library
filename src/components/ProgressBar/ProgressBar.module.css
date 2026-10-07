@@ -1,0 +1,122 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--ui-font-body, inherit);
+  box-sizing: border-box;
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--ui-space-8, 8px);
+}
+
+.label {
+  font-size: var(--ui-text-xs, 0.75rem);
+  font-weight: 600;
+  color: var(--ui-text-high, #0f172a);
+}
+
+.valueText {
+  font-size: var(--ui-text-xs, 0.75rem);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ui-text-muted, #64748b);
+}
+
+/* Track */
+.track {
+  width: 100%;
+  background-color: var(--ui-surface-container-high, #e2eae9);
+  border-radius: var(--ui-rounded-full, 9999px);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Sizing / Height */
+.xs {
+  height: 4px;
+}
+
+.sm {
+  height: 6px;
+}
+
+.md {
+  height: 8px;
+}
+
+.lg {
+  height: 12px;
+}
+
+/* Fill */
+.fill {
+  height: 100%;
+  border-radius: var(--ui-rounded-full, 9999px);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Variants */
+.primary {
+  background-color: var(--ui-primary-accent, #3674b5);
+}
+
+.secondary {
+  background-color: var(--ui-secondary-accent, #578fca);
+}
+
+.success {
+  background-color: var(--ui-color-success, #15803d);
+}
+
+.warning {
+  background-color: var(--ui-color-warning, #b45309);
+}
+
+.danger {
+  background-color: var(--ui-color-danger, #b91c1c);
+}
+
+/* Striped animation */
+.striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 16px 16px;
+  animation: progressStripes 1s linear infinite;
+}
+
+@keyframes progressStripes {
+  from {
+    background-position: 16px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* Indeterminate animation */
+.indeterminate {
+  width: 50% !important;
+  position: absolute;
+  animation: indeterminateProgress 1.4s ease-in-out infinite;
+}
+
+@keyframes indeterminateProgress {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
+}
