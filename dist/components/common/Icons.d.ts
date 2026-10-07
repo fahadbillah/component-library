@@ -25,3 +25,8 @@ export declare const DeviceMobileIcon: React.FC<IconProps>;
 export declare const DocumentIcon: React.FC<IconProps>;
 export declare const FlaskIcon: React.FC<IconProps>;
 export declare const MessageDotsIcon: React.FC<IconProps>;
+export declare const InfoIcon: React.FC<IconProps>;
+export declare const AlertTriangleIcon: React.FC<IconProps>;
+export declare const AlertCircleIcon: React.FC<IconProps>;
+export declare const InboxIcon: React.FC<IconProps>;
+export declare const SparklesIcon: React.FC<IconProps>;

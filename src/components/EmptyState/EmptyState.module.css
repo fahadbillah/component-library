@@ -1,0 +1,115 @@
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--ui-font-body, inherit);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.bordered {
+  background-color: var(--ui-surface-container-lowest, #ffffff);
+  border: 1px dashed var(--ui-border-strong, #a1e3f9);
+  border-radius: var(--ui-rounded-xl, 12px);
+}
+
+/* Sizing */
+.sm {
+  padding: var(--ui-space-16, 16px);
+}
+
+.md {
+  padding: var(--ui-space-32, 32px) var(--ui-space-24, 24px);
+}
+
+.lg {
+  padding: var(--ui-space-48, 48px) var(--ui-space-32, 32px);
+}
+
+.iconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ui-rounded-full, 9999px);
+  background-color: var(--ui-primary-tint, #d1f8ef);
+  color: var(--ui-primary-accent, #3674b5);
+  margin-bottom: var(--ui-space-16, 16px);
+  transition: transform 0.2s ease;
+}
+
+.sm .iconCircle {
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--ui-space-12, 12px);
+}
+
+.md .iconCircle {
+  width: 72px;
+  height: 72px;
+}
+
+.lg .iconCircle {
+  width: 88px;
+  height: 88px;
+  margin-bottom: var(--ui-space-24, 24px);
+}
+
+.title {
+  font-family: var(--ui-font-display, inherit);
+  color: var(--ui-text-high, #0f172a);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.sm .title {
+  font-size: var(--ui-text-base, 1rem);
+}
+
+.md .title {
+  font-size: var(--ui-text-lg, 1.125rem);
+}
+
+.lg .title {
+  font-size: var(--ui-text-xl, 1.375rem);
+}
+
+.description {
+  color: var(--ui-text-muted, #64748b);
+  margin: var(--ui-space-8, 8px) 0 0 0;
+  line-height: 1.5;
+  max-width: 440px;
+}
+
+.sm .description {
+  font-size: var(--ui-text-xs, 0.75rem);
+}
+
+.md .description {
+  font-size: var(--ui-text-sm, 0.875rem);
+}
+
+.lg .description {
+  font-size: var(--ui-text-base, 1rem);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ui-space-12, 12px);
+  margin-top: var(--ui-space-24, 24px);
+  flex-wrap: wrap;
+}
+
+.sm .actions {
+  margin-top: var(--ui-space-16, 16px);
+  gap: var(--ui-space-8, 8px);
+}
+
+.lg .actions {
+  margin-top: var(--ui-space-32, 32px);
+  gap: var(--ui-space-16, 16px);
+}

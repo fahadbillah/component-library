@@ -27,5 +27,12 @@ export * from './components/Combobox';
 export * from './components/Layout';
 export * from './components/Navigation';
 
+// Disclosure, Feedback & Guidance Extensions
+export * from './components/Accordion';
+export * from './components/Tooltip';
+export * from './components/Banner';
+export * from './components/EmptyState';
+export * from './components/ProgressBar';
+
 // Shared Icons
 export * from './components/common/Icons';
