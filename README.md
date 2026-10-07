@@ -20,10 +20,21 @@ Designed to be consumed seamlessly across modern web projects with zero configur
 
 ## Installation & Consumption
 
-In your consumer application:
+Install directly from your GitHub repository into any consumer application (zero npm registry publish required):
 
 ```bash
-npm install react-component-library
+# Using HTTPS / GitHub shorthand:
+npm install github:fahadbillah/component-library
+
+# Or using SSH:
+npm install git+ssh://git@github.com:fahadbillah/component-library.git
+```
+
+In your consumer app's `package.json`, it will look like:
+```json
+"dependencies": {
+  "react-component-library": "github:fahadbillah/component-library"
+}
 ```
 
 ### Import Components & Styles
