@@ -22,6 +22,8 @@ export interface BottomNavigationProps extends Omit<React.HTMLAttributes<HTMLEle
     children?: React.ReactNode;
     /** When true, docks flush to the bottom container edge without rounded corners or outer borders */
     isDocked?: boolean;
+    /** Visual frame variant: 'rounded' (all corners), 'card-bottom' (top flat, bottom rounded as in Stitch card preview), or 'docked' */
+    variant?: 'rounded' | 'card-bottom' | 'docked';
 }
 export declare const BottomNavigation: React.ForwardRefExoticComponent<BottomNavigationProps & React.RefAttributes<HTMLElement>>;
 export declare const BottomNav: React.ForwardRefExoticComponent<BottomNavigationProps & React.RefAttributes<HTMLElement>>;

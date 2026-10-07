@@ -4,8 +4,7 @@ import { Navbar, BottomNav } from './Navigation';
 import {
   HomeIcon,
   ClipboardCheckIcon,
-  BookOpenIcon,
-  MessageDotsIcon,
+  GridIcon,
   BellIcon,
   SearchIcon,
 } from '../common/Icons';
@@ -28,17 +27,17 @@ const sampleMenuItems = [
 ];
 
 const stitchMasterTabs = [
-  { id: 'home', label: 'Home', icon: <HomeIcon size={20} /> },
+  { id: 'home', label: 'Home', icon: <HomeIcon size={22} /> },
   {
-    id: 'attendance',
-    label: 'Attendance',
-    icon: <ClipboardCheckIcon size={20} />,
+    id: 'rollcall',
+    label: 'Rollcall',
+    icon: <ClipboardCheckIcon size={22} />,
   },
-  { id: 'academics', label: 'Academics', icon: <BookOpenIcon size={20} /> },
+  { id: 'grades', label: 'Grades', icon: <GridIcon size={22} /> },
   {
-    id: 'messages',
-    label: 'Messages',
-    icon: <MessageDotsIcon size={20} />,
+    id: 'alerts',
+    label: 'Alerts',
+    icon: <BellIcon size={22} />,
     badge: 2,
   },
 ];
@@ -348,9 +347,9 @@ export const MobileTopNavbar: Story = {
  * - Icons: Home, Attendance (ClipboardCheck), Academics (BookOpen), Messages (CommentDots)
  */
 export const MobileBottomNavbar: Story = {
-  name: 'Mobile Bottom Tab Bar (Section 07 Spec)',
+  name: 'Mobile Bottom Tab Bar (Stitch Spec)',
   render: () => {
-    const [activeTab, setActiveTab] = useState('attendance');
+    const [activeTab, setActiveTab] = useState('home');
 
     return (
       <div
@@ -358,11 +357,11 @@ export const MobileBottomNavbar: Story = {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: 24,
+          gap: 32,
           padding: '20px 0',
         }}
       >
-        {/* Floating Card Variant (As showcased in Stitch Master Component Library Section 07) */}
+        {/* Exact Stitch Canvas Card Variant (Matching Attachment) */}
         <div style={{ width: '100%', maxWidth: 420 }}>
           <div
             style={{
@@ -400,6 +399,38 @@ export const MobileBottomNavbar: Story = {
           </div>
 
           <BottomNav
+            variant="card-bottom"
+            value={activeTab}
+            onChange={(val) => setActiveTab(val)}
+            items={stitchMasterTabs}
+          />
+        </div>
+
+        {/* Floating Rounded Variant */}
+        <div style={{ width: '100%', maxWidth: 420 }}>
+          <div
+            style={{
+              marginBottom: 12,
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <span
+              style={{
+                fontSize: 11,
+                fontWeight: 700,
+                color: '#334155',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+              }}
+            >
+              Floating Island Variant (Full Rounded)
+            </span>
+          </div>
+
+          <BottomNav
+            variant="rounded"
             value={activeTab}
             onChange={(val) => setActiveTab(val)}
             items={stitchMasterTabs}
@@ -440,10 +471,10 @@ export const MobileBottomNavbar: Story = {
                 lineHeight: 1.5,
               }}
             >
-              Docked flush at the bottom edge with active pill (
-              <code style={{ color: '#115B9B' }}>#D1F8EF</code>), primary
-              highlight (<code style={{ color: '#115B9B' }}>#3674B5</code>), and
-              notification counters.
+              Docked flush at the bottom edge with active tab highlight (
+              <code style={{ color: '#115B9B' }}>#3674B5</code>), notification
+              counter pill (<code style={{ color: '#E11D48' }}>2</code>), and
+              Stitch iconography (Home, Rollcall, Grades, Alerts).
             </p>
             <div
               style={{
@@ -464,7 +495,7 @@ export const MobileBottomNavbar: Story = {
           </div>
 
           <BottomNav
-            isDocked
+            variant="docked"
             value={activeTab}
             onChange={(val) => setActiveTab(val)}
             items={stitchMasterTabs}

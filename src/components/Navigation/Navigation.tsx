@@ -90,6 +90,8 @@ export interface BottomNavigationProps extends Omit<
   children?: React.ReactNode;
   /** When true, docks flush to the bottom container edge without rounded corners or outer borders */
   isDocked?: boolean;
+  /** Visual frame variant: 'rounded' (all corners), 'card-bottom' (top flat, bottom rounded as in Stitch card preview), or 'docked' */
+  variant?: 'rounded' | 'card-bottom' | 'docked';
 }
 
 export const BottomNavigation = React.forwardRef<
@@ -103,19 +105,25 @@ export const BottomNavigation = React.forwardRef<
       items,
       children,
       isDocked = false,
+      variant,
       className = '',
       ...props
     },
     ref
   ) => {
-    const dockedClass = isDocked ? styles.bottomNavigationDocked : '';
+    let shapeClass = '';
+    if (isDocked || variant === 'docked') {
+      shapeClass = styles.bottomNavigationDocked;
+    } else if (variant === 'card-bottom') {
+      shapeClass = styles.bottomNavigationCardBottom;
+    }
 
     return (
       <nav
         ref={ref}
         role="tablist"
         aria-label="Mobile Navigation"
-        className={`${styles.bottomNavigation} ${dockedClass} ${className}`.trim()}
+        className={`${styles.bottomNavigation} ${shapeClass} ${className}`.trim()}
         {...props}
       >
         {items

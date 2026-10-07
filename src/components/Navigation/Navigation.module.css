@@ -5,18 +5,30 @@
    ========================================================================== */
 .bottomNavigation {
   height: 80px;
-  background-color: var(--ui-surface, #ffffff);
-  border: 1px solid #a1e3f9;
+  background-color: var(--ui-surface-container-lowest, #ffffff);
+  border: 1.5px solid var(--ui-structural-outline, #a1e3f9);
   border-radius: var(--ui-radius-xl, 16px);
   padding: 0 var(--ui-space-lg, 24px);
   display: flex;
   align-items: center;
   justify-content: space-around;
   box-shadow:
-    0 4px 14px -2px rgba(54, 116, 181, 0.12),
+    0 4px 16px -2px rgba(54, 116, 181, 0.12),
     0 2px 6px rgba(0, 0, 0, 0.04);
   width: 100%;
   box-sizing: border-box;
+}
+
+.bottomNavigationCardBottom {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: var(--ui-radius-xl, 24px);
+  border-bottom-right-radius: var(--ui-radius-xl, 24px);
+  border-top: 1px solid rgba(161, 227, 249, 0.4);
+  border-left: 1.5px solid var(--ui-structural-outline, #a1e3f9);
+  border-right: 1.5px solid var(--ui-structural-outline, #a1e3f9);
+  border-bottom: 1.5px solid var(--ui-structural-outline, #a1e3f9);
+  box-shadow: 0 8px 24px -4px rgba(54, 116, 181, 0.12);
 }
 
 .bottomNavigationDocked {
@@ -24,7 +36,7 @@
   border-left: none;
   border-right: none;
   border-bottom: none;
-  border-top: 1px solid #a1e3f9;
+  border-top: 1px solid var(--ui-structural-outline, #a1e3f9);
   box-shadow: 0 -2px 10px rgba(54, 116, 181, 0.08);
 }
 
@@ -37,11 +49,11 @@
   background: transparent;
   border: none;
   outline: none;
-  padding: 4px 8px;
-  min-height: 48px;
-  min-width: 48px;
+  padding: 4px 12px;
+  min-height: 52px;
+  min-width: 56px;
   color: #64748b;
-  transition: color 0.15s ease;
+  transition: all 0.15s ease;
   position: relative;
   text-decoration: none;
   user-select: none;
@@ -52,13 +64,13 @@
 }
 
 .bottomNavItem:focus-visible {
-  outline: 2px solid #3674b5;
+  outline: 2px solid var(--ui-primary-accent, #3674b5);
   outline-offset: 2px;
   border-radius: 8px;
 }
 
 .bottomNavItemActive {
-  color: #3674b5;
+  color: var(--ui-primary-accent, #3674b5);
 }
 
 .bottomNavItemActive:hover {
@@ -71,21 +83,19 @@
   align-items: center;
   justify-content: center;
   line-height: 1;
+  width: 28px;
+  height: 28px;
 }
 
 .bottomNavActivePill {
-  padding: 4px 20px;
-  border-radius: 9999px;
-  background-color: #d1f8ef;
-  color: #3674b5;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  color: var(--ui-primary-accent, #3674b5);
 }
 
 .bottomNavLabel {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
   margin-top: 4px;
   line-height: 1.2;
@@ -93,13 +103,13 @@
 
 .bottomNavItemActive .bottomNavLabel {
   font-weight: 700;
-  color: #3674b5;
+  color: var(--ui-primary-accent, #3674b5);
 }
 
 .bottomNavBadge {
   position: absolute;
   top: -4px;
-  right: -6px;
+  right: -8px;
   min-width: 16px;
   height: 16px;
   padding: 0 4px;
@@ -107,12 +117,12 @@
   background-color: #f43f5e;
   color: #ffffff;
   font-family: var(--ui-font-mono, monospace);
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgba(244, 63, 94, 0.4);
   line-height: 1;
 }
 

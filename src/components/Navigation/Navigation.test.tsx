@@ -98,6 +98,15 @@ describe('BottomNavigation Component', () => {
     const nav = container.querySelector('nav');
     expect(nav).toHaveClass(/bottomNavigationDocked/);
   });
+
+  it('supports variant="card-bottom" with rounded bottom card class', () => {
+    const { container } = render(
+      <BottomNavigation variant="card-bottom" value="home" items={items} />
+    );
+
+    const nav = container.querySelector('nav');
+    expect(nav).toHaveClass(/bottomNavigationCardBottom/);
+  });
 });
 
 describe('NavigationRail Component', () => {
