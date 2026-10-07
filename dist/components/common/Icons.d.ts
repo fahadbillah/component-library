@@ -20,3 +20,7 @@ export declare const BellIcon: React.FC<IconProps>;
 export declare const MenuIcon: React.FC<IconProps>;
 export declare const LayersIcon: React.FC<IconProps>;
 export declare const SettingsIcon: React.FC<IconProps>;
+export declare const ClipboardCheckIcon: React.FC<IconProps>;
+export declare const DeviceMobileIcon: React.FC<IconProps>;
+export declare const DocumentIcon: React.FC<IconProps>;
+export declare const FlaskIcon: React.FC<IconProps>;

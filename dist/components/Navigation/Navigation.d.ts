@@ -20,8 +20,14 @@ export interface BottomNavigationProps extends Omit<React.HTMLAttributes<HTMLEle
     onChange?: (value: string) => void;
     items?: BottomNavItemConfig[];
     children?: React.ReactNode;
+    /** When true, docks flush to the bottom container edge without rounded corners or outer borders */
+    isDocked?: boolean;
 }
 export declare const BottomNavigation: React.ForwardRefExoticComponent<BottomNavigationProps & React.RefAttributes<HTMLElement>>;
+export declare const BottomNav: React.ForwardRefExoticComponent<BottomNavigationProps & React.RefAttributes<HTMLElement>>;
+export declare const BottomNavItem: React.ForwardRefExoticComponent<BottomNavigationItemProps & React.RefAttributes<HTMLButtonElement>>;
+export type BottomNavProps = BottomNavigationProps;
+export type BottomNavItemProps = BottomNavigationItemProps;
 export interface NavigationRailItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     id: string;
     icon: React.ReactNode;
