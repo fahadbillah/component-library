@@ -3,7 +3,7 @@
 - **Stitch Project ID**: `12635430573370270229`
 - **Master Screen ID**: `9f41c22f65334e1f88c8741bbc796641`
 - **Full Screen Resource Name**: `projects/12635430573370270229/screens/9f41c22f65334e1f88c8741bbc796641`
-- **Screen Title**: `CampusPulse - Figma Master Component Library`
+- **Screen Title**: `Master Component Library`
 - **Device Type**: `DESKTOP` (2560 x 5532)
 
 ---

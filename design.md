@@ -4,7 +4,7 @@
 Stitch Design Source:
 - Project ID: 12635430573370270229
 - Screen Resource Name: projects/12635430573370270229/screens/9f41c22f65334e1f88c8741bbc796641
-- Screen Title: CampusPulse - Figma Master Component Library
+- Screen Title: Master Component Library
 -->
 ---
 name: Core Adaptive Ecosystem
