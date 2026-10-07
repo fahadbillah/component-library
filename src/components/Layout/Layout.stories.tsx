@@ -13,6 +13,7 @@ import {
 import { Button } from '../Button';
 import { Badge } from '../Badge';
 import { Tabs } from '../Tabs';
+import { Avatar } from '../Avatar';
 import { BottomNavigation, type BottomNavItemConfig } from '../Navigation';
 import {
   ChevronLeftIcon,
@@ -23,6 +24,7 @@ import {
   DocumentIcon,
   FlaskIcon,
   DeviceMobileIcon,
+  MenuIcon,
 } from '../common/Icons';
 
 const meta: Meta = {
@@ -519,42 +521,54 @@ export const MobileBlankViewportTemplate: Story = {
               justifyContent: 'space-between',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <div
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <button
+                type="button"
+                aria-label="Open navigation menu"
                 style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: 6,
-                  backgroundColor: 'var(--ui-primary)',
-                  color: 'white',
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontWeight: 700,
-                  fontSize: 12,
+                  width: 32,
+                  height: 32,
+                  borderRadius: 6,
+                  border: '1px solid var(--ui-border)',
+                  backgroundColor: 'white',
+                  color: 'var(--ui-text-high)',
+                  cursor: 'pointer',
+                  padding: 0,
                 }}
               >
-                PW
+                <MenuIcon size={18} />
+              </button>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div
+                  style={{
+                    width: 28,
+                    height: 28,
+                    borderRadius: 6,
+                    backgroundColor: 'var(--ui-primary)',
+                    color: 'white',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontWeight: 700,
+                    fontSize: 12,
+                  }}
+                >
+                  PW
+                </div>
+                <span style={{ fontWeight: 700, fontSize: 14 }}>
+                  Portal Workspace
+                </span>
               </div>
-              <span style={{ fontWeight: 700, fontSize: 14 }}>
-                Portal Workspace
-              </span>
             </div>
-            <div
-              style={{
-                width: 28,
-                height: 28,
-                borderRadius: '50%',
-                backgroundColor: 'var(--ui-surface-container)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: 11,
-                fontWeight: 600,
-              }}
-            >
-              RV
-            </div>
+            <Avatar
+              size="sm"
+              name="Riley Vance"
+              initials="RV"
+              status="online"
+            />
           </div>
 
           {/* Mobile Scrollable Body Area */}
