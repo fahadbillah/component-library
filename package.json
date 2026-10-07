@@ -1,0 +1,61 @@
+{
+  "name": "react-component-library",
+  "version": "0.1.0",
+  "description": "Adaptive React component library built on a modern functionalist design system",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [
+    "react",
+    "component-library",
+    "ui",
+    "design-system"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/blocks": "^8.6.14",
+    "@storybook/react": "^8.6.14",
+    "@storybook/react-vite": "^8.6.14",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^5.2.0",
+    "happy-dom": "^20.14.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storybook": "^8.6.14",
+    "typescript": "~5.8.2",
+    "vite": "^6.4.4",
+    "vite-plugin-dts": "^5.1.2",
+    "vitest": "^5.0.3"
+  }
+}

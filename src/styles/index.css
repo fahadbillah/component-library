@@ -1,0 +1,15 @@
+@import './tokens.css';
+
+/* Universal resets within components context */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--ui-font-body);
+  color: var(--ui-text-high);
+  background-color: var(--ui-background);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
