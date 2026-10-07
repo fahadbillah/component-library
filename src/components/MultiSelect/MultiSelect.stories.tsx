@@ -68,36 +68,80 @@ export const Default: Story = {
   ),
 };
 
-export const WithAvatarsAndChips: Story = {
-  render: () => {
-    return (
-      <div style={{ maxWidth: '520px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
-        <MultiSelect
-          label="Course Faculty & Reviewers"
-          placeholder="Add team members..."
-          helperText="Select one or more faculty members to review syllabus submissions."
-          options={sampleUsers}
-          defaultValue={['aria', 'marcus', 'elena']}
-          size="md"
-        />
-
-        <MultiSelect
-          label="Compact Multi-Select (sm)"
-          placeholder="Add tags..."
-          options={sampleUsers}
-          defaultValue={['david']}
-          size="sm"
-        />
-
-        <MultiSelect
-          label="Invalid State Example"
-          placeholder="Select members..."
-          errorMessage="At least 2 faculty advisors are required."
-          options={sampleUsers}
-          defaultValue={['aria']}
-          size="md"
-        />
-      </div>
-    );
+const masterModerators: MultiSelectOption[] = [
+  {
+    value: 'elena',
+    label: 'Dr. Elena Thorne',
+    description: '#FAC-4102 • Biology',
+    avatar: { initials: 'ET' },
   },
+  {
+    value: 'sophia',
+    label: 'Sophia Miller',
+    description: '#ST-98214 • Grade 10-A',
+    avatar: { initials: 'SM' },
+  },
+  {
+    value: 'alexander',
+    label: 'Alexander Chen',
+    description: '#ST-98210 • Grade 10-A',
+    avatar: { initials: 'AC' },
+  },
+  {
+    value: 'brianna',
+    label: 'Brianna Davis',
+    description: '#ST-98211 • Grade 10-A',
+    avatar: { initials: 'BD' },
+  },
+];
+
+const masterCohorts: MultiSelectOption[] = [
+  {
+    value: 'grade-10a',
+    label: 'Grade 10-A',
+    description: '32 students enrolled',
+  },
+  {
+    value: 'ap-bio',
+    label: 'AP Biology',
+    description: '28 students enrolled',
+  },
+  {
+    value: 'grade-10b',
+    label: 'Grade 10-B (Mixed)',
+    description: 'Partial • 30 students',
+  },
+  {
+    value: 'grade-11',
+    label: 'Grade 11 Honors Physics',
+    description: '24 students enrolled',
+  },
+];
+
+export const MasterDesignModeratorsPicker: Story = {
+  render: () => (
+    <div style={{ maxWidth: '540px' }}>
+      <MultiSelect
+        label="Assigned Session Moderators"
+        placeholder="Select moderators..."
+        options={masterModerators}
+        defaultValue={['elena', 'sophia']}
+        size="md"
+      />
+    </div>
+  ),
+};
+
+export const MasterDesignCohortsPicker: Story = {
+  render: () => (
+    <div style={{ maxWidth: '540px' }}>
+      <MultiSelect
+        label="Assigned Cohorts & Classes"
+        placeholder="Choose classes..."
+        options={masterCohorts}
+        defaultValue={['grade-10a', 'ap-bio']}
+        size="md"
+      />
+    </div>
+  ),
 };
