@@ -6,7 +6,13 @@ import React, {
   forwardRef,
 } from 'react';
 import styles from './Tabs.module.css';
-import { ChevronLeftIcon, ChevronRightIcon } from '../common/Icons';
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronDownIcon,
+  MoreHorizontalIcon,
+  CheckIcon,
+} from '../common/Icons';
 
 export type TabsVariant = 'pill' | 'underline' | 'segmented';
 export type TabsSize = 'sm' | 'md' | 'lg';
@@ -32,6 +38,8 @@ export interface TabsProps extends Omit<
   fullWidth?: boolean;
   scrollable?: boolean;
   showScrollButtons?: boolean;
+  maxVisibleTabs?: number;
+  moreLabel?: React.ReactNode;
   className?: string;
   children?: React.ReactNode;
 }
@@ -48,6 +56,8 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
       fullWidth = false,
       scrollable = false,
       showScrollButtons = true,
+      maxVisibleTabs,
+      moreLabel = 'More',
       className,
       children,
       ...props
@@ -62,9 +72,44 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
 
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const tabRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
+    const moreMenuRef = useRef<HTMLDivElement>(null);
 
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(false);
+    const [isMoreOpen, setIsMoreOpen] = useState(false);
+
+    // Compute visible tabs vs overflow tabs
+    const hasMoreOverflow =
+      typeof maxVisibleTabs === 'number' &&
+      maxVisibleTabs > 0 &&
+      tabs.length > maxVisibleTabs;
+
+    const visibleTabs = hasMoreOverflow ? tabs.slice(0, maxVisibleTabs) : tabs;
+
+    const overflowTabs = hasMoreOverflow ? tabs.slice(maxVisibleTabs) : [];
+
+    const isCurrentInOverflow = overflowTabs.some(
+      (t) => t.id === currentActive
+    );
+
+    // Close More menu on outside click
+    useEffect(() => {
+      if (!isMoreOpen) return;
+
+      const handleOutsideClick = (e: MouseEvent) => {
+        if (
+          moreMenuRef.current &&
+          !moreMenuRef.current.contains(e.target as Node)
+        ) {
+          setIsMoreOpen(false);
+        }
+      };
+
+      document.addEventListener('mousedown', handleOutsideClick);
+      return () => {
+        document.removeEventListener('mousedown', handleOutsideClick);
+      };
+    }, [isMoreOpen]);
 
     // Check scroll boundaries
     const checkScrollLimits = useCallback(() => {
@@ -97,7 +142,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
         container.removeEventListener('scroll', checkScrollLimits);
         window.removeEventListener('resize', checkScrollLimits);
       };
-    }, [scrollable, checkScrollLimits, tabs]);
+    }, [scrollable, checkScrollLimits, visibleTabs]);
 
     // Scroll active tab into view when activeTab changes
     useEffect(() => {
@@ -127,10 +172,11 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
       if (activeTab === undefined) {
         setInternalActive(id);
       }
+      setIsMoreOpen(false);
       onChange?.(id);
     };
 
-    // WAI-ARIA Keyboard Navigation: ArrowLeft / ArrowRight / Home / End
+    // WAI-ARIA Keyboard Navigation
     const handleKeyDown = (e: React.KeyboardEvent) => {
       const enabledTabs = tabs.filter((t) => !t.disabled);
       if (enabledTabs.length === 0) return;
@@ -211,7 +257,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
               className={listClasses}
               onKeyDown={handleKeyDown}
             >
-              {tabs.map((tab) => {
+              {visibleTabs.map((tab) => {
                 const isActive = tab.id === currentActive;
                 const tabClasses = [
                   styles.tab,
@@ -261,6 +307,62 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
             >
               <ChevronRightIcon size={16} />
             </button>
+          )}
+
+          {/* More Overflow Dropdown Trigger & Popover */}
+          {hasMoreOverflow && (
+            <div ref={moreMenuRef} className={styles.moreWrapper}>
+              <button
+                type="button"
+                className={[
+                  styles.moreButton,
+                  styles[`size-${size}`],
+                  isCurrentInOverflow ? styles.moreButtonActive : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                aria-haspopup="true"
+                aria-expanded={isMoreOpen}
+                aria-label="More navigation tabs"
+                onClick={() => setIsMoreOpen((prev) => !prev)}
+              >
+                <MoreHorizontalIcon size={16} />
+                <span>{moreLabel}</span>
+                <ChevronDownIcon size={14} />
+              </button>
+
+              {isMoreOpen && (
+                <div className={styles.moreMenu} role="menu">
+                  {overflowTabs.map((tab) => {
+                    const isActive = tab.id === currentActive;
+                    return (
+                      <button
+                        key={tab.id}
+                        type="button"
+                        role="menuitem"
+                        disabled={tab.disabled}
+                        className={[
+                          styles.moreMenuItem,
+                          isActive ? styles.moreMenuItemActive : '',
+                        ]
+                          .filter(Boolean)
+                          .join(' ')}
+                        onClick={() => handleTabClick(tab.id, tab.disabled)}
+                      >
+                        <span className={styles.moreMenuItemLeft}>
+                          {tab.icon && <span>{tab.icon}</span>}
+                          <span>{tab.label}</span>
+                        </span>
+                        {isActive && <CheckIcon size={14} />}
+                        {!isActive && tab.badge !== undefined && (
+                          <span className={styles.badge}>{tab.badge}</span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           )}
         </div>
         {children}

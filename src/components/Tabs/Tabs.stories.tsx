@@ -203,23 +203,64 @@ export const ScrollableNavigationPattern: Story = {
   },
 };
 
-export const ScrollableUnderlinePattern: Story = {
+export const MoreDropdownOverflow: Story = {
+  render: () => {
+    const [current, setCurrent] = useState('overview');
+
+    return (
+      <div style={{ maxWidth: '640px' }}>
+        <p
+          style={{
+            fontSize: '12px',
+            color: 'var(--ui-text-muted)',
+            marginBottom: '12px',
+          }}
+        >
+          Tabs with `maxVisibleTabs={4}` showing a right-aligned
+          &quot;More&quot; dropdown menu for remaining tabs:
+        </p>
+        <Tabs
+          tabs={manyTabs}
+          activeTab={current}
+          onChange={setCurrent}
+          variant="pill"
+          maxVisibleTabs={4}
+          moreLabel="More"
+        />
+
+        <div
+          style={{
+            marginTop: '16px',
+            padding: '16px',
+            background: 'var(--ui-surface-container-low)',
+            borderRadius: '8px',
+            border: '1px solid var(--ui-border)',
+          }}
+        >
+          Active Tab selection: <strong>{current}</strong>
+        </div>
+      </div>
+    );
+  },
+};
+
+export const MoreDropdownUnderline: Story = {
   render: () => {
     const [current, setCurrent] = useState('physics');
 
     return (
-      <div style={{ maxWidth: '480px' }}>
+      <div style={{ maxWidth: '600px' }}>
         <Tabs
           tabs={manyTabs}
           activeTab={current}
           onChange={setCurrent}
           variant="underline"
-          scrollable
-          showScrollButtons
+          maxVisibleTabs={3}
+          moreLabel="More Subjects"
         />
 
         <div style={{ padding: '16px 0', color: 'var(--ui-text-muted)' }}>
-          Selected Module: <strong>{current}</strong>
+          Active Tab selection: <strong>{current}</strong>
         </div>
       </div>
     );

@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   width: 100%;
+  gap: var(--ui-space-xs);
 }
 
 /* Scroll viewport container */
@@ -22,6 +23,7 @@
   -webkit-overflow-scrolling: touch;
   width: 100%;
   padding: 4px 0;
+  flex: 1;
 }
 
 .scrollContainer::-webkit-scrollbar {
@@ -247,6 +249,136 @@
   );
   pointer-events: none;
   z-index: 3;
+}
+
+/* ==========================================================================
+   More Overflow Dropdown Menu Trigger & Popover
+   ========================================================================== */
+.moreWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.moreButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ui-space-xs);
+  padding: var(--ui-space-sm) var(--ui-space-md);
+  font-family: var(--ui-font-display);
+  font-size: var(--ui-text-sm);
+  font-weight: 600;
+  color: var(--ui-text-muted);
+  background: var(--ui-surface-container);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-md);
+  cursor: pointer;
+  transition: all var(--ui-transition-fast);
+  outline: none;
+  white-space: nowrap;
+}
+
+.moreButton:hover {
+  color: var(--ui-text-high);
+  background: var(--ui-surface-container-high);
+  border-color: var(--ui-border-strong);
+}
+
+.moreButton:focus-visible {
+  box-shadow: var(--ui-focus-ring);
+}
+
+.moreButtonActive {
+  background: var(--ui-surface-container-lowest);
+  color: var(--ui-primary-accent);
+  border-color: var(--ui-primary-accent);
+  box-shadow: var(--ui-shadow-1);
+}
+
+.variant-underline + .moreWrapper .moreButton {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid var(--ui-structural-outline);
+  padding: var(--ui-space-sm) var(--ui-space-xs);
+  margin-bottom: -1px;
+}
+
+.variant-underline + .moreWrapper .moreButtonActive {
+  color: var(--ui-primary-accent);
+  border-bottom: 2px solid var(--ui-primary-accent);
+  background: transparent;
+  box-shadow: none;
+}
+
+.moreMenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 200px;
+  max-width: 320px;
+  max-height: 280px;
+  overflow-y: auto;
+  background-color: var(--ui-surface-container-lowest);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-lg);
+  box-shadow: var(--ui-shadow-3);
+  padding: 6px;
+  z-index: var(--ui-z-dropdown);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.moreMenuItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--ui-space-sm) var(--ui-space-md);
+  font-family: var(--ui-font-body);
+  font-size: var(--ui-text-sm);
+  font-weight: 500;
+  color: var(--ui-text-high);
+  background: transparent;
+  border: none;
+  border-radius: var(--ui-radius-md);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--ui-transition-fast);
+  outline: none;
+}
+
+.moreMenuItem:hover:not(:disabled) {
+  background-color: var(--ui-surface-container-low);
+  color: var(--ui-primary);
+}
+
+.moreMenuItem:focus-visible {
+  background-color: var(--ui-surface-container-low);
+  box-shadow: var(--ui-focus-ring);
+}
+
+.moreMenuItemActive {
+  background-color: var(--ui-surface-container);
+  color: var(--ui-primary-accent);
+  font-weight: 600;
+}
+
+.moreMenuItem:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.moreMenuItemLeft {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-space-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Tab Panel */

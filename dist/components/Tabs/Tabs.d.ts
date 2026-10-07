@@ -18,6 +18,8 @@ export interface TabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'o
     fullWidth?: boolean;
     scrollable?: boolean;
     showScrollButtons?: boolean;
+    maxVisibleTabs?: number;
+    moreLabel?: React.ReactNode;
     className?: string;
     children?: React.ReactNode;
 }

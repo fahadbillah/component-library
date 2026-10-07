@@ -90,4 +90,46 @@ describe('Tabs', () => {
     );
     expect(container.querySelector('[role="tablist"]')).toBeInTheDocument();
   });
+
+  it('renders More button when maxVisibleTabs is exceeded and selects tab from dropdown', async () => {
+    const handleChange = vi.fn();
+    render(
+      <Tabs
+        tabs={mockTabs}
+        maxVisibleTabs={2}
+        moreLabel="More Tabs"
+        onChange={handleChange}
+      />
+    );
+
+    // Only first 2 tabs are in main tablist
+    expect(
+      screen.getByRole('tab', { name: /daily agenda/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('tab', { name: /attendance/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('tab', { name: /semester reports/i })
+    ).not.toBeInTheDocument();
+
+    // More button is rendered
+    const moreBtn = screen.getByRole('button', {
+      name: /more navigation tabs/i,
+    });
+    expect(moreBtn).toBeInTheDocument();
+
+    // Click More button to open menu
+    await userEvent.click(moreBtn);
+
+    // Overflow tab is visible in menu
+    const overflowItem = screen.getByRole('menuitem', {
+      name: /semester reports/i,
+    });
+    expect(overflowItem).toBeInTheDocument();
+
+    // Selecting overflow tab triggers onChange
+    await userEvent.click(overflowItem);
+    expect(handleChange).toHaveBeenCalledWith('reports');
+  });
 });

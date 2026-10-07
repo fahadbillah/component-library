@@ -12,3 +12,4 @@ export declare const ChevronRightIcon: React.FC<IconProps>;
 export declare const CloseIcon: React.FC<IconProps>;
 export declare const UserFallbackIcon: React.FC<IconProps>;
 export declare const SearchIcon: React.FC<IconProps>;
+export declare const MoreHorizontalIcon: React.FC<IconProps>;
