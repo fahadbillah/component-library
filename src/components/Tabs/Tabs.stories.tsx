@@ -216,15 +216,15 @@ export const MoreDropdownOverflow: Story = {
             marginBottom: '12px',
           }}
         >
-          Tabs with `maxVisibleTabs={4}` showing a right-aligned
-          &quot;More&quot; dropdown menu for remaining tabs:
+          Tabs with `maxVisibleTabs={2}` showing 2 visible tabs and a nested
+          &quot;More&quot; dropdown button directly inside the tab nav bar:
         </p>
         <Tabs
           tabs={manyTabs}
           activeTab={current}
           onChange={setCurrent}
           variant="pill"
-          maxVisibleTabs={4}
+          maxVisibleTabs={2}
           moreLabel="More"
         />
 

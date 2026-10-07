@@ -295,6 +295,62 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
                   </button>
                 );
               })}
+
+              {/* More Overflow Dropdown Trigger & Popover */}
+              {hasMoreOverflow && (
+                <div ref={moreMenuRef} className={styles.moreWrapper}>
+                  <button
+                    type="button"
+                    className={[
+                      styles.moreButton,
+                      styles[`size-${size}`],
+                      isCurrentInOverflow ? styles.moreButtonActive : '',
+                    ]
+                      .filter(Boolean)
+                      .join(' ')}
+                    aria-haspopup="true"
+                    aria-expanded={isMoreOpen}
+                    aria-label="More navigation tabs"
+                    onClick={() => setIsMoreOpen((prev) => !prev)}
+                  >
+                    <MoreHorizontalIcon size={16} />
+                    <span>{moreLabel}</span>
+                    <ChevronDownIcon size={14} />
+                  </button>
+
+                  {isMoreOpen && (
+                    <div className={styles.moreMenu} role="menu">
+                      {overflowTabs.map((tab) => {
+                        const isActive = tab.id === currentActive;
+                        return (
+                          <button
+                            key={tab.id}
+                            type="button"
+                            role="menuitem"
+                            disabled={tab.disabled}
+                            className={[
+                              styles.moreMenuItem,
+                              isActive ? styles.moreMenuItemActive : '',
+                            ]
+                              .filter(Boolean)
+                              .join(' ')}
+                            onClick={() => handleTabClick(tab.id, tab.disabled)}
+                          >
+                            <span className={styles.moreMenuItemLeft}>
+                              {tab.icon && <span>{tab.icon}</span>}
+                              <span>{tab.label}</span>
+                            </span>
+                            {isActive && <CheckIcon size={14} />}
+                            {!isActive && tab.badge !== undefined && (
+                              <span className={styles.badge}>{tab.badge}</span>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
@@ -307,62 +363,6 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
             >
               <ChevronRightIcon size={16} />
             </button>
-          )}
-
-          {/* More Overflow Dropdown Trigger & Popover */}
-          {hasMoreOverflow && (
-            <div ref={moreMenuRef} className={styles.moreWrapper}>
-              <button
-                type="button"
-                className={[
-                  styles.moreButton,
-                  styles[`size-${size}`],
-                  isCurrentInOverflow ? styles.moreButtonActive : '',
-                ]
-                  .filter(Boolean)
-                  .join(' ')}
-                aria-haspopup="true"
-                aria-expanded={isMoreOpen}
-                aria-label="More navigation tabs"
-                onClick={() => setIsMoreOpen((prev) => !prev)}
-              >
-                <MoreHorizontalIcon size={16} />
-                <span>{moreLabel}</span>
-                <ChevronDownIcon size={14} />
-              </button>
-
-              {isMoreOpen && (
-                <div className={styles.moreMenu} role="menu">
-                  {overflowTabs.map((tab) => {
-                    const isActive = tab.id === currentActive;
-                    return (
-                      <button
-                        key={tab.id}
-                        type="button"
-                        role="menuitem"
-                        disabled={tab.disabled}
-                        className={[
-                          styles.moreMenuItem,
-                          isActive ? styles.moreMenuItemActive : '',
-                        ]
-                          .filter(Boolean)
-                          .join(' ')}
-                        onClick={() => handleTabClick(tab.id, tab.disabled)}
-                      >
-                        <span className={styles.moreMenuItemLeft}>
-                          {tab.icon && <span>{tab.icon}</span>}
-                          <span>{tab.label}</span>
-                        </span>
-                        {isActive && <CheckIcon size={14} />}
-                        {!isActive && tab.badge !== undefined && (
-                          <span className={styles.badge}>{tab.badge}</span>
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
           )}
         </div>
         {children}
