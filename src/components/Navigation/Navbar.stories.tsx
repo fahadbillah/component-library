@@ -3,25 +3,41 @@ import { useState } from 'react';
 import { Navbar, BottomNav } from './Navigation';
 import {
   HomeIcon,
-  CalendarIcon,
+  ClipboardCheckIcon,
   BookOpenIcon,
+  MessageDotsIcon,
   BellIcon,
   SearchIcon,
-  SettingsIcon,
 } from '../common/Icons';
 import { Button } from '../Button';
 import { Avatar } from '../Avatar';
 
-const meta: Meta<typeof Navbar> = {
+const meta: Meta<typeof BottomNav> = {
   title: 'Components/Navbar',
-  component: Navbar,
+  component: BottomNav,
   parameters: {
     layout: 'padded',
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Navbar>;
+type Story = StoryObj<typeof BottomNav>;
+
+const stitchMasterTabs = [
+  { id: 'home', label: 'Home', icon: <HomeIcon size={20} /> },
+  {
+    id: 'attendance',
+    label: 'Attendance',
+    icon: <ClipboardCheckIcon size={20} />,
+  },
+  { id: 'academics', label: 'Academics', icon: <BookOpenIcon size={20} /> },
+  {
+    id: 'messages',
+    label: 'Messages',
+    icon: <MessageDotsIcon size={20} />,
+    badge: 2,
+  },
+];
 
 const sampleMenuItems = [
   { id: 'dashboard', label: 'Dashboard' },
@@ -39,9 +55,336 @@ const sampleMenuItems = [
 ];
 
 /**
- * Desktop institutional Navbar with logo, dropdown menus, quick search action, notifications, and avatar profile.
+ * Mobile Bottom Tab Bar (Height: 80px M3 Baseline)
+ * Stitch Master Component Library Section 07 Specification:
+ * - Height: 80px
+ * - Surface: Pure white with 1px border (#A1E3F9)
+ * - Active State: Pill shape with soft highlight (#D1F8EF) and primary deep teal/blue text & icon (#3674B5)
+ * - Badges: Notification count pill (e.g. Messages: 2)
+ * - Icons: Home, Attendance (ClipboardCheck), Academics (BookOpen), Messages (CommentDots)
  */
 export const Default: Story = {
+  name: 'Mobile Bottom Navbar (Stitch Spec)',
+  render: () => {
+    const [activeTab, setActiveTab] = useState('attendance');
+
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 24,
+          padding: '20px 0',
+        }}
+      >
+        {/* Floating Card Variant (As showcased in Stitch Master Component Library Section 07) */}
+        <div style={{ width: '100%', maxWidth: 420 }}>
+          <div
+            style={{
+              marginBottom: 12,
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <span
+              style={{
+                fontSize: 11,
+                fontWeight: 700,
+                color: '#334155',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+              }}
+            >
+              Compact Mobile Bottom Tab Bar (Height: 80px)
+            </span>
+            <span
+              style={{
+                fontSize: 10,
+                fontFamily: 'monospace',
+                color: '#0284C7',
+                background: '#E0F2FE',
+                padding: '2px 8px',
+                borderRadius: 4,
+                fontWeight: 600,
+              }}
+            >
+              Stitch Master Spec
+            </span>
+          </div>
+
+          <BottomNav
+            value={activeTab}
+            onChange={(val) => setActiveTab(val)}
+            items={stitchMasterTabs}
+          />
+        </div>
+
+        {/* Viewport In-situ Preview (Inside Mobile Screen 390px) */}
+        <div
+          style={{
+            width: 390,
+            border: '1px solid #CBD5E1',
+            borderRadius: 28,
+            overflow: 'hidden',
+            boxShadow: '0 12px 28px rgba(0,0,0,0.08)',
+            backgroundColor: '#F8FAFC',
+            minHeight: 360,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}
+        >
+          <div style={{ padding: 20 }}>
+            <h4
+              style={{
+                margin: '0 0 6px 0',
+                fontSize: 15,
+                fontWeight: 700,
+                color: '#0F172A',
+              }}
+            >
+              In-App Docked Preview
+            </h4>
+            <p
+              style={{
+                margin: 0,
+                fontSize: 13,
+                color: '#64748B',
+                lineHeight: 1.5,
+              }}
+            >
+              Docked flush at the bottom edge with active pill (
+              <code style={{ color: '#0369A1' }}>#D1F8EF</code>), primary
+              highlight (<code style={{ color: '#0369A1' }}>#3674B5</code>), and
+              notification counters.
+            </p>
+            <div
+              style={{
+                marginTop: 24,
+                padding: 12,
+                background: '#FFFFFF',
+                borderRadius: 12,
+                border: '1px solid #E2E8F0',
+                fontSize: 13,
+                color: '#475569',
+              }}
+            >
+              Active Tab: <strong>{activeTab.toUpperCase()}</strong>
+            </div>
+          </div>
+
+          <BottomNav
+            isDocked
+            value={activeTab}
+            onChange={(val) => setActiveTab(val)}
+            items={stitchMasterTabs}
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
+/**
+ * Mobile Top Navbar with hamburger menu toggle and full overlay drawer.
+ */
+export const MobileTopNavbar: Story = {
+  render: () => {
+    const [activeTab, setActiveTab] = useState('dashboard');
+
+    return (
+      <div
+        style={{ display: 'flex', justifyContent: 'center', padding: '20px 0' }}
+      >
+        <div
+          style={{
+            width: 390,
+            border: '1px solid #E2E8F0',
+            borderRadius: 24,
+            overflow: 'hidden',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
+            backgroundColor: '#F8FAFC',
+            minHeight: 520,
+            position: 'relative',
+          }}
+        >
+          <Navbar
+            brandLogo={
+              <div
+                style={{
+                  width: 28,
+                  height: 28,
+                  borderRadius: 6,
+                  background: '#0284C7',
+                  color: '#FFFFFF',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 700,
+                  fontSize: 12,
+                }}
+              >
+                PW
+              </div>
+            }
+            brandName="Portal Workspace"
+            menuItems={sampleMenuItems}
+            activeItemId={activeTab}
+            onItemClick={(id) => setActiveTab(id)}
+            actions={
+              <button
+                type="button"
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: 8,
+                  border: '1px solid #E2E8F0',
+                  background: '#FFFFFF',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#475569',
+                }}
+                aria-label="Notifications"
+              >
+                <BellIcon size={16} />
+              </button>
+            }
+          />
+
+          <div style={{ padding: 20 }}>
+            <div
+              style={{
+                background: '#FFFFFF',
+                borderRadius: 12,
+                padding: 16,
+                border: '1px solid #E2E8F0',
+                marginBottom: 16,
+              }}
+            >
+              <h3
+                style={{ margin: '0 0 8px 0', fontSize: 16, fontWeight: 600 }}
+              >
+                Mobile Header Preview
+              </h3>
+              <p style={{ margin: 0, fontSize: 13, color: '#64748B' }}>
+                Tap the hamburger icon in the top header to reveal the full
+                slide-down navigation drawer and submenus.
+              </p>
+            </div>
+            <div style={{ fontSize: 13, color: '#94A3B8' }}>
+              Selected Menu: <strong>{activeTab}</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  },
+};
+
+/**
+ * Full Mobile Navigation Shell pairing Top Navbar and Bottom Navigation together.
+ */
+export const CompleteMobileNavigationShell: Story = {
+  render: () => {
+    const [topNavId, setTopNavId] = useState('dashboard');
+    const [bottomNavId, setBottomNavId] = useState('attendance');
+
+    return (
+      <div
+        style={{ display: 'flex', justifyContent: 'center', padding: '20px 0' }}
+      >
+        <div
+          style={{
+            width: 390,
+            border: '1px solid #CBD5E1',
+            borderRadius: 28,
+            overflow: 'hidden',
+            boxShadow: '0 12px 32px rgba(0,0,0,0.1)',
+            backgroundColor: '#FFFFFF',
+            height: 640,
+            display: 'flex',
+            flexDirection: 'column',
+            position: 'relative',
+          }}
+        >
+          {/* Top Navbar */}
+          <Navbar
+            brandLogo={
+              <div
+                style={{
+                  width: 28,
+                  height: 28,
+                  borderRadius: 6,
+                  background: '#0284C7',
+                  color: '#FFFFFF',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 700,
+                  fontSize: 12,
+                }}
+              >
+                PW
+              </div>
+            }
+            brandName="Portal Workspace"
+            menuItems={sampleMenuItems}
+            activeItemId={topNavId}
+            onItemClick={(id) => setTopNavId(id)}
+            actions={<Avatar size="sm" name="Alex Morgan" />}
+          />
+
+          {/* Body Content */}
+          <div
+            style={{
+              flex: 1,
+              padding: 20,
+              backgroundColor: '#F8FAFC',
+              overflowY: 'auto',
+            }}
+          >
+            <div
+              style={{
+                background: '#FFFFFF',
+                borderRadius: 16,
+                padding: 16,
+                border: '1px solid #E2E8F0',
+                marginBottom: 16,
+              }}
+            >
+              <h4
+                style={{ margin: '0 0 6px 0', fontSize: 14, fontWeight: 600 }}
+              >
+                Active Screen
+              </h4>
+              <p style={{ margin: 0, fontSize: 13, color: '#64748B' }}>
+                Top Navigation: <strong>{topNavId}</strong>
+                <br />
+                Bottom Tab: <strong>{bottomNavId}</strong>
+              </p>
+            </div>
+          </div>
+
+          {/* Bottom Navigation */}
+          <BottomNav
+            isDocked
+            value={bottomNavId}
+            onChange={(val) => setBottomNavId(val)}
+            items={stitchMasterTabs}
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
+/**
+ * Desktop institutional Navbar with logo, dropdown menus, quick search action, notifications, and avatar profile.
+ */
+export const DesktopNavbar: Story = {
   render: () => {
     const [activeTab, setActiveTab] = useState('dashboard');
 
@@ -150,270 +493,6 @@ export const Default: Story = {
           <span>
             Active View: <strong>{activeTab.toUpperCase()}</strong>
           </span>
-        </div>
-      </div>
-    );
-  },
-};
-
-/**
- * Mobile Top Navbar in mobile viewport container (390px) with hamburger menu and expandable slide-down drawer.
- */
-export const MobileNavbar: Story = {
-  render: () => {
-    const [activeTab, setActiveTab] = useState('dashboard');
-
-    return (
-      <div
-        style={{ display: 'flex', justifyContent: 'center', padding: '20px 0' }}
-      >
-        <div
-          style={{
-            width: 390,
-            border: '1px solid #E2E8F0',
-            borderRadius: 24,
-            overflow: 'hidden',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
-            backgroundColor: '#F8FAFC',
-            minHeight: 520,
-            position: 'relative',
-          }}
-        >
-          <Navbar
-            brandLogo={
-              <div
-                style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: 6,
-                  background: '#0284C7',
-                  color: '#FFFFFF',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: 700,
-                  fontSize: 12,
-                }}
-              >
-                PW
-              </div>
-            }
-            brandName="Portal Workspace"
-            menuItems={sampleMenuItems}
-            activeItemId={activeTab}
-            onItemClick={(id) => setActiveTab(id)}
-            actions={
-              <button
-                type="button"
-                style={{
-                  width: 32,
-                  height: 32,
-                  borderRadius: 8,
-                  border: '1px solid #E2E8F0',
-                  background: '#FFFFFF',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#475569',
-                }}
-                aria-label="Notifications"
-              >
-                <BellIcon size={16} />
-              </button>
-            }
-          />
-
-          <div style={{ padding: 20 }}>
-            <div
-              style={{
-                background: '#FFFFFF',
-                borderRadius: 12,
-                padding: 16,
-                border: '1px solid #E2E8F0',
-                marginBottom: 16,
-              }}
-            >
-              <h3
-                style={{ margin: '0 0 8px 0', fontSize: 16, fontWeight: 600 }}
-              >
-                Mobile Viewport Preview
-              </h3>
-              <p style={{ margin: 0, fontSize: 13, color: '#64748B' }}>
-                Tap the hamburger icon in the top header to reveal the full
-                slide-down navigation drawer and submenus.
-              </p>
-            </div>
-            <div style={{ fontSize: 13, color: '#94A3B8' }}>
-              Selected Menu: <strong>{activeTab}</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  },
-};
-
-/**
- * Mobile Bottom Navigation (Height 80px M3 Baseline) with active pill (#D1F8EF), active icon/text (#3674B5), and notification badge.
- */
-export const MobileBottomNavbar: Story = {
-  render: () => {
-    const [activeTab, setActiveTab] = useState('attendance');
-
-    const items = [
-      { id: 'home', label: 'Home', icon: <HomeIcon size={20} /> },
-      {
-        id: 'attendance',
-        label: 'Attendance',
-        icon: <CalendarIcon size={20} />,
-      },
-      { id: 'academics', label: 'Academics', icon: <BookOpenIcon size={20} /> },
-      {
-        id: 'messages',
-        label: 'Messages',
-        icon: <BellIcon size={20} />,
-        badge: 2,
-      },
-    ];
-
-    return (
-      <div
-        style={{ display: 'flex', justifyContent: 'center', padding: '20px 0' }}
-      >
-        <div
-          style={{
-            width: 390,
-            border: '1px solid #E2E8F0',
-            borderRadius: 24,
-            overflow: 'hidden',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
-            backgroundColor: '#F8FAFC',
-            minHeight: 380,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-          }}
-        >
-          <div style={{ padding: 20 }}>
-            <h4 style={{ margin: '0 0 8px 0', fontSize: 15, fontWeight: 600 }}>
-              Mobile Bottom Navigation
-            </h4>
-            <p style={{ margin: 0, fontSize: 13, color: '#64748B' }}>
-              Designed per Google Stitch M3 80px baseline specification with
-              active pill highlight.
-            </p>
-          </div>
-
-          <BottomNav
-            isDocked
-            value={activeTab}
-            onChange={(val) => setActiveTab(val)}
-            items={items}
-          />
-        </div>
-      </div>
-    );
-  },
-};
-
-/**
- * Full Mobile Navigation Shell pairing Top Navbar and Bottom Navigation together.
- */
-export const CompleteMobileNavigationShell: Story = {
-  render: () => {
-    const [topNavId, setTopNavId] = useState('dashboard');
-    const [bottomNavId, setBottomNavId] = useState('home');
-
-    const bottomItems = [
-      { id: 'home', label: 'Home', icon: <HomeIcon size={20} /> },
-      { id: 'classes', label: 'Classes', icon: <BookOpenIcon size={20} /> },
-      { id: 'calendar', label: 'Calendar', icon: <CalendarIcon size={20} /> },
-      { id: 'settings', label: 'Settings', icon: <SettingsIcon size={20} /> },
-    ];
-
-    return (
-      <div
-        style={{ display: 'flex', justifyContent: 'center', padding: '20px 0' }}
-      >
-        <div
-          style={{
-            width: 390,
-            border: '1px solid #CBD5E1',
-            borderRadius: 28,
-            overflow: 'hidden',
-            boxShadow: '0 12px 32px rgba(0,0,0,0.1)',
-            backgroundColor: '#FFFFFF',
-            height: 640,
-            display: 'flex',
-            flexDirection: 'column',
-            position: 'relative',
-          }}
-        >
-          {/* Top Navbar */}
-          <Navbar
-            brandLogo={
-              <div
-                style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: 6,
-                  background: '#0284C7',
-                  color: '#FFFFFF',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: 700,
-                  fontSize: 12,
-                }}
-              >
-                PW
-              </div>
-            }
-            brandName="Portal Workspace"
-            menuItems={sampleMenuItems}
-            activeItemId={topNavId}
-            onItemClick={(id) => setTopNavId(id)}
-            actions={<Avatar size="sm" name="Alex Morgan" />}
-          />
-
-          {/* Body Content */}
-          <div
-            style={{
-              flex: 1,
-              padding: 20,
-              backgroundColor: '#F8FAFC',
-              overflowY: 'auto',
-            }}
-          >
-            <div
-              style={{
-                background: '#FFFFFF',
-                borderRadius: 16,
-                padding: 16,
-                border: '1px solid #E2E8F0',
-                marginBottom: 16,
-              }}
-            >
-              <h4
-                style={{ margin: '0 0 6px 0', fontSize: 14, fontWeight: 600 }}
-              >
-                Active Screen
-              </h4>
-              <p style={{ margin: 0, fontSize: 13, color: '#64748B' }}>
-                Top Navigation: <strong>{topNavId}</strong>
-                <br />
-                Bottom Tab: <strong>{bottomNavId}</strong>
-              </p>
-            </div>
-          </div>
-
-          {/* Bottom Navigation */}
-          <BottomNav
-            isDocked
-            value={bottomNavId}
-            onChange={(val) => setBottomNavId(val)}
-            items={bottomItems}
-          />
         </div>
       </div>
     );
