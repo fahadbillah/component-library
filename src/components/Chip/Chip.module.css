@@ -13,30 +13,30 @@
 
 /* Sizing */
 .md {
-  height: 32px;
+  height: 28px;
   padding: 0 var(--ui-space-sm);
   font-size: var(--ui-text-sm);
-  gap: var(--ui-space-sm);
+  gap: var(--ui-space-xs);
 }
 
 .sm {
-  height: 26px;
-  padding: 0 var(--ui-space-xs);
+  height: 24px;
+  padding: 0 6px;
   font-size: var(--ui-text-xs);
-  gap: var(--ui-space-xs);
+  gap: 4px;
 }
 
 /* Variants */
 .neutral {
-  background-color: var(--ui-surface-container);
+  background-color: var(--ui-surface-container-low);
   color: var(--ui-text-high);
-  border-color: var(--ui-outline-variant);
+  border-color: rgba(161, 227, 249, 0.6);
 }
 
 .primary {
-  background-color: var(--ui-surface-dim);
+  background-color: var(--ui-primary-tint);
   color: var(--ui-primary-accent);
-  border-color: var(--ui-structural-outline);
+  border-color: rgba(161, 227, 249, 0.8);
 }
 
 .outline {

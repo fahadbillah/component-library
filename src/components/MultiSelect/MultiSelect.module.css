@@ -184,7 +184,12 @@
 }
 
 .selected {
-  background-color: var(--ui-surface-dim);
+  background-color: var(--ui-primary-tint);
+}
+
+.selected.focused,
+.selected:hover {
+  background-color: #c0f4e9;
 }
 
 .checkboxSlot {
