@@ -101,6 +101,11 @@ export function Dashboard() {
 | **`Chip`**                 | Interactive pill tag with avatar, count badge, & states | `label`, `avatar`, `icon`, `variant` (`neutral`, `primary`, `tonal`, `outline`, `success`, `warning`, `danger`), `size` (`sm`, `md`, `lg`), `selected`, `count`, `onRemove` |
 | **`MultiSelect`**          | Multi-item select with Avatars, filter & tonal chips    | `label`, `options` (with `avatar`, `badge`, `badgeVariant`, `description`), `value`, `placeholder`, `isSearchable`, `maxDisplayedChips`                                     |
 | **`Combobox`**             | Searchable autocomplete filter with category groups     | `label`, `placeholder`, `options` (with `group`, `badge`, `icon`), `value`, `onChange`, `helperText`, `errorMessage`                                                        |
+| **`BottomNavigation`**     | Mobile bottom tab bar (80px M3 baseline)                | `value`, `onChange`, `items` (with `id`, `label`, `icon`, `activeIcon`, `badge`), `BottomNavigationItem`                                                                    |
+| **`NavigationRail`**       | Adaptive tablet & desktop 80px navigation rail          | `theme` (`dark`, `light`), `orientation` (`vertical`, `horizontal`), `brand`, `brandTitle`, `value`, `onChange`, `items`, `footer`                                          |
+| **`Breadcrumb`**           | Hierarchical wayfinding & deep-linking trail            | `variant` (`primary`, `subtle`, `plain`), `separator`, `items` (with `id`, `label`, `href`, `icon`, `isCurrent`, `onClick`)                                                 |
+| **`MobileWayfinding`**     | 48px compressed mobile header with path drawer popover  | `parentLabel`, `onBack`, `currentLabel`, `path`, `currentStepIndex`, `totalSteps`, `onStepClick`                                                                            |
+| **`AppNavbar`**            | Full desktop & mobile responsive app navigation bar     | `brandLogo`, `brandName`, `brandSubtitle`, `brandHref`, `menuItems` (with `subItems`), `activeItemId`, `onItemClick`, `actions`                                             |
 
 ---
 

@@ -19,4 +19,5 @@ export * from './components/Chip';
 export * from './components/MultiSelect';
 export * from './components/Combobox';
 export * from './components/Layout';
+export * from './components/Navigation';
 export * from './components/common/Icons';
