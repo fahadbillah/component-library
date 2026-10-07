@@ -268,6 +268,14 @@ describe('AppNavbar Component', () => {
     expect(screen.getByText('Dashboard')).toBeInTheDocument();
   });
 
+  it('supports floating variant with island rounded border and shadow', () => {
+    const { container } = render(
+      <Navbar variant="floating" brandName="Portal Workspace" />
+    );
+    const header = container.querySelector('header');
+    expect(header).toHaveClass(/appNavbarFloating/);
+  });
+
   it('renders correctly via BottomNav alias', () => {
     const navItems = [{ id: 'tab1', label: 'Tab 1', icon: <span>Icon</span> }];
     render(<BottomNav value="tab1" items={navItems} />);

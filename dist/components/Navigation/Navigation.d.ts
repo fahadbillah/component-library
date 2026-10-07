@@ -102,6 +102,7 @@ export interface NavigationMenuItemConfig {
     onClick?: () => void;
 }
 export interface AppNavbarProps extends React.HTMLAttributes<HTMLElement> {
+    variant?: 'standard' | 'floating';
     brandLogo?: React.ReactNode;
     brandName?: React.ReactNode;
     brandSubtitle?: React.ReactNode;

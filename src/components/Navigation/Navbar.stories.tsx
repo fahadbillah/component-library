@@ -12,17 +12,6 @@ import {
 import { Button } from '../Button';
 import { Avatar } from '../Avatar';
 
-const meta: Meta<typeof Navbar> = {
-  title: 'Components/Navbar',
-  component: Navbar,
-  parameters: {
-    layout: 'padded',
-  },
-};
-
-export default meta;
-type Story = StoryObj<typeof Navbar>;
-
 const sampleMenuItems = [
   { id: 'dashboard', label: 'Dashboard' },
   {
@@ -54,139 +43,192 @@ const stitchMasterTabs = [
   },
 ];
 
+const meta: Meta<typeof Navbar> = {
+  title: 'Components/Navbar',
+  component: Navbar,
+  parameters: {
+    layout: 'padded',
+  },
+  argTypes: {
+    variant: {
+      control: 'radio',
+      options: ['standard', 'floating'],
+      description:
+        'Display mode: full-bleed page header (standard) or self-contained card island (floating)',
+    },
+    brandName: {
+      control: 'text',
+      description: 'Primary text label for institutional brand',
+    },
+    brandSubtitle: {
+      control: 'text',
+      description: 'Secondary supportive sub-label for department or hub',
+    },
+    activeItemId: {
+      control: 'text',
+      description: 'Currently highlighted navigation tab ID',
+    },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof Navbar>;
+
 /**
- * Desktop institutional Navbar with logo, dropdown menus, quick search action, notifications, and avatar profile.
- * Stitch Master Component Library Specification:
- * - Height: 64px
- * - Surface: Pure white with 1px border (#A1E3F9)
- * - Active State: Pill highlight container (#D1F8EF) with primary (#3674B5) text and icon
- * - Submenu: 12px rounded popover with #A1E3F9 border and maritime elevation
+ * Standard Composable Desktop Navbar (Standalone Component with Interactive Controls).
+ * Rendered as an isolated design-system component.
  */
 export const Default: Story = {
-  name: 'Desktop Navbar (Stitch Spec)',
-  render: () => {
-    const [activeTab, setActiveTab] = useState('academic');
-
-    return (
+  name: 'Default (Interactive Controls)',
+  args: {
+    variant: 'floating',
+    brandName: 'Portal Workspace',
+    brandSubtitle: 'Executive Command & Operations Hub',
+    activeItemId: 'academic',
+    brandLogo: (
       <div
         style={{
-          border: '1px solid #A1E3F9',
-          borderRadius: 16,
-          overflow: 'hidden',
-          boxShadow: '0 4px 16px -2px rgba(54, 116, 181, 0.08)',
+          width: 32,
+          height: 32,
+          borderRadius: 8,
+          background: '#3674B5',
+          color: '#FFFFFF',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontWeight: 700,
+          fontSize: 14,
+          boxShadow: '0 1px 3px rgba(54, 116, 181, 0.25)',
         }}
       >
-        <Navbar
-          brandLogo={
-            <div
-              style={{
-                width: 32,
-                height: 32,
-                borderRadius: 8,
-                background: '#3674B5',
-                color: '#FFFFFF',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: 700,
-                fontSize: 14,
-                boxShadow: '0 1px 3px rgba(54, 116, 181, 0.25)',
-              }}
-            >
-              PW
-            </div>
-          }
-          brandName="Portal Workspace"
-          brandSubtitle="Executive Command & Operations Hub"
-          menuItems={sampleMenuItems}
-          activeItemId={activeTab}
-          onItemClick={(id) => setActiveTab(id)}
-          actions={
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <Button
-                variant="outline"
-                size="sm"
-                leftIcon={<SearchIcon size={14} />}
-                style={{
-                  height: 36,
-                  fontSize: 12,
-                  gap: 8,
-                  borderColor: '#A1E3F9',
-                  backgroundColor: '#FFFFFF',
-                }}
-              >
-                Quick Search{' '}
-                <kbd
-                  style={{
-                    padding: '1px 5px',
-                    background: '#EEF5F4',
-                    borderRadius: 4,
-                    fontSize: 10,
-                    color: '#3674B5',
-                    border: '1px solid #A1E3F9',
-                  }}
-                >
-                  ⌘K
-                </kbd>
-              </Button>
-
-              <button
-                type="button"
-                style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: 8,
-                  border: '1px solid #A1E3F9',
-                  background: '#FFFFFF',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative',
-                  color: '#3674B5',
-                }}
-                aria-label="Notifications"
-              >
-                <BellIcon size={18} />
-                <span
-                  style={{
-                    position: 'absolute',
-                    top: 5,
-                    right: 5,
-                    width: 7,
-                    height: 7,
-                    borderRadius: '50%',
-                    backgroundColor: '#F43F5E',
-                  }}
-                />
-              </button>
-
-              <Avatar size="sm" name="Alex Morgan" status="online" />
-            </div>
-          }
-        />
-
-        <div
+        PW
+      </div>
+    ),
+    menuItems: sampleMenuItems,
+    actions: (
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <Button
+          variant="outline"
+          size="sm"
+          leftIcon={<SearchIcon size={14} />}
           style={{
-            padding: 32,
-            backgroundColor: '#F4FBFA',
-            minHeight: 180,
+            height: 36,
+            fontSize: 12,
+            gap: 8,
+            borderColor: '#A1E3F9',
+            backgroundColor: '#FFFFFF',
+          }}
+        >
+          Quick Search{' '}
+          <kbd
+            style={{
+              padding: '1px 5px',
+              background: '#EEF5F4',
+              borderRadius: 4,
+              fontSize: 10,
+              color: '#3674B5',
+              border: '1px solid #A1E3F9',
+            }}
+          >
+            ⌘K
+          </kbd>
+        </Button>
+
+        <button
+          type="button"
+          style={{
+            width: 36,
+            height: 36,
+            borderRadius: 8,
+            border: '1px solid #A1E3F9',
+            background: '#FFFFFF',
+            cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#64748B',
-            fontSize: 14,
+            position: 'relative',
+            color: '#3674B5',
           }}
+          aria-label="Notifications"
         >
-          <span>
-            Active View:{' '}
-            <strong style={{ color: '#115B9B' }}>
-              {activeTab.toUpperCase()}
-            </strong>
-          </span>
-        </div>
+          <BellIcon size={18} />
+          <span
+            style={{
+              position: 'absolute',
+              top: 5,
+              right: 5,
+              width: 7,
+              height: 7,
+              borderRadius: '50%',
+              backgroundColor: '#F43F5E',
+            }}
+          />
+        </button>
+
+        <Avatar size="sm" name="Alex Morgan" status="online" />
       </div>
-    );
+    ),
+  },
+  render: (args) => {
+    return <Navbar {...args} />;
+  },
+};
+
+/**
+ * Full-Bleed Standard App Header (fixed/sticky page top chrome).
+ */
+export const FullBleedStandard: Story = {
+  name: 'Standard App Header (Full-Bleed)',
+  args: {
+    variant: 'standard',
+    brandName: 'Portal Workspace',
+    brandSubtitle: 'Operations Hub',
+    activeItemId: 'dashboard',
+    brandLogo: (
+      <div
+        style={{
+          width: 32,
+          height: 32,
+          borderRadius: 8,
+          background: '#3674B5',
+          color: '#FFFFFF',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontWeight: 700,
+          fontSize: 14,
+        }}
+      >
+        PW
+      </div>
+    ),
+    menuItems: sampleMenuItems,
+    actions: (
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <button
+          type="button"
+          style={{
+            width: 36,
+            height: 36,
+            borderRadius: 8,
+            border: '1px solid #A1E3F9',
+            background: '#FFFFFF',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#3674B5',
+          }}
+          aria-label="Notifications"
+        >
+          <BellIcon size={18} />
+        </button>
+        <Avatar size="sm" name="Alex Morgan" status="online" />
+      </div>
+    ),
+  },
+  render: (args) => {
+    return <Navbar {...args} />;
   },
 };
 
@@ -194,6 +236,7 @@ export const Default: Story = {
  * Mobile Top Navbar with hamburger menu toggle and full overlay drawer.
  */
 export const MobileTopNavbar: Story = {
+  name: 'Mobile Top Header (With Drawer)',
   render: () => {
     const [activeTab, setActiveTab] = useState('dashboard');
 
@@ -214,6 +257,7 @@ export const MobileTopNavbar: Story = {
           }}
         >
           <Navbar
+            variant="standard"
             brandLogo={
               <div
                 style={{
@@ -435,6 +479,7 @@ export const MobileBottomNavbar: Story = {
  * Full Mobile Navigation Shell pairing Top Navbar and Bottom Navigation together.
  */
 export const CompleteMobileNavigationShell: Story = {
+  name: 'Complete Mobile Shell (Top + Bottom)',
   render: () => {
     const [topNavId, setTopNavId] = useState('dashboard');
     const [bottomNavId, setBottomNavId] = useState('attendance');
@@ -459,6 +504,7 @@ export const CompleteMobileNavigationShell: Story = {
         >
           {/* Top Navbar */}
           <Navbar
+            variant="standard"
             brandLogo={
               <div
                 style={{

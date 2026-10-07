@@ -555,6 +555,7 @@ export interface NavigationMenuItemConfig {
 }
 
 export interface AppNavbarProps extends React.HTMLAttributes<HTMLElement> {
+  variant?: 'standard' | 'floating';
   brandLogo?: React.ReactNode;
   brandName?: React.ReactNode;
   brandSubtitle?: React.ReactNode;
@@ -569,6 +570,7 @@ export interface AppNavbarProps extends React.HTMLAttributes<HTMLElement> {
 export const AppNavbar = React.forwardRef<HTMLElement, AppNavbarProps>(
   (
     {
+      variant = 'standard',
       brandLogo,
       brandName,
       brandSubtitle,
@@ -601,6 +603,8 @@ export const AppNavbar = React.forwardRef<HTMLElement, AppNavbarProps>(
       };
     }, [openDropdownId]);
 
+    const variantClass = variant === 'floating' ? styles.appNavbarFloating : '';
+
     return (
       <header
         ref={(node) => {
@@ -609,7 +613,7 @@ export const AppNavbar = React.forwardRef<HTMLElement, AppNavbarProps>(
           else if (ref)
             (ref as React.MutableRefObject<HTMLElement | null>).current = node;
         }}
-        className={`${styles.appNavbar} ${className}`.trim()}
+        className={`${styles.appNavbar} ${variantClass} ${className}`.trim()}
         {...props}
       >
         <div className={styles.navbarLeft}>

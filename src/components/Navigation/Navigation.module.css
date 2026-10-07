@@ -531,6 +531,16 @@
   z-index: 40;
   width: 100%;
   box-shadow: 0 1px 3px 0 rgba(54, 116, 181, 0.05);
+  transition: all var(--ui-transition-fast, 150ms ease);
+}
+
+.appNavbarFloating {
+  position: relative;
+  border: 1px solid var(--ui-structural-outline, #a1e3f9);
+  border-radius: var(--ui-radius-xl, 16px);
+  box-shadow:
+    0 12px 32px -4px rgba(54, 116, 181, 0.12),
+    0 4px 12px -2px rgba(15, 23, 42, 0.04);
 }
 
 .navbarLeft {
