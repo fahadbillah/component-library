@@ -113,11 +113,13 @@ describe('Tabs', () => {
       screen.queryByRole('tab', { name: /semester reports/i })
     ).not.toBeInTheDocument();
 
-    // More button is rendered
+    // More button is rendered inside the tab nav bar (role="tablist")
+    const tablist = screen.getByRole('tablist');
     const moreBtn = screen.getByRole('button', {
       name: /more navigation tabs/i,
     });
     expect(moreBtn).toBeInTheDocument();
+    expect(tablist).toContainElement(moreBtn);
 
     // Click More button to open menu
     await userEvent.click(moreBtn);
