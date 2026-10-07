@@ -4,40 +4,12 @@ import { Navbar, BottomNav } from './Navigation';
 import {
   HomeIcon,
   ClipboardCheckIcon,
-  BookOpenIcon,
-  MessageDotsIcon,
+  GridIcon,
   BellIcon,
   SearchIcon,
 } from '../common/Icons';
 import { Button } from '../Button';
 import { Avatar } from '../Avatar';
-
-const meta: Meta<typeof BottomNav> = {
-  title: 'Components/Navbar',
-  component: BottomNav,
-  parameters: {
-    layout: 'padded',
-  },
-};
-
-export default meta;
-type Story = StoryObj<typeof BottomNav>;
-
-const stitchMasterTabs = [
-  { id: 'home', label: 'Home', icon: <HomeIcon size={20} /> },
-  {
-    id: 'attendance',
-    label: 'Attendance',
-    icon: <ClipboardCheckIcon size={20} />,
-  },
-  { id: 'academics', label: 'Academics', icon: <BookOpenIcon size={20} /> },
-  {
-    id: 'messages',
-    label: 'Messages',
-    icon: <MessageDotsIcon size={20} />,
-    badge: 2,
-  },
-];
 
 const sampleMenuItems = [
   { id: 'dashboard', label: 'Dashboard' },
@@ -54,6 +26,317 @@ const sampleMenuItems = [
   { id: 'reports', label: 'Institutional Reports' },
 ];
 
+const stitchMasterTabs = [
+  { id: 'home', label: 'Home', icon: <HomeIcon size={22} /> },
+  {
+    id: 'rollcall',
+    label: 'Rollcall',
+    icon: <ClipboardCheckIcon size={22} />,
+  },
+  { id: 'grades', label: 'Grades', icon: <GridIcon size={22} /> },
+  {
+    id: 'alerts',
+    label: 'Alerts',
+    icon: <BellIcon size={22} />,
+    badge: 2,
+  },
+];
+
+const meta: Meta<typeof Navbar> = {
+  title: 'Components/Navbar',
+  component: Navbar,
+  parameters: {
+    layout: 'padded',
+  },
+  argTypes: {
+    variant: {
+      control: 'radio',
+      options: ['standard', 'floating'],
+      description:
+        'Display mode: full-bleed page header (standard) or self-contained card island (floating)',
+    },
+    brandName: {
+      control: 'text',
+      description: 'Primary text label for institutional brand',
+    },
+    brandSubtitle: {
+      control: 'text',
+      description: 'Secondary supportive sub-label for department or hub',
+    },
+    activeItemId: {
+      control: 'text',
+      description: 'Currently highlighted navigation tab ID',
+    },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof Navbar>;
+
+/**
+ * Standard Composable Desktop Navbar (Standalone Component with Interactive Controls).
+ * Rendered as an isolated design-system component.
+ */
+export const Default: Story = {
+  name: 'Default (Interactive Controls)',
+  args: {
+    variant: 'floating',
+    brandName: 'Portal Workspace',
+    brandSubtitle: 'Executive Command & Operations Hub',
+    activeItemId: 'academic',
+    brandLogo: (
+      <div
+        style={{
+          width: 32,
+          height: 32,
+          borderRadius: 8,
+          background: '#3674B5',
+          color: '#FFFFFF',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontWeight: 700,
+          fontSize: 14,
+          boxShadow: '0 1px 3px rgba(54, 116, 181, 0.25)',
+        }}
+      >
+        PW
+      </div>
+    ),
+    menuItems: sampleMenuItems,
+    actions: (
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <Button
+          variant="outline"
+          size="sm"
+          leftIcon={<SearchIcon size={14} />}
+          style={{
+            height: 36,
+            fontSize: 12,
+            gap: 8,
+            borderColor: '#A1E3F9',
+            backgroundColor: '#FFFFFF',
+          }}
+        >
+          Quick Search{' '}
+          <kbd
+            style={{
+              padding: '1px 5px',
+              background: '#EEF5F4',
+              borderRadius: 4,
+              fontSize: 10,
+              color: '#3674B5',
+              border: '1px solid #A1E3F9',
+            }}
+          >
+            ⌘K
+          </kbd>
+        </Button>
+
+        <button
+          type="button"
+          style={{
+            width: 36,
+            height: 36,
+            borderRadius: 8,
+            border: '1px solid #A1E3F9',
+            background: '#FFFFFF',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'relative',
+            color: '#3674B5',
+          }}
+          aria-label="Notifications"
+        >
+          <BellIcon size={18} />
+          <span
+            style={{
+              position: 'absolute',
+              top: 5,
+              right: 5,
+              width: 7,
+              height: 7,
+              borderRadius: '50%',
+              backgroundColor: '#F43F5E',
+            }}
+          />
+        </button>
+
+        <Avatar size="sm" name="Alex Morgan" status="online" />
+      </div>
+    ),
+  },
+  render: (args) => {
+    return <Navbar {...args} />;
+  },
+};
+
+/**
+ * Full-Bleed Standard App Header (fixed/sticky page top chrome).
+ */
+export const FullBleedStandard: Story = {
+  name: 'Standard App Header (Full-Bleed)',
+  args: {
+    variant: 'standard',
+    brandName: 'Portal Workspace',
+    brandSubtitle: 'Operations Hub',
+    activeItemId: 'dashboard',
+    brandLogo: (
+      <div
+        style={{
+          width: 32,
+          height: 32,
+          borderRadius: 8,
+          background: '#3674B5',
+          color: '#FFFFFF',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontWeight: 700,
+          fontSize: 14,
+        }}
+      >
+        PW
+      </div>
+    ),
+    menuItems: sampleMenuItems,
+    actions: (
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <button
+          type="button"
+          style={{
+            width: 36,
+            height: 36,
+            borderRadius: 8,
+            border: '1px solid #A1E3F9',
+            background: '#FFFFFF',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#3674B5',
+          }}
+          aria-label="Notifications"
+        >
+          <BellIcon size={18} />
+        </button>
+        <Avatar size="sm" name="Alex Morgan" status="online" />
+      </div>
+    ),
+  },
+  render: (args) => {
+    return <Navbar {...args} />;
+  },
+};
+
+/**
+ * Mobile Top Navbar with hamburger menu toggle and full overlay drawer.
+ */
+export const MobileTopNavbar: Story = {
+  name: 'Mobile Top Header (With Drawer)',
+  render: () => {
+    const [activeTab, setActiveTab] = useState('dashboard');
+
+    return (
+      <div
+        style={{ display: 'flex', justifyContent: 'center', padding: '20px 0' }}
+      >
+        <div
+          style={{
+            width: 390,
+            border: '1px solid #A1E3F9',
+            borderRadius: 24,
+            overflow: 'hidden',
+            boxShadow: '0 8px 24px rgba(54, 116, 181, 0.1)',
+            backgroundColor: '#F4FBFA',
+            minHeight: 520,
+            position: 'relative',
+          }}
+        >
+          <Navbar
+            variant="standard"
+            brandLogo={
+              <div
+                style={{
+                  width: 28,
+                  height: 28,
+                  borderRadius: 6,
+                  background: '#3674B5',
+                  color: '#FFFFFF',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 700,
+                  fontSize: 12,
+                }}
+              >
+                PW
+              </div>
+            }
+            brandName="Portal Workspace"
+            menuItems={sampleMenuItems}
+            activeItemId={activeTab}
+            onItemClick={(id) => setActiveTab(id)}
+            actions={
+              <button
+                type="button"
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: 8,
+                  border: '1px solid #A1E3F9',
+                  background: '#FFFFFF',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#3674B5',
+                  cursor: 'pointer',
+                }}
+                aria-label="Notifications"
+              >
+                <BellIcon size={16} />
+              </button>
+            }
+          />
+
+          <div style={{ padding: 20 }}>
+            <div
+              style={{
+                background: '#FFFFFF',
+                borderRadius: 12,
+                padding: 16,
+                border: '1px solid #A1E3F9',
+                marginBottom: 16,
+              }}
+            >
+              <h3
+                style={{
+                  margin: '0 0 8px 0',
+                  fontSize: 16,
+                  fontWeight: 600,
+                  color: '#0F172A',
+                }}
+              >
+                Mobile Header Preview
+              </h3>
+              <p style={{ margin: 0, fontSize: 13, color: '#64748B' }}>
+                Tap the hamburger icon in the top header to reveal the full
+                slide-down navigation drawer and submenus.
+              </p>
+            </div>
+            <div style={{ fontSize: 13, color: '#64748B' }}>
+              Selected Menu:{' '}
+              <strong style={{ color: '#115B9B' }}>{activeTab}</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  },
+};
+
 /**
  * Mobile Bottom Tab Bar (Height: 80px M3 Baseline)
  * Stitch Master Component Library Section 07 Specification:
@@ -63,10 +346,10 @@ const sampleMenuItems = [
  * - Badges: Notification count pill (e.g. Messages: 2)
  * - Icons: Home, Attendance (ClipboardCheck), Academics (BookOpen), Messages (CommentDots)
  */
-export const Default: Story = {
-  name: 'Mobile Bottom Navbar (Stitch Spec)',
+export const MobileBottomNavbar: Story = {
+  name: 'Mobile Bottom Tab Bar (Stitch Spec)',
   render: () => {
-    const [activeTab, setActiveTab] = useState('attendance');
+    const [activeTab, setActiveTab] = useState('home');
 
     return (
       <div
@@ -74,11 +357,11 @@ export const Default: Story = {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: 24,
+          gap: 32,
           padding: '20px 0',
         }}
       >
-        {/* Floating Card Variant (As showcased in Stitch Master Component Library Section 07) */}
+        {/* Exact Stitch Canvas Card Variant (Matching Attachment) */}
         <div style={{ width: '100%', maxWidth: 420 }}>
           <div
             style={{
@@ -103,8 +386,9 @@ export const Default: Story = {
               style={{
                 fontSize: 10,
                 fontFamily: 'monospace',
-                color: '#0284C7',
-                background: '#E0F2FE',
+                color: '#115B9B',
+                background: '#D1F8EF',
+                border: '1px solid #A1E3F9',
                 padding: '2px 8px',
                 borderRadius: 4,
                 fontWeight: 600,
@@ -115,6 +399,38 @@ export const Default: Story = {
           </div>
 
           <BottomNav
+            variant="card-bottom"
+            value={activeTab}
+            onChange={(val) => setActiveTab(val)}
+            items={stitchMasterTabs}
+          />
+        </div>
+
+        {/* Floating Rounded Variant */}
+        <div style={{ width: '100%', maxWidth: 420 }}>
+          <div
+            style={{
+              marginBottom: 12,
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <span
+              style={{
+                fontSize: 11,
+                fontWeight: 700,
+                color: '#334155',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+              }}
+            >
+              Floating Island Variant (Full Rounded)
+            </span>
+          </div>
+
+          <BottomNav
+            variant="rounded"
             value={activeTab}
             onChange={(val) => setActiveTab(val)}
             items={stitchMasterTabs}
@@ -125,11 +441,11 @@ export const Default: Story = {
         <div
           style={{
             width: 390,
-            border: '1px solid #CBD5E1',
+            border: '1px solid #A1E3F9',
             borderRadius: 28,
             overflow: 'hidden',
-            boxShadow: '0 12px 28px rgba(0,0,0,0.08)',
-            backgroundColor: '#F8FAFC',
+            boxShadow: '0 12px 28px rgba(54, 116, 181, 0.1)',
+            backgroundColor: '#F4FBFA',
             minHeight: 360,
             display: 'flex',
             flexDirection: 'column',
@@ -155,10 +471,10 @@ export const Default: Story = {
                 lineHeight: 1.5,
               }}
             >
-              Docked flush at the bottom edge with active pill (
-              <code style={{ color: '#0369A1' }}>#D1F8EF</code>), primary
-              highlight (<code style={{ color: '#0369A1' }}>#3674B5</code>), and
-              notification counters.
+              Docked flush at the bottom edge with active tab highlight (
+              <code style={{ color: '#115B9B' }}>#3674B5</code>), notification
+              counter pill (<code style={{ color: '#E11D48' }}>2</code>), and
+              Stitch iconography (Home, Rollcall, Grades, Alerts).
             </p>
             <div
               style={{
@@ -166,17 +482,20 @@ export const Default: Story = {
                 padding: 12,
                 background: '#FFFFFF',
                 borderRadius: 12,
-                border: '1px solid #E2E8F0',
+                border: '1px solid #A1E3F9',
                 fontSize: 13,
                 color: '#475569',
               }}
             >
-              Active Tab: <strong>{activeTab.toUpperCase()}</strong>
+              Active Tab:{' '}
+              <strong style={{ color: '#115B9B' }}>
+                {activeTab.toUpperCase()}
+              </strong>
             </div>
           </div>
 
           <BottomNav
-            isDocked
+            variant="docked"
             value={activeTab}
             onChange={(val) => setActiveTab(val)}
             items={stitchMasterTabs}
@@ -188,106 +507,10 @@ export const Default: Story = {
 };
 
 /**
- * Mobile Top Navbar with hamburger menu toggle and full overlay drawer.
- */
-export const MobileTopNavbar: Story = {
-  render: () => {
-    const [activeTab, setActiveTab] = useState('dashboard');
-
-    return (
-      <div
-        style={{ display: 'flex', justifyContent: 'center', padding: '20px 0' }}
-      >
-        <div
-          style={{
-            width: 390,
-            border: '1px solid #E2E8F0',
-            borderRadius: 24,
-            overflow: 'hidden',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
-            backgroundColor: '#F8FAFC',
-            minHeight: 520,
-            position: 'relative',
-          }}
-        >
-          <Navbar
-            brandLogo={
-              <div
-                style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: 6,
-                  background: '#0284C7',
-                  color: '#FFFFFF',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: 700,
-                  fontSize: 12,
-                }}
-              >
-                PW
-              </div>
-            }
-            brandName="Portal Workspace"
-            menuItems={sampleMenuItems}
-            activeItemId={activeTab}
-            onItemClick={(id) => setActiveTab(id)}
-            actions={
-              <button
-                type="button"
-                style={{
-                  width: 32,
-                  height: 32,
-                  borderRadius: 8,
-                  border: '1px solid #E2E8F0',
-                  background: '#FFFFFF',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#475569',
-                }}
-                aria-label="Notifications"
-              >
-                <BellIcon size={16} />
-              </button>
-            }
-          />
-
-          <div style={{ padding: 20 }}>
-            <div
-              style={{
-                background: '#FFFFFF',
-                borderRadius: 12,
-                padding: 16,
-                border: '1px solid #E2E8F0',
-                marginBottom: 16,
-              }}
-            >
-              <h3
-                style={{ margin: '0 0 8px 0', fontSize: 16, fontWeight: 600 }}
-              >
-                Mobile Header Preview
-              </h3>
-              <p style={{ margin: 0, fontSize: 13, color: '#64748B' }}>
-                Tap the hamburger icon in the top header to reveal the full
-                slide-down navigation drawer and submenus.
-              </p>
-            </div>
-            <div style={{ fontSize: 13, color: '#94A3B8' }}>
-              Selected Menu: <strong>{activeTab}</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  },
-};
-
-/**
  * Full Mobile Navigation Shell pairing Top Navbar and Bottom Navigation together.
  */
 export const CompleteMobileNavigationShell: Story = {
+  name: 'Complete Mobile Shell (Top + Bottom)',
   render: () => {
     const [topNavId, setTopNavId] = useState('dashboard');
     const [bottomNavId, setBottomNavId] = useState('attendance');
@@ -299,10 +522,10 @@ export const CompleteMobileNavigationShell: Story = {
         <div
           style={{
             width: 390,
-            border: '1px solid #CBD5E1',
+            border: '1px solid #A1E3F9',
             borderRadius: 28,
             overflow: 'hidden',
-            boxShadow: '0 12px 32px rgba(0,0,0,0.1)',
+            boxShadow: '0 12px 32px rgba(54, 116, 181, 0.12)',
             backgroundColor: '#FFFFFF',
             height: 640,
             display: 'flex',
@@ -312,13 +535,14 @@ export const CompleteMobileNavigationShell: Story = {
         >
           {/* Top Navbar */}
           <Navbar
+            variant="standard"
             brandLogo={
               <div
                 style={{
                   width: 28,
                   height: 28,
                   borderRadius: 6,
-                  background: '#0284C7',
+                  background: '#3674B5',
                   color: '#FFFFFF',
                   display: 'flex',
                   alignItems: 'center',
@@ -342,7 +566,7 @@ export const CompleteMobileNavigationShell: Story = {
             style={{
               flex: 1,
               padding: 20,
-              backgroundColor: '#F8FAFC',
+              backgroundColor: '#F4FBFA',
               overflowY: 'auto',
             }}
           >
@@ -351,19 +575,26 @@ export const CompleteMobileNavigationShell: Story = {
                 background: '#FFFFFF',
                 borderRadius: 16,
                 padding: 16,
-                border: '1px solid #E2E8F0',
+                border: '1px solid #A1E3F9',
                 marginBottom: 16,
               }}
             >
               <h4
-                style={{ margin: '0 0 6px 0', fontSize: 14, fontWeight: 600 }}
+                style={{
+                  margin: '0 0 6px 0',
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: '#0F172A',
+                }}
               >
                 Active Screen
               </h4>
               <p style={{ margin: 0, fontSize: 13, color: '#64748B' }}>
-                Top Navigation: <strong>{topNavId}</strong>
+                Top Navigation:{' '}
+                <strong style={{ color: '#115B9B' }}>{topNavId}</strong>
                 <br />
-                Bottom Tab: <strong>{bottomNavId}</strong>
+                Bottom Tab:{' '}
+                <strong style={{ color: '#115B9B' }}>{bottomNavId}</strong>
               </p>
             </div>
           </div>
@@ -375,124 +606,6 @@ export const CompleteMobileNavigationShell: Story = {
             onChange={(val) => setBottomNavId(val)}
             items={stitchMasterTabs}
           />
-        </div>
-      </div>
-    );
-  },
-};
-
-/**
- * Desktop institutional Navbar with logo, dropdown menus, quick search action, notifications, and avatar profile.
- */
-export const DesktopNavbar: Story = {
-  render: () => {
-    const [activeTab, setActiveTab] = useState('dashboard');
-
-    return (
-      <div
-        style={{
-          border: '1px solid #E2E8F0',
-          borderRadius: 16,
-          overflow: 'hidden',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-        }}
-      >
-        <Navbar
-          brandLogo={
-            <div
-              style={{
-                width: 32,
-                height: 32,
-                borderRadius: 8,
-                background: '#0284C7',
-                color: '#FFFFFF',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: 700,
-                fontSize: 14,
-              }}
-            >
-              PW
-            </div>
-          }
-          brandName="Portal Workspace"
-          brandSubtitle="Executive Command & Operations Hub"
-          menuItems={sampleMenuItems}
-          activeItemId={activeTab}
-          onItemClick={(id) => setActiveTab(id)}
-          actions={
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <Button
-                variant="outline"
-                size="sm"
-                leftIcon={<SearchIcon size={14} />}
-                style={{ height: 36, fontSize: 12, gap: 8 }}
-              >
-                Quick Search{' '}
-                <kbd
-                  style={{
-                    padding: '1px 5px',
-                    background: '#F1F5F9',
-                    borderRadius: 4,
-                    fontSize: 10,
-                  }}
-                >
-                  ⌘K
-                </kbd>
-              </Button>
-
-              <button
-                type="button"
-                style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: 8,
-                  border: '1px solid #E2E8F0',
-                  background: '#FFFFFF',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative',
-                  color: '#475569',
-                }}
-                aria-label="Notifications"
-              >
-                <BellIcon size={18} />
-                <span
-                  style={{
-                    position: 'absolute',
-                    top: 4,
-                    right: 4,
-                    width: 8,
-                    height: 8,
-                    borderRadius: '50%',
-                    backgroundColor: '#F43F5E',
-                  }}
-                />
-              </button>
-
-              <Avatar size="sm" name="Alex Morgan" status="online" />
-            </div>
-          }
-        />
-
-        <div
-          style={{
-            padding: 32,
-            backgroundColor: '#F8FAFC',
-            minHeight: 180,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#64748B',
-            fontSize: 14,
-          }}
-        >
-          <span>
-            Active View: <strong>{activeTab.toUpperCase()}</strong>
-          </span>
         </div>
       </div>
     );

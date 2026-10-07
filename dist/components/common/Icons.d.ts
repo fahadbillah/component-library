@@ -30,3 +30,4 @@ export declare const AlertTriangleIcon: React.FC<IconProps>;
 export declare const AlertCircleIcon: React.FC<IconProps>;
 export declare const InboxIcon: React.FC<IconProps>;
 export declare const SparklesIcon: React.FC<IconProps>;
+export declare const GridIcon: React.FC<IconProps>;

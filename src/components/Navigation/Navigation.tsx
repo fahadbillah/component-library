@@ -90,6 +90,8 @@ export interface BottomNavigationProps extends Omit<
   children?: React.ReactNode;
   /** When true, docks flush to the bottom container edge without rounded corners or outer borders */
   isDocked?: boolean;
+  /** Visual frame variant: 'rounded' (all corners), 'card-bottom' (top flat, bottom rounded as in Stitch card preview), or 'docked' */
+  variant?: 'rounded' | 'card-bottom' | 'docked';
 }
 
 export const BottomNavigation = React.forwardRef<
@@ -103,19 +105,25 @@ export const BottomNavigation = React.forwardRef<
       items,
       children,
       isDocked = false,
+      variant,
       className = '',
       ...props
     },
     ref
   ) => {
-    const dockedClass = isDocked ? styles.bottomNavigationDocked : '';
+    let shapeClass = '';
+    if (isDocked || variant === 'docked') {
+      shapeClass = styles.bottomNavigationDocked;
+    } else if (variant === 'card-bottom') {
+      shapeClass = styles.bottomNavigationCardBottom;
+    }
 
     return (
       <nav
         ref={ref}
         role="tablist"
         aria-label="Mobile Navigation"
-        className={`${styles.bottomNavigation} ${dockedClass} ${className}`.trim()}
+        className={`${styles.bottomNavigation} ${shapeClass} ${className}`.trim()}
         {...props}
       >
         {items
@@ -555,6 +563,7 @@ export interface NavigationMenuItemConfig {
 }
 
 export interface AppNavbarProps extends React.HTMLAttributes<HTMLElement> {
+  variant?: 'standard' | 'floating';
   brandLogo?: React.ReactNode;
   brandName?: React.ReactNode;
   brandSubtitle?: React.ReactNode;
@@ -569,6 +578,7 @@ export interface AppNavbarProps extends React.HTMLAttributes<HTMLElement> {
 export const AppNavbar = React.forwardRef<HTMLElement, AppNavbarProps>(
   (
     {
+      variant = 'standard',
       brandLogo,
       brandName,
       brandSubtitle,
@@ -601,6 +611,8 @@ export const AppNavbar = React.forwardRef<HTMLElement, AppNavbarProps>(
       };
     }, [openDropdownId]);
 
+    const variantClass = variant === 'floating' ? styles.appNavbarFloating : '';
+
     return (
       <header
         ref={(node) => {
@@ -609,7 +621,7 @@ export const AppNavbar = React.forwardRef<HTMLElement, AppNavbarProps>(
           else if (ref)
             (ref as React.MutableRefObject<HTMLElement | null>).current = node;
         }}
-        className={`${styles.appNavbar} ${className}`.trim()}
+        className={`${styles.appNavbar} ${variantClass} ${className}`.trim()}
         {...props}
       >
         <div className={styles.navbarLeft}>

@@ -98,6 +98,15 @@ describe('BottomNavigation Component', () => {
     const nav = container.querySelector('nav');
     expect(nav).toHaveClass(/bottomNavigationDocked/);
   });
+
+  it('supports variant="card-bottom" with rounded bottom card class', () => {
+    const { container } = render(
+      <BottomNavigation variant="card-bottom" value="home" items={items} />
+    );
+
+    const nav = container.querySelector('nav');
+    expect(nav).toHaveClass(/bottomNavigationCardBottom/);
+  });
 });
 
 describe('NavigationRail Component', () => {
@@ -266,6 +275,14 @@ describe('AppNavbar Component', () => {
     render(<Navbar brandName="Portal Workspace" menuItems={menuItems} />);
     expect(screen.getByText('Portal Workspace')).toBeInTheDocument();
     expect(screen.getByText('Dashboard')).toBeInTheDocument();
+  });
+
+  it('supports floating variant with island rounded border and shadow', () => {
+    const { container } = render(
+      <Navbar variant="floating" brandName="Portal Workspace" />
+    );
+    const header = container.querySelector('header');
+    expect(header).toHaveClass(/appNavbarFloating/);
   });
 
   it('renders correctly via BottomNav alias', () => {
