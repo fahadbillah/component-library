@@ -24,3 +24,4 @@ export declare const ClipboardCheckIcon: React.FC<IconProps>;
 export declare const DeviceMobileIcon: React.FC<IconProps>;
 export declare const DocumentIcon: React.FC<IconProps>;
 export declare const FlaskIcon: React.FC<IconProps>;
+export declare const MessageDotsIcon: React.FC<IconProps>;

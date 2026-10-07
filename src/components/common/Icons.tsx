@@ -475,3 +475,27 @@ export const FlaskIcon: React.FC<IconProps> = ({
     <path d="M8.5 14h7" />
   </svg>
 );
+
+export const MessageDotsIcon: React.FC<IconProps> = ({
+  size = 20,
+  className,
+  ...props
+}) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.75"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...props}
+  >
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    <line x1="8" y1="10" x2="8.01" y2="10" strokeWidth="2.5" />
+    <line x1="12" y1="10" x2="12.01" y2="10" strokeWidth="2.5" />
+    <line x1="16" y1="10" x2="16.01" y2="10" strokeWidth="2.5" />
+  </svg>
+);
