@@ -72,7 +72,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             onChange={handleChange}
             aria-invalid={hasError}
             aria-describedby={
-              hasError ? `${textareaId}-error` : helperText ? `${textareaId}-helper` : undefined
+              hasError
+                ? `${textareaId}-error`
+                : helperText
+                  ? `${textareaId}-helper`
+                  : undefined
             }
             className={styles.textarea}
             {...props}
@@ -80,7 +84,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         </div>
         <div className={styles.footer}>
           {hasError && (
-            <span id={`${textareaId}-error`} className={styles.errorMessage} role="alert">
+            <span
+              id={`${textareaId}-error`}
+              className={styles.errorMessage}
+              role="alert"
+            >
               {errorMessage}
             </span>
           )}

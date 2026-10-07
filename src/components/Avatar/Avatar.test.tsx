@@ -15,6 +15,8 @@ describe('Avatar', () => {
 
   it('renders status dot when status prop is passed', () => {
     const { container } = render(<Avatar name="John Doe" status="online" />);
-    expect(container.querySelector('[aria-label="Status: online"]')).toBeInTheDocument();
+    expect(
+      container.querySelector('[aria-label="Status: online"]')
+    ).toBeInTheDocument();
   });
 });

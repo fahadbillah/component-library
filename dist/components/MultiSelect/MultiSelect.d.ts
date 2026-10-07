@@ -1,4 +1,5 @@
 import { default as React } from 'react';
+import { ChipShape } from '../Chip';
 import { AvatarProps } from '../Avatar';
 export type MultiSelectSize = 'sm' | 'md' | 'lg';
 export interface MultiSelectOption {
@@ -21,6 +22,8 @@ export interface MultiSelectProps {
     defaultValue?: string[];
     onChange?: (values: string[], selectedOptions: MultiSelectOption[]) => void;
     size?: MultiSelectSize;
+    /** Shape style for the selected chips */
+    chipShape?: ChipShape;
     disabled?: boolean;
     isRequired?: boolean;
     isSearchable?: boolean;

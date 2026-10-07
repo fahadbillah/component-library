@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { MultiSelect, MultiSelectOption } from './MultiSelect';
 
 const sampleUsers: MultiSelectOption[] = [
@@ -49,6 +48,11 @@ const meta: Meta<typeof MultiSelect> = {
       control: 'select',
       options: ['sm', 'md', 'lg'],
     },
+    chipShape: {
+      control: 'select',
+      options: ['rounded', 'pill'],
+      description: 'Shape style of the selected chips (rounded or pill)',
+    },
   },
 };
 
@@ -65,7 +69,7 @@ export const Default: Story = {
   },
   render: (args) => (
     <div style={{ maxWidth: '480px', minHeight: '340px' }}>
-      <MultiSelect {...args} />
+      <MultiSelect options={sampleUsers} {...args} />
     </div>
   ),
 };
@@ -164,4 +168,22 @@ export const MasterDesignCohortsPicker: Story = {
   ),
 };
 
+export const PillChips: Story = {
+  args: {
+    label: 'Pill Shape Chips',
+    placeholder: 'Choose members...',
+    options: sampleUsers,
+    defaultValue: ['aria', 'marcus'],
+    chipShape: 'pill',
+  },
+};
 
+export const RoundedChips: Story = {
+  args: {
+    label: 'Rounded Shape Chips',
+    placeholder: 'Choose members...',
+    options: sampleUsers,
+    defaultValue: ['aria', 'marcus'],
+    chipShape: 'rounded',
+  },
+};

@@ -3,14 +3,28 @@ import styles from './SearchInput.module.css';
 import { SearchIcon } from '../common/storybookIconHelper';
 import { CloseIcon } from '../common/Icons';
 
-export interface SearchInputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+export interface SearchInputProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'type'
+> {
   shortcutHint?: string;
   onClear?: () => void;
 }
 
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
-  ({ value, defaultValue, onChange, onClear, shortcutHint = '⌘K', placeholder = 'Search records, students, classes...', className, ...props }, ref) => {
+  (
+    {
+      value,
+      defaultValue,
+      onChange,
+      onClear,
+      shortcutHint = '⌘K',
+      placeholder = 'Search records, students, classes...',
+      className,
+      ...props
+    },
+    ref
+  ) => {
     const [internalValue, setInternalValue] = useState<string>(
       (value as string) || (defaultValue as string) || ''
     );
@@ -57,7 +71,9 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
               <CloseIcon size={14} />
             </button>
           )}
-          {shortcutHint && <kbd className={styles.shortcut}>{shortcutHint}</kbd>}
+          {shortcutHint && (
+            <kbd className={styles.shortcut}>{shortcutHint}</kbd>
+          )}
         </div>
       </div>
     );

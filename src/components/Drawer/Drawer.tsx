@@ -107,7 +107,9 @@ export const Drawer: React.FC<DrawerProps> = ({
     </>
   );
 
-  return typeof document !== 'undefined' ? createPortal(content, document.body) : null;
+  return typeof document !== 'undefined'
+    ? createPortal(content, document.body)
+    : null;
 };
 
 Drawer.displayName = 'Drawer';

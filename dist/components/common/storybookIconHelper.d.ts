@@ -2,7 +2,9 @@ import { default as React } from 'react';
 export declare const SearchIcon: React.FC<React.SVGProps<SVGSVGElement>>;
 export declare const PlusIcon: React.FC<React.SVGProps<SVGSVGElement>>;
 export declare const ArrowRightIcon: React.FC<React.SVGProps<SVGSVGElement>>;
-export declare const CalendarIcon: React.FC<React.SVGProps<SVGSVGElement>>;
+export declare const CalendarIcon: React.FC<React.SVGProps<SVGSVGElement> & {
+    size?: number | string;
+}>;
 export declare const MailIcon: React.FC<React.SVGProps<SVGSVGElement>>;
 export declare const LockIcon: React.FC<React.SVGProps<SVGSVGElement>>;
 export declare const iconMap: {

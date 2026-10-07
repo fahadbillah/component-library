@@ -79,51 +79,59 @@
   /* ==========================================================================
      Typography
      ========================================================================== */
-  --ui-font-display: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --ui-font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ui-font-display:
+    'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, sans-serif;
+  --ui-font-body:
+    'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
 
   /* Font Sizes & Line Heights */
-  --ui-text-xs: 0.75rem;    /* 12px */
-  --ui-leading-xs: 1rem;     /* 16px */
-  --ui-text-sm: 0.875rem;   /* 14px */
-  --ui-leading-sm: 1.25rem;  /* 20px */
-  --ui-text-base: 1rem;     /* 16px */
+  --ui-text-xs: 0.75rem; /* 12px */
+  --ui-leading-xs: 1rem; /* 16px */
+  --ui-text-sm: 0.875rem; /* 14px */
+  --ui-leading-sm: 1.25rem; /* 20px */
+  --ui-text-base: 1rem; /* 16px */
   --ui-leading-base: 1.5rem; /* 24px */
-  --ui-text-lg: 1.125rem;   /* 18px */
-  --ui-leading-lg: 1.5rem;   /* 24px */
-  --ui-text-xl: 1.375rem;   /* 22px */
-  --ui-leading-xl: 1.75rem;  /* 28px */
-  --ui-text-2xl: 1.75rem;   /* 28px */
+  --ui-text-lg: 1.125rem; /* 18px */
+  --ui-leading-lg: 1.5rem; /* 24px */
+  --ui-text-xl: 1.375rem; /* 22px */
+  --ui-leading-xl: 1.75rem; /* 28px */
+  --ui-text-2xl: 1.75rem; /* 28px */
   --ui-leading-2xl: 2.25rem; /* 36px */
-  --ui-text-3xl: 2.5rem;    /* 40px */
-  --ui-leading-3xl: 3rem;    /* 48px */
+  --ui-text-3xl: 2.5rem; /* 40px */
+  --ui-leading-3xl: 3rem; /* 48px */
 
   /* ==========================================================================
      Spacing (8px Modular Grid)
      ========================================================================== */
   --ui-space-2xs: 0.125rem; /* 2px */
-  --ui-space-xs: 0.25rem;   /* 4px */
-  --ui-space-sm: 0.5rem;    /* 8px */
-  --ui-space-md: 1rem;      /* 16px */
-  --ui-space-lg: 1.5rem;    /* 24px */
-  --ui-space-xl: 2rem;      /* 32px */
-  --ui-space-2xl: 3rem;     /* 48px */
+  --ui-space-xs: 0.25rem; /* 4px */
+  --ui-space-sm: 0.5rem; /* 8px */
+  --ui-space-md: 1rem; /* 16px */
+  --ui-space-lg: 1.5rem; /* 24px */
+  --ui-space-xl: 2rem; /* 32px */
+  --ui-space-2xl: 3rem; /* 48px */
 
   /* ==========================================================================
      Border Radius
      ========================================================================== */
-  --ui-radius-sm: 0.25rem;  /* 4px */
-  --ui-radius-md: 0.5rem;   /* 8px */
-  --ui-radius-lg: 0.75rem;  /* 12px */
-  --ui-radius-xl: 1rem;     /* 16px */
+  --ui-radius-sm: 0.25rem; /* 4px */
+  --ui-radius-md: 0.5rem; /* 8px */
+  --ui-radius-lg: 0.75rem; /* 12px */
+  --ui-radius-xl: 1rem; /* 16px */
   --ui-radius-full: 9999px;
 
   /* ==========================================================================
      Elevation & Shadows
      ========================================================================== */
   --ui-shadow-1: 0 1px 3px rgba(15, 23, 42, 0.05);
-  --ui-shadow-2: 0 4px 16px -2px rgba(54, 116, 181, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
-  --ui-shadow-3: 0 12px 32px -4px rgba(54, 116, 181, 0.14), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+  --ui-shadow-2:
+    0 4px 16px -2px rgba(54, 116, 181, 0.08),
+    0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --ui-shadow-3:
+    0 12px 32px -4px rgba(54, 116, 181, 0.14),
+    0 4px 12px -2px rgba(15, 23, 42, 0.06);
 
   /* ==========================================================================
      Transitions & Focus
@@ -139,4 +147,3 @@
   --ui-z-popover: 1100;
   --ui-z-tooltip: 1200;
 }
-

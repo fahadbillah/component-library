@@ -10,7 +10,10 @@ export interface SelectOption {
   disabled?: boolean;
 }
 
-export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
+export interface SelectProps extends Omit<
+  React.SelectHTMLAttributes<HTMLSelectElement>,
+  'size'
+> {
   label?: string;
   helperText?: string;
   errorMessage?: string;
@@ -67,7 +70,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             disabled={disabled}
             aria-invalid={hasError}
             aria-describedby={
-              hasError ? `${selectId}-error` : helperText ? `${selectId}-helper` : undefined
+              hasError
+                ? `${selectId}-error`
+                : helperText
+                  ? `${selectId}-helper`
+                  : undefined
             }
             className={styles.select}
             {...props}
@@ -79,7 +86,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             )}
             {options
               ? options.map((opt) => (
-                  <option key={opt.value} value={opt.value} disabled={opt.disabled}>
+                  <option
+                    key={opt.value}
+                    value={opt.value}
+                    disabled={opt.disabled}
+                  >
                     {opt.label}
                   </option>
                 ))
@@ -90,7 +101,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           </span>
         </div>
         {hasError && (
-          <span id={`${selectId}-error`} className={styles.errorMessage} role="alert">
+          <span
+            id={`${selectId}-error`}
+            className={styles.errorMessage}
+            role="alert"
+          >
             {errorMessage}
           </span>
         )}

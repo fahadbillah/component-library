@@ -1,7 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React from 'react';
 import { MultiSelect, MultiSelectOption } from './MultiSelect';
 
 const mockOptions: MultiSelectOption[] = [
@@ -12,7 +11,13 @@ const mockOptions: MultiSelectOption[] = [
 
 describe('MultiSelect', () => {
   it('renders placeholder and label', () => {
-    render(<MultiSelect label="Select Students" placeholder="Search roster..." options={mockOptions} />);
+    render(
+      <MultiSelect
+        label="Select Students"
+        placeholder="Search roster..."
+        options={mockOptions}
+      />
+    );
     expect(screen.getByText('Select Students')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Search roster...')).toBeInTheDocument();
   });
@@ -34,7 +39,10 @@ describe('MultiSelect', () => {
 
     // Click second option
     await userEvent.click(screen.getByText('Marcus Vance'));
-    expect(handleChange).toHaveBeenCalledWith(['1', '2'], [mockOptions[0], mockOptions[1]]);
+    expect(handleChange).toHaveBeenCalledWith(
+      ['1', '2'],
+      [mockOptions[0], mockOptions[1]]
+    );
   });
 
   it('removes item when chip remove button is clicked', async () => {
@@ -47,8 +55,32 @@ describe('MultiSelect', () => {
       />
     );
 
-    const removeBtn = screen.getByRole('button', { name: /remove aria thorne/i });
+    const removeBtn = screen.getByRole('button', {
+      name: /remove aria thorne/i,
+    });
     await userEvent.click(removeBtn);
     expect(handleChange).toHaveBeenCalledWith(['2'], [mockOptions[1]]);
+  });
+
+  it('renders chips with specified chipShape (rounded or pill)', () => {
+    const { container, rerender } = render(
+      <MultiSelect
+        options={mockOptions}
+        defaultValue={['1']}
+        chipShape="rounded"
+      />
+    );
+    const chip = container.querySelector('[role="status"]');
+    expect(chip?.className).toMatch(/rounded/);
+
+    rerender(
+      <MultiSelect
+        options={mockOptions}
+        defaultValue={['1']}
+        chipShape="pill"
+      />
+    );
+    const pillChip = container.querySelector('[role="status"]');
+    expect(pillChip?.className).toMatch(/pill/);
   });
 });

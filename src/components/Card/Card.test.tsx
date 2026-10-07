@@ -26,9 +26,15 @@ describe('Card', () => {
       </Card>
     );
 
-    expect(screen.getByRole('heading', { name: /attendance overview/i })).toBeInTheDocument();
-    expect(screen.getByText('Daily summary of enrolled students.')).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /attendance overview/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('Daily summary of enrolled students.')
+    ).toBeInTheDocument();
     expect(screen.getByText('Total Present: 98%')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /view details/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /view details/i })
+    ).toBeInTheDocument();
   });
 });

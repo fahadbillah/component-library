@@ -30,7 +30,9 @@ describe('Modal', () => {
     );
 
     expect(screen.getByRole('dialog')).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /term registration/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /term registration/i })
+    ).toBeInTheDocument();
     expect(screen.getByText('Enrollment is open.')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /submit/i })).toBeInTheDocument();
   });

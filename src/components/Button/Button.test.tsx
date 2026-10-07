@@ -6,7 +6,9 @@ import { Button } from './Button';
 describe('Button', () => {
   it('renders children correctly', () => {
     render(<Button>Submit Action</Button>);
-    expect(screen.getByRole('button', { name: /submit action/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /submit action/i })
+    ).toBeInTheDocument();
   });
 
   it('handles click events', async () => {

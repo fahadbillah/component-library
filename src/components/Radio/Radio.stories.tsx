@@ -12,7 +12,11 @@ type Story = StoryObj<typeof RadioGroup>;
 
 export const Default: Story = {
   render: () => (
-    <RadioGroup name="term" label="Registration Semester" defaultValue="fall-2026">
+    <RadioGroup
+      name="term"
+      label="Registration Semester"
+      defaultValue="fall-2026"
+    >
       <Radio
         value="fall-2026"
         label="Fall Semester 2026"
@@ -34,7 +38,11 @@ export const Default: Story = {
 
 export const DisabledOption: Story = {
   render: () => (
-    <RadioGroup name="status" label="Student Academic Standing" defaultValue="active">
+    <RadioGroup
+      name="status"
+      label="Student Academic Standing"
+      defaultValue="active"
+    >
       <Radio value="active" label="Active Good Standing" />
       <Radio value="probation" label="Academic Probation" />
       <Radio value="withdrawn" label="Withdrawn (Locked)" disabled />

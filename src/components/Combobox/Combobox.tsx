@@ -19,7 +19,10 @@ export interface ComboboxProps {
   options: ComboboxOption[];
   value?: string;
   defaultValue?: string;
-  onChange?: (value: string, selectedOption: ComboboxOption | undefined) => void;
+  onChange?: (
+    value: string,
+    selectedOption: ComboboxOption | undefined
+  ) => void;
   disabled?: boolean;
   isRequired?: boolean;
   className?: string;
@@ -46,7 +49,9 @@ export const Combobox: React.FC<ComboboxProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [internalValue, setInternalValue] = useState<string>(value || defaultValue || '');
+  const [internalValue, setInternalValue] = useState<string>(
+    value || defaultValue || ''
+  );
   const [query, setQuery] = useState('');
   const [focusedIndex, setFocusedIndex] = useState<number>(-1);
 
@@ -103,7 +108,10 @@ export const Combobox: React.FC<ComboboxProps> = ({
   // Close when clicked outside
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
         setIsOpen(false);
         setFocusedIndex(-1);
       }
@@ -158,7 +166,11 @@ export const Combobox: React.FC<ComboboxProps> = ({
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       setFocusedIndex((prev) => (prev > 0 ? prev - 1 : flatOptions.length - 1));
-    } else if (e.key === 'Enter' && focusedIndex >= 0 && focusedIndex < flatOptions.length) {
+    } else if (
+      e.key === 'Enter' &&
+      focusedIndex >= 0 &&
+      focusedIndex < flatOptions.length
+    ) {
       e.preventDefault();
       selectOption(flatOptions[focusedIndex]);
     }
@@ -259,12 +271,17 @@ export const Combobox: React.FC<ComboboxProps> = ({
             <div className={styles.emptyFallback}>
               <div className={styles.emptyIcon}>!</div>
               <div className={styles.emptyTitle}>No matching records found</div>
-              <div className={styles.emptySubtitle}>Check spelling or clear query filter</div>
+              <div className={styles.emptySubtitle}>
+                Check spelling or clear query filter
+              </div>
             </div>
           ) : (
             <div className={styles.optionsList}>
               {Object.keys(groupedOptions).map((groupTitle) => (
-                <div key={groupTitle || 'default-group'} className={styles.groupBlock}>
+                <div
+                  key={groupTitle || 'default-group'}
+                  className={styles.groupBlock}
+                >
                   {groupTitle && (
                     <div className={styles.groupHeader}>{groupTitle}</div>
                   )}
@@ -294,12 +311,20 @@ export const Combobox: React.FC<ComboboxProps> = ({
                         onMouseEnter={() => setFocusedIndex(optIndex)}
                       >
                         <div className={styles.optionContent}>
-                          {opt.icon && <span className={styles.optionIcon}>{opt.icon}</span>}
+                          {opt.icon && (
+                            <span className={styles.optionIcon}>
+                              {opt.icon}
+                            </span>
+                          )}
                           <span className={styles.optionLabel}>
                             {renderHighlightedText(opt.label, query)}
                           </span>
                         </div>
-                        {opt.badge && <span className={styles.optionBadge}>{opt.badge}</span>}
+                        {opt.badge && (
+                          <span className={styles.optionBadge}>
+                            {opt.badge}
+                          </span>
+                        )}
                       </div>
                     );
                   })}
@@ -317,7 +342,9 @@ export const Combobox: React.FC<ComboboxProps> = ({
       )}
 
       {errorMessage && <span className={styles.errorText}>{errorMessage}</span>}
-      {!errorMessage && helperText && <span className={styles.helperText}>{helperText}</span>}
+      {!errorMessage && helperText && (
+        <span className={styles.helperText}>{helperText}</span>
+      )}
     </div>
   );
 };

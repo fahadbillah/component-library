@@ -105,12 +105,29 @@ export const WithIconsInteractive: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
-      <Button variant="primary" leftIcon={iconMap.Plus}>Primary</Button>
-      <Button variant="secondary" rightIcon={iconMap.ArrowRight}>Secondary / Soft</Button>
-      <Button variant="outline" leftIcon={iconMap.Calendar}>Outline</Button>
-      <Button variant="ghost" leftIcon={iconMap.Search}>Ghost</Button>
-      <Button variant="danger" leftIcon={iconMap.Close}>Danger</Button>
+    <div
+      style={{
+        display: 'flex',
+        gap: '12px',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+      }}
+    >
+      <Button variant="primary" leftIcon={iconMap.Plus}>
+        Primary
+      </Button>
+      <Button variant="secondary" rightIcon={iconMap.ArrowRight}>
+        Secondary / Soft
+      </Button>
+      <Button variant="outline" leftIcon={iconMap.Calendar}>
+        Outline
+      </Button>
+      <Button variant="ghost" leftIcon={iconMap.Search}>
+        Ghost
+      </Button>
+      <Button variant="danger" leftIcon={iconMap.Close}>
+        Danger
+      </Button>
     </div>
   ),
 };
@@ -118,9 +135,15 @@ export const AllVariants: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-      <Button size="sm" leftIcon={iconMap.Plus}>Small (36px)</Button>
-      <Button size="md" leftIcon={iconMap.Plus}>Medium (44px)</Button>
-      <Button size="lg" leftIcon={iconMap.Plus}>Large (52px)</Button>
+      <Button size="sm" leftIcon={iconMap.Plus}>
+        Small (36px)
+      </Button>
+      <Button size="md" leftIcon={iconMap.Plus}>
+        Medium (44px)
+      </Button>
+      <Button size="lg" leftIcon={iconMap.Plus}>
+        Large (52px)
+      </Button>
     </div>
   ),
 };

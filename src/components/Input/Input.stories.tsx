@@ -49,7 +49,8 @@ export const WithIconsInteractive: Story = {
     placeholder: 'Type keyword or student ID...',
     leftIcon: 'Search' as any,
     rightIcon: 'Close' as any,
-    helperText: 'You can change leftIcon & rightIcon using the Controls tab below.',
+    helperText:
+      'You can change leftIcon & rightIcon using the Controls tab below.',
   },
 };
 
@@ -100,10 +101,32 @@ export const Disabled: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '400px' }}>
-      <Input label="Small Input (36px)" inputSize="sm" leftIcon={iconMap.Search} placeholder="Compact density" />
-      <Input label="Medium Input (44px, Default)" inputSize="md" leftIcon={iconMap.Mail} placeholder="Standard touch-compliant" />
-      <Input label="Large Input (52px)" inputSize="lg" leftIcon={iconMap.User} placeholder="High prominence" />
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '16px',
+        maxWidth: '400px',
+      }}
+    >
+      <Input
+        label="Small Input (36px)"
+        inputSize="sm"
+        leftIcon={iconMap.Search}
+        placeholder="Compact density"
+      />
+      <Input
+        label="Medium Input (44px, Default)"
+        inputSize="md"
+        leftIcon={iconMap.Mail}
+        placeholder="Standard touch-compliant"
+      />
+      <Input
+        label="Large Input (52px)"
+        inputSize="lg"
+        leftIcon={iconMap.User}
+        placeholder="High prominence"
+      />
     </div>
   ),
 };

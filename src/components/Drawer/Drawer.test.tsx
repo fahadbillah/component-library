@@ -5,7 +5,11 @@ import { Drawer } from './Drawer';
 
 describe('Drawer', () => {
   it('does not render when isOpen is false', () => {
-    render(<Drawer isOpen={false} onClose={() => {}}>Hidden</Drawer>);
+    render(
+      <Drawer isOpen={false} onClose={() => {}}>
+        Hidden
+      </Drawer>
+    );
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 

@@ -23,6 +23,8 @@ describe('Badge', () => {
         Failed
       </Badge>
     );
-    expect(screen.getByText('Failed').parentElement).toHaveClass('custom-class');
+    expect(screen.getByText('Failed').parentElement).toHaveClass(
+      'custom-class'
+    );
   });
 });

@@ -102,7 +102,8 @@ export const WithError: Story = {
     label: 'Evaluator',
     placeholder: 'Select evaluator...',
     options: userOptions,
-    errorMessage: 'An active faculty member must be assigned before submission.',
+    errorMessage:
+      'An active faculty member must be assigned before submission.',
   },
   render: (args) => (
     <div style={{ maxWidth: '400px', minHeight: '320px' }}>
@@ -113,10 +114,32 @@ export const WithError: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '400px' }}>
-      <Dropdown label="Small Dropdown (36px)" size="sm" options={userOptions} defaultValue="prof-marcus" />
-      <Dropdown label="Medium Dropdown (44px, Default)" size="md" options={userOptions} defaultValue="dr-vance" />
-      <Dropdown label="Large Dropdown (52px)" size="lg" options={userOptions} defaultValue="aria-t" />
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+        maxWidth: '400px',
+      }}
+    >
+      <Dropdown
+        label="Small Dropdown (36px)"
+        size="sm"
+        options={userOptions}
+        defaultValue="prof-marcus"
+      />
+      <Dropdown
+        label="Medium Dropdown (44px, Default)"
+        size="md"
+        options={userOptions}
+        defaultValue="dr-vance"
+      />
+      <Dropdown
+        label="Large Dropdown (52px)"
+        size="lg"
+        options={userOptions}
+        defaultValue="aria-t"
+      />
     </div>
   ),
 };

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { Combobox, ComboboxOption } from './Combobox';
 
 const sampleEntities: ComboboxOption[] = [
@@ -62,10 +61,9 @@ export const Default: Story = {
   },
   render: (args) => (
     <div style={{ maxWidth: '480px', minHeight: '380px' }}>
-      <Combobox {...args} />
+      <Combobox options={sampleEntities} {...args} />
     </div>
   ),
-
 };
 
 export const OpenFilterView: Story = {

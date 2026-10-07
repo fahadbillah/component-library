@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Modal, ModalFooter } from './Modal';
 import { Button } from '../Button';
@@ -39,9 +39,12 @@ export const InteractiveDemo: Story = {
             </ModalFooter>
           }
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
+          >
             <p style={{ margin: 0, color: 'var(--ui-text-muted)' }}>
-              Confirm course roster additions for the upcoming academic semester.
+              Confirm course roster additions for the upcoming academic
+              semester.
             </p>
             <Input label="Student Name" defaultValue="Aria Thorne" disabled />
             <Input label="Assigned Advisor" defaultValue="Dr. Robert Hayes" />

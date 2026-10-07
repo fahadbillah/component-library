@@ -2,7 +2,8 @@ import React, { forwardRef } from 'react';
 import styles from './Button.module.css';
 import { SpinnerIcon } from '../common/Icons';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
+export type ButtonVariant =
+  'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -56,9 +57,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             <SpinnerIcon size={size === 'sm' ? 14 : size === 'lg' ? 20 : 16} />
           </span>
         )}
-        {!isLoading && leftIcon && <span className={styles.icon}>{leftIcon}</span>}
+        {!isLoading && leftIcon && (
+          <span className={styles.icon}>{leftIcon}</span>
+        )}
         {children && <span>{children}</span>}
-        {!isLoading && rightIcon && <span className={styles.icon}>{rightIcon}</span>}
+        {!isLoading && rightIcon && (
+          <span className={styles.icon}>{rightIcon}</span>
+        )}
       </button>
     );
   }

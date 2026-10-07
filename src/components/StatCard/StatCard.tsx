@@ -43,7 +43,9 @@ export const StatCard: React.FC<StatCardProps> = ({
       <div className={styles.metricRow}>
         <span className={styles.value}>{value}</span>
         {trend && (
-          <span className={`${styles.trendBadge} ${styles[`trend-${trend.direction}`]}`}>
+          <span
+            className={`${styles.trendBadge} ${styles[`trend-${trend.direction}`]}`}
+          >
             {trend.direction === 'up' && '↑ '}
             {trend.direction === 'down' && '↓ '}
             {trend.value}

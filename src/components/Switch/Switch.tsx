@@ -1,7 +1,10 @@
 import React, { forwardRef } from 'react';
 import styles from './Switch.module.css';
 
-export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+export interface SwitchProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'type'
+> {
   label?: React.ReactNode;
   description?: React.ReactNode;
 }
@@ -51,7 +54,9 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
         {(label || description) && (
           <span className={styles.textGroup}>
             {label && <span className={styles.label}>{label}</span>}
-            {description && <span className={styles.description}>{description}</span>}
+            {description && (
+              <span className={styles.description}>{description}</span>
+            )}
           </span>
         )}
       </label>

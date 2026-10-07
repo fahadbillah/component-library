@@ -31,6 +31,7 @@ npm install git+ssh://git@github.com:fahadbillah/component-library.git
 ```
 
 In your consumer app's `package.json`, it will look like:
+
 ```json
 "dependencies": {
   "react-component-library": "github:fahadbillah/component-library"
@@ -41,7 +42,16 @@ In your consumer app's `package.json`, it will look like:
 
 ```tsx
 import React from 'react';
-import { Button, Badge, Card, CardHeader, CardTitle, CardContent, Table, Input } from 'react-component-library';
+import {
+  Button,
+  Badge,
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  Table,
+  Input,
+} from 'react-component-library';
 
 // Import the bundled stylesheet once in your app's root entrypoint (e.g., main.tsx or App.tsx):
 import 'react-component-library/style.css';
@@ -51,7 +61,9 @@ export function Dashboard() {
     <Card elevation={2}>
       <CardHeader bordered>
         <CardTitle>System Overview</CardTitle>
-        <Badge variant="success" withDot>Operational</Badge>
+        <Badge variant="success" withDot>
+          Operational
+        </Badge>
       </CardHeader>
       <CardContent>
         <Button variant="primary" size="md">
@@ -67,29 +79,28 @@ export function Dashboard() {
 
 ## Component Suite
 
-| Component | Description | Key Props / Variants |
-| :--- | :--- | :--- |
-| **`Button`** | Standard interactive action button | `variant` (`primary`, `secondary`, `outline`, `ghost`, `danger`), `size` (`sm`, `md`, `lg`), `isLoading`, `leftIcon`, `rightIcon`, `fullWidth` |
-| **`Badge`** | Compact status indicator pill | `variant` (`success`, `warning`, `danger`, `info`, `neutral`), `withDot`, `size` (`sm`, `md`) |
-| **`Input`** | Form text input with focus halo | `label`, `helperText`, `errorMessage`, `inputSize` (`sm`, `md`, `lg`), `leftIcon`, `rightIcon`, `isRequired` |
-| **`Textarea`** | Multi-line text field | `label`, `helperText`, `errorMessage`, `showCharCount`, `maxLength` |
-| **`Select`** | Native dropdown with integrated SVG chevron | `label`, `options`, `helperText`, `errorMessage`, `selectSize` |
-| **`Dropdown`** | Rich custom select with Avatars & descriptions | `label`, `options` (with `avatar`, `description`, `icon`), `placeholder`, `size`, `errorMessage` |
-| **`Checkbox`** | 20px x 20px custom checkmark | `label`, `description`, `indeterminate`, `checked`, `disabled` |
-| **`Card`** | Tonal surface container | `elevation` (`1`, `2`, `3`), `padding`, `isInteractive`, `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter` |
-| **`Table`** | Data table with tabular figures | `TableHeader`, `TableBody`, `TableRow` (`isHoverable`), `TableHead` (`align`), `TableCell` (`isNumeric`, `align`) |
-| **`Modal`** | Accessible dialog with backdrop blur | `isOpen`, `onClose`, `title`, `size`, `closeOnEsc`, `closeOnOverlayClick`, `ModalFooter` |
-| **`Avatar`** | User profile chip with auto initials | `src`, `name`, `size` (`xs`, `sm`, `md`, `lg`, `xl`), `status` (`online`, `busy`, `away`, `offline`) |
-| **`Tabs`** | Segmented pill or underline navigation | `tabs` (with `id`, `label`, `icon`, `badge`), `activeTab`, `variant` (`pill`, `underline`), `fullWidth`, `TabPanel` |
-| **`Switch`** | Smooth iOS/M3 style toggle | `label`, `description`, `checked`, `disabled`, `onChange` |
-| **`Radio` / `RadioGroup`** | 20px concentric selection control | `name`, `value`, `label`, `description`, `RadioGroup`, `Radio` |
-| **`SearchInput`** | Quick access search with shortcut badge | `placeholder`, `shortcutHint` (e.g. `⌘K`), `onClear`, `defaultValue` |
-| **`StatCard`** | KPI card with primary container highlight | `title`, `value`, `trend` (`up`, `down`, `neutral`), `highlighted`, `icon` |
-| **`Drawer`** | Slide-over panel with backdrop blur | `isOpen`, `onClose`, `title`, `placement` (`left`, `right`), `size`, `footer` |
-| **`Chip`** | Interactive pill tag with avatar, count badge, & states | `label`, `avatar`, `icon`, `variant` (`neutral`, `primary`, `tonal`, `outline`, `success`, `warning`, `danger`), `size` (`sm`, `md`, `lg`), `selected`, `count`, `onRemove` |
-| **`MultiSelect`** | Multi-item select with Avatars, filter & tonal chips | `label`, `options` (with `avatar`, `badge`, `badgeVariant`, `description`), `value`, `placeholder`, `isSearchable`, `maxDisplayedChips` |
-| **`Combobox`** | Searchable autocomplete filter with category groups | `label`, `placeholder`, `options` (with `group`, `badge`, `icon`), `value`, `onChange`, `helperText`, `errorMessage` |
-
+| Component                  | Description                                             | Key Props / Variants                                                                                                                                                        |
+| :------------------------- | :------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`Button`**               | Standard interactive action button                      | `variant` (`primary`, `secondary`, `outline`, `ghost`, `danger`), `size` (`sm`, `md`, `lg`), `isLoading`, `leftIcon`, `rightIcon`, `fullWidth`                              |
+| **`Badge`**                | Compact status indicator pill                           | `variant` (`success`, `warning`, `danger`, `info`, `neutral`), `withDot`, `size` (`sm`, `md`)                                                                               |
+| **`Input`**                | Form text input with focus halo                         | `label`, `helperText`, `errorMessage`, `inputSize` (`sm`, `md`, `lg`), `leftIcon`, `rightIcon`, `isRequired`                                                                |
+| **`Textarea`**             | Multi-line text field                                   | `label`, `helperText`, `errorMessage`, `showCharCount`, `maxLength`                                                                                                         |
+| **`Select`**               | Native dropdown with integrated SVG chevron             | `label`, `options`, `helperText`, `errorMessage`, `selectSize`                                                                                                              |
+| **`Dropdown`**             | Rich custom select with Avatars & descriptions          | `label`, `options` (with `avatar`, `description`, `icon`), `placeholder`, `size`, `errorMessage`                                                                            |
+| **`Checkbox`**             | 20px x 20px custom checkmark                            | `label`, `description`, `indeterminate`, `checked`, `disabled`                                                                                                              |
+| **`Card`**                 | Tonal surface container                                 | `elevation` (`1`, `2`, `3`), `padding`, `isInteractive`, `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`                                          |
+| **`Table`**                | Data table with tabular figures                         | `TableHeader`, `TableBody`, `TableRow` (`isHoverable`), `TableHead` (`align`), `TableCell` (`isNumeric`, `align`)                                                           |
+| **`Modal`**                | Accessible dialog with backdrop blur                    | `isOpen`, `onClose`, `title`, `size`, `closeOnEsc`, `closeOnOverlayClick`, `ModalFooter`                                                                                    |
+| **`Avatar`**               | User profile chip with auto initials                    | `src`, `name`, `size` (`xs`, `sm`, `md`, `lg`, `xl`), `status` (`online`, `busy`, `away`, `offline`)                                                                        |
+| **`Tabs`**                 | Segmented pill or underline navigation                  | `tabs` (with `id`, `label`, `icon`, `badge`), `activeTab`, `variant` (`pill`, `underline`), `fullWidth`, `TabPanel`                                                         |
+| **`Switch`**               | Smooth iOS/M3 style toggle                              | `label`, `description`, `checked`, `disabled`, `onChange`                                                                                                                   |
+| **`Radio` / `RadioGroup`** | 20px concentric selection control                       | `name`, `value`, `label`, `description`, `RadioGroup`, `Radio`                                                                                                              |
+| **`SearchInput`**          | Quick access search with shortcut badge                 | `placeholder`, `shortcutHint` (e.g. `⌘K`), `onClear`, `defaultValue`                                                                                                        |
+| **`StatCard`**             | KPI card with primary container highlight               | `title`, `value`, `trend` (`up`, `down`, `neutral`), `highlighted`, `icon`                                                                                                  |
+| **`Drawer`**               | Slide-over panel with backdrop blur                     | `isOpen`, `onClose`, `title`, `placement` (`left`, `right`), `size`, `footer`                                                                                               |
+| **`Chip`**                 | Interactive pill tag with avatar, count badge, & states | `label`, `avatar`, `icon`, `variant` (`neutral`, `primary`, `tonal`, `outline`, `success`, `warning`, `danger`), `size` (`sm`, `md`, `lg`), `selected`, `count`, `onRemove` |
+| **`MultiSelect`**          | Multi-item select with Avatars, filter & tonal chips    | `label`, `options` (with `avatar`, `badge`, `badgeVariant`, `description`), `value`, `placeholder`, `isSearchable`, `maxDisplayedChips`                                     |
+| **`Combobox`**             | Searchable autocomplete filter with category groups     | `label`, `placeholder`, `options` (with `group`, `badge`, `icon`), `value`, `onChange`, `helperText`, `errorMessage`                                                        |
 
 ---
 
@@ -134,6 +145,7 @@ npm run build
 ```
 
 Build outputs:
+
 - `dist/index.mjs` (ES Module bundle)
 - `dist/index.cjs` (CommonJS bundle)
 - `dist/index.d.ts` (TypeScript type declarations)

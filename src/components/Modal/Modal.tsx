@@ -59,11 +59,7 @@ export const Modal: React.FC<ModalProps> = ({
     }
   };
 
-  const modalClasses = [
-    styles.modal,
-    styles[`size-${size}`],
-    className || '',
-  ]
+  const modalClasses = [styles.modal, styles[`size-${size}`], className || '']
     .filter(Boolean)
     .join(' ');
 
@@ -102,14 +98,20 @@ export const Modal: React.FC<ModalProps> = ({
     </div>
   );
 
-  return typeof document !== 'undefined' ? createPortal(content, document.body) : null;
+  return typeof document !== 'undefined'
+    ? createPortal(content, document.body)
+    : null;
 };
 
 Modal.displayName = 'Modal';
 
 export interface ModalFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export const ModalFooter: React.FC<ModalFooterProps> = ({ className, children, ...props }) => (
+export const ModalFooter: React.FC<ModalFooterProps> = ({
+  className,
+  children,
+  ...props
+}) => (
   <div className={`${styles.footer} ${className || ''}`} {...props}>
     {children}
   </div>

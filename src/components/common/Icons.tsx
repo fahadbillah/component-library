@@ -5,7 +5,11 @@ export interface IconProps extends React.SVGProps<SVGSVGElement> {
   className?: string;
 }
 
-export const SpinnerIcon: React.FC<IconProps> = ({ size = 18, className, ...props }) => (
+export const SpinnerIcon: React.FC<IconProps> = ({
+  size = 18,
+  className,
+  ...props
+}) => (
   <svg
     width={size}
     height={size}
@@ -29,7 +33,11 @@ export const SpinnerIcon: React.FC<IconProps> = ({ size = 18, className, ...prop
   </svg>
 );
 
-export const CheckIcon: React.FC<IconProps> = ({ size = 14, className, ...props }) => (
+export const CheckIcon: React.FC<IconProps> = ({
+  size = 14,
+  className,
+  ...props
+}) => (
   <svg
     width={size}
     height={size}
@@ -46,7 +54,11 @@ export const CheckIcon: React.FC<IconProps> = ({ size = 14, className, ...props 
   </svg>
 );
 
-export const MinusIcon: React.FC<IconProps> = ({ size = 14, className, ...props }) => (
+export const MinusIcon: React.FC<IconProps> = ({
+  size = 14,
+  className,
+  ...props
+}) => (
   <svg
     width={size}
     height={size}
@@ -62,7 +74,11 @@ export const MinusIcon: React.FC<IconProps> = ({ size = 14, className, ...props 
   </svg>
 );
 
-export const ChevronDownIcon: React.FC<IconProps> = ({ size = 16, className, ...props }) => (
+export const ChevronDownIcon: React.FC<IconProps> = ({
+  size = 16,
+  className,
+  ...props
+}) => (
   <svg
     width={size}
     height={size}
@@ -79,7 +95,11 @@ export const ChevronDownIcon: React.FC<IconProps> = ({ size = 16, className, ...
   </svg>
 );
 
-export const CloseIcon: React.FC<IconProps> = ({ size = 18, className, ...props }) => (
+export const CloseIcon: React.FC<IconProps> = ({
+  size = 18,
+  className,
+  ...props
+}) => (
   <svg
     width={size}
     height={size}
@@ -97,7 +117,11 @@ export const CloseIcon: React.FC<IconProps> = ({ size = 18, className, ...props 
   </svg>
 );
 
-export const UserFallbackIcon: React.FC<IconProps> = ({ size = 20, className, ...props }) => (
+export const UserFallbackIcon: React.FC<IconProps> = ({
+  size = 20,
+  className,
+  ...props
+}) => (
   <svg
     width={size}
     height={size}
@@ -113,7 +137,12 @@ export const UserFallbackIcon: React.FC<IconProps> = ({ size = 20, className, ..
     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
     <circle cx="12" cy="7" r="4" />
   </svg>
-);export const SearchIcon: React.FC<IconProps> = ({ size = 16, className, ...props }) => (
+);
+export const SearchIcon: React.FC<IconProps> = ({
+  size = 16,
+  className,
+  ...props
+}) => (
   <svg
     width={size}
     height={size}

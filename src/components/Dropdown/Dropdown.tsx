@@ -50,7 +50,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [internalValue, setInternalValue] = useState<string | undefined>(value || defaultValue);
+  const [internalValue, setInternalValue] = useState<string | undefined>(
+    value || defaultValue
+  );
 
   useEffect(() => {
     if (value !== undefined) {
@@ -61,7 +63,10 @@ export const Dropdown: React.FC<DropdownProps> = ({
   // Click outside to close
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -94,14 +99,18 @@ export const Dropdown: React.FC<DropdownProps> = ({
       setIsOpen(false);
     } else if (e.key === 'ArrowDown' && isOpen) {
       e.preventDefault();
-      const currentIndex = options.findIndex((opt) => opt.value === internalValue);
+      const currentIndex = options.findIndex(
+        (opt) => opt.value === internalValue
+      );
       const nextOption = options[currentIndex + 1];
       if (nextOption && !nextOption.disabled) {
         handleSelect(nextOption);
       }
     } else if (e.key === 'ArrowUp' && isOpen) {
       e.preventDefault();
-      const currentIndex = options.findIndex((opt) => opt.value === internalValue);
+      const currentIndex = options.findIndex(
+        (opt) => opt.value === internalValue
+      );
       const prevOption = options[currentIndex - 1];
       if (prevOption && !prevOption.disabled) {
         handleSelect(prevOption);
@@ -136,7 +145,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
         id={dropdownId}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
-        aria-labelledby={label ? `${dropdownId}-label ${dropdownId}` : undefined}
+        aria-labelledby={
+          label ? `${dropdownId}-label ${dropdownId}` : undefined
+        }
         disabled={disabled}
         onClick={() => setIsOpen((prev) => !prev)}
         onKeyDown={handleKeyDown}
@@ -167,7 +178,11 @@ export const Dropdown: React.FC<DropdownProps> = ({
       </button>
 
       {isOpen && (
-        <ul role="listbox" aria-labelledby={`${dropdownId}-label`} className={styles.menu}>
+        <ul
+          role="listbox"
+          aria-labelledby={`${dropdownId}-label`}
+          className={styles.menu}
+        >
           {options.map((option) => {
             const isSelected = option.value === internalValue;
             const itemClasses = [
@@ -189,13 +204,18 @@ export const Dropdown: React.FC<DropdownProps> = ({
               >
                 <div className={styles.itemLeft}>
                   {option.avatar && (
-                    <Avatar size={option.avatar.size || avatarSize} {...option.avatar} />
+                    <Avatar
+                      size={option.avatar.size || avatarSize}
+                      {...option.avatar}
+                    />
                   )}
                   {option.icon && <span>{option.icon}</span>}
                   <div className={styles.itemText}>
                     <span className={styles.itemLabel}>{option.label}</span>
                     {option.description && (
-                      <span className={styles.itemDescription}>{option.description}</span>
+                      <span className={styles.itemDescription}>
+                        {option.description}
+                      </span>
                     )}
                   </div>
                 </div>
@@ -211,7 +231,11 @@ export const Dropdown: React.FC<DropdownProps> = ({
       )}
 
       {hasError && (
-        <span id={`${dropdownId}-error`} className={styles.errorMessage} role="alert">
+        <span
+          id={`${dropdownId}-error`}
+          className={styles.errorMessage}
+          role="alert"
+        >
           {errorMessage}
         </span>
       )}

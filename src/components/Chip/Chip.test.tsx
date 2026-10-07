@@ -1,7 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React from 'react';
 import { Chip } from './Chip';
 
 describe('Chip', () => {
@@ -31,9 +30,10 @@ describe('Chip', () => {
   });
 
   it('renders size lg, count badge, and selected state', () => {
-    render(<Chip label="Biology" size="lg" variant="tonal" count="14" selected />);
+    render(
+      <Chip label="Biology" size="lg" variant="tonal" count="14" selected />
+    );
     expect(screen.getByText('Biology')).toBeInTheDocument();
     expect(screen.getByText('14')).toBeInTheDocument();
   });
 });
-

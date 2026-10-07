@@ -58,10 +58,7 @@ export const Tabs: React.FC<TabsProps> = ({
       <div role="tablist" className={listClasses}>
         {tabs.map((tab) => {
           const isActive = tab.id === currentActive;
-          const tabClasses = [
-            styles.tab,
-            isActive ? styles.tabActive : '',
-          ]
+          const tabClasses = [styles.tab, isActive ? styles.tabActive : '']
             .filter(Boolean)
             .join(' ');
 
@@ -79,7 +76,9 @@ export const Tabs: React.FC<TabsProps> = ({
             >
               {tab.icon && <span>{tab.icon}</span>}
               <span>{tab.label}</span>
-              {tab.badge !== undefined && <span className={styles.badge}>{tab.badge}</span>}
+              {tab.badge !== undefined && (
+                <span className={styles.badge}>{tab.badge}</span>
+              )}
             </button>
           );
         })}

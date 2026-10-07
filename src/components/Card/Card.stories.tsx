@@ -1,5 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './Card';
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from './Card';
 import { Button } from '../Button';
 import { Badge } from '../Badge';
 
@@ -23,7 +30,13 @@ export const DefaultElevation1: Story = {
   render: () => (
     <Card elevation={1} style={{ maxWidth: '420px' }}>
       <CardHeader>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
           <CardTitle>Period 1 - Physics II</CardTitle>
           <Badge variant="success" withDot>
             In Session
@@ -53,7 +66,9 @@ export const FloatingElevation2: Story = {
     <Card elevation={2} isInteractive style={{ maxWidth: '420px' }}>
       <CardHeader>
         <CardTitle>Quarterly Marks Matrix</CardTitle>
-        <CardDescription>Hover over this interactive elevated card.</CardDescription>
+        <CardDescription>
+          Hover over this interactive elevated card.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <div style={{ display: 'flex', gap: '8px', marginTop: '4px' }}>
@@ -70,7 +85,9 @@ export const HighNoticeElevation3: Story = {
     <Card elevation={3} style={{ maxWidth: '420px' }}>
       <CardHeader bordered>
         <CardTitle>Compliance Audit Notice</CardTitle>
-        <CardDescription>High elevation modal / elevated sheet container</CardDescription>
+        <CardDescription>
+          High elevation modal / elevated sheet container
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <p style={{ margin: 0, fontSize: '14px', color: '#0F172A' }}>

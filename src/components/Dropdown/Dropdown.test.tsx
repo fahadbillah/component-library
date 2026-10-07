@@ -25,7 +25,13 @@ const mockOptions: DropdownOption[] = [
 
 describe('Dropdown', () => {
   it('renders closed by default and displays placeholder', () => {
-    render(<Dropdown label="Assign Lead" options={mockOptions} placeholder="Pick someone..." />);
+    render(
+      <Dropdown
+        label="Assign Lead"
+        options={mockOptions}
+        placeholder="Pick someone..."
+      />
+    );
     expect(screen.getByText('Assign Lead')).toBeInTheDocument();
     expect(screen.getByText('Pick someone...')).toBeInTheDocument();
     expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
@@ -44,7 +50,9 @@ describe('Dropdown', () => {
 
   it('selects option on click and calls onChange', async () => {
     const handleChange = vi.fn();
-    render(<Dropdown label="Member" options={mockOptions} onChange={handleChange} />);
+    render(
+      <Dropdown label="Member" options={mockOptions} onChange={handleChange} />
+    );
     await userEvent.click(screen.getByRole('button'));
 
     const option = screen.getByText('Marcus Sterling');
@@ -56,7 +64,9 @@ describe('Dropdown', () => {
 
   it('does not select disabled options', async () => {
     const handleChange = vi.fn();
-    render(<Dropdown label="Member" options={mockOptions} onChange={handleChange} />);
+    render(
+      <Dropdown label="Member" options={mockOptions} onChange={handleChange} />
+    );
     await userEvent.click(screen.getByRole('button'));
 
     const disabledOption = screen.getByText('Disabled User');

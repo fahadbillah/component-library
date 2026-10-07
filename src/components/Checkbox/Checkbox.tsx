@@ -2,8 +2,10 @@ import React, { forwardRef, useEffect, useRef } from 'react';
 import styles from './Checkbox.module.css';
 import { CheckIcon, MinusIcon } from '../common/Icons';
 
-export interface CheckboxProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+export interface CheckboxProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'type'
+> {
   label?: React.ReactNode;
   description?: React.ReactNode;
   indeterminate?: boolean;
@@ -25,7 +27,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     forwardedRef
   ) => {
     const internalRef = useRef<HTMLInputElement>(null);
-    const inputRef = (forwardedRef as React.RefObject<HTMLInputElement>) || internalRef;
+    const inputRef =
+      (forwardedRef as React.RefObject<HTMLInputElement>) || internalRef;
 
     useEffect(() => {
       if (inputRef && 'current' in inputRef && inputRef.current) {
@@ -70,7 +73,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         {(label || description) && (
           <span className={styles.textGroup}>
             {label && <span className={styles.label}>{label}</span>}
-            {description && <span className={styles.description}>{description}</span>}
+            {description && (
+              <span className={styles.description}>{description}</span>
+            )}
           </span>
         )}
       </label>

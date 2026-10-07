@@ -1,8 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { Chip } from './Chip';
 import { Avatar } from '../Avatar';
-import { iconMap, iconOptions, avatarMap, avatarOptions } from '../common/storybookIconHelper';
+import {
+  iconMap,
+  iconOptions,
+  avatarMap,
+  avatarOptions,
+} from '../common/storybookIconHelper';
 
 const meta: Meta<typeof Chip> = {
   title: 'Components/Chip',
@@ -14,7 +18,15 @@ const meta: Meta<typeof Chip> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['neutral', 'primary', 'tonal', 'outline', 'success', 'warning', 'danger'],
+      options: [
+        'neutral',
+        'primary',
+        'tonal',
+        'outline',
+        'success',
+        'warning',
+        'danger',
+      ],
     },
     size: {
       control: 'select',
@@ -42,7 +54,6 @@ const meta: Meta<typeof Chip> = {
     },
   },
 };
-
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -78,7 +89,14 @@ export const FilterChipsWithStates: Story = {
 
 export const WithAvatarTokens: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
+    <div
+      style={{
+        display: 'flex',
+        gap: '12px',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+      }}
+    >
       <Chip
         size="md"
         label="Dr. Vance"
@@ -113,15 +131,47 @@ export const WithAvatarTokens: Story = {
   ),
 };
 
-
 export const SuggestionAndChoiceChips: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
-      <Chip shape="rounded" label="Period 2" variant="neutral" onClick={() => {}} />
-      <Chip shape="rounded" label="Period 3: Biology" variant="primary" selected onClick={() => {}} />
-      <Chip shape="rounded" label="Grade 10-A" variant="tonal" onRemove={() => {}} />
-      <Chip shape="rounded" label="AP Biology" variant="tonal" onRemove={() => {}} />
-      <Chip shape="rounded" label="Period 6 (Archived)" variant="neutral" disabled />
+    <div
+      style={{
+        display: 'flex',
+        gap: '8px',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+      }}
+    >
+      <Chip
+        shape="rounded"
+        label="Period 2"
+        variant="neutral"
+        onClick={() => {}}
+      />
+      <Chip
+        shape="rounded"
+        label="Period 3: Biology"
+        variant="primary"
+        selected
+        onClick={() => {}}
+      />
+      <Chip
+        shape="rounded"
+        label="Grade 10-A"
+        variant="tonal"
+        onRemove={() => {}}
+      />
+      <Chip
+        shape="rounded"
+        label="AP Biology"
+        variant="tonal"
+        onRemove={() => {}}
+      />
+      <Chip
+        shape="rounded"
+        label="Period 6 (Archived)"
+        variant="neutral"
+        disabled
+      />
     </div>
   ),
 };
@@ -135,5 +185,3 @@ export const SemanticStatusChips: Story = {
     </div>
   ),
 };
-
-

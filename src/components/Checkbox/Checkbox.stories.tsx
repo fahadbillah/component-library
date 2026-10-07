@@ -30,7 +30,8 @@ export const CheckedByDefault: Story = {
 export const WithDescription: Story = {
   args: {
     label: 'Allow Guardian Access',
-    description: 'Enables parents or guardians to review weekly attendance summaries.',
+    description:
+      'Enables parents or guardians to review weekly attendance summaries.',
     defaultChecked: true,
   },
 };
@@ -45,7 +46,8 @@ export const Indeterminate: Story = {
 export const Disabled: Story = {
   args: {
     label: 'Mandatory Compliance Agreement',
-    description: 'This agreement cannot be unselected after term initialization.',
+    description:
+      'This agreement cannot be unselected after term initialization.',
     checked: true,
     disabled: true,
   },

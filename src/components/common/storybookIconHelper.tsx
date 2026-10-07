@@ -1,12 +1,9 @@
 import React from 'react';
-import {
-  SpinnerIcon,
-  CheckIcon,
-  CloseIcon,
-  UserFallbackIcon,
-} from './Icons';
+import { SpinnerIcon, CheckIcon, CloseIcon, UserFallbackIcon } from './Icons';
 
-export const SearchIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ ...props }) => (
+export const SearchIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
+  ...props
+}) => (
   <svg
     width="16"
     height="16"
@@ -23,7 +20,9 @@ export const SearchIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ ...props }
   </svg>
 );
 
-export const PlusIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ ...props }) => (
+export const PlusIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
+  ...props
+}) => (
   <svg
     width="16"
     height="16"
@@ -40,7 +39,9 @@ export const PlusIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ ...props }) 
   </svg>
 );
 
-export const ArrowRightIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ ...props }) => (
+export const ArrowRightIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
+  ...props
+}) => (
   <svg
     width="16"
     height="16"
@@ -57,10 +58,12 @@ export const ArrowRightIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ ...pro
   </svg>
 );
 
-export const CalendarIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ ...props }) => (
+export const CalendarIcon: React.FC<
+  React.SVGProps<SVGSVGElement> & { size?: number | string }
+> = ({ size = 16, width, height, ...props }) => (
   <svg
-    width="16"
-    height="16"
+    width={width || size}
+    height={height || size}
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -76,7 +79,9 @@ export const CalendarIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ ...props
   </svg>
 );
 
-export const MailIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ ...props }) => (
+export const MailIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
+  ...props
+}) => (
   <svg
     width="16"
     height="16"
@@ -93,7 +98,9 @@ export const MailIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ ...props }) 
   </svg>
 );
 
-export const LockIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({ ...props }) => (
+export const LockIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
+  ...props
+}) => (
   <svg
     width="16"
     height="16"
@@ -128,11 +135,26 @@ export const iconOptions = Object.keys(iconMap);
 
 export const avatarMap = {
   None: undefined,
-  'Robert Vance (RV)': <span className="w-6 h-6 rounded-full bg-[#3674B5] text-white flex items-center justify-center text-[10px] font-bold">RV</span>,
-  'Elena Thorne (ET)': <span className="w-6 h-6 rounded-full bg-[#3674B5] text-white flex items-center justify-center text-[10px] font-bold">ET</span>,
-  'Sophia Miller (SM)': <span className="w-6 h-6 rounded-full bg-[#578FCA] text-white flex items-center justify-center text-[10px] font-bold">SM</span>,
-  'Alexander Chen (AC)': <span className="w-6 h-6 rounded-full bg-[#115B9B] text-white flex items-center justify-center text-[10px] font-bold">AC</span>,
+  'Robert Vance (RV)': (
+    <span className="w-6 h-6 rounded-full bg-[#3674B5] text-white flex items-center justify-center text-[10px] font-bold">
+      RV
+    </span>
+  ),
+  'Elena Thorne (ET)': (
+    <span className="w-6 h-6 rounded-full bg-[#3674B5] text-white flex items-center justify-center text-[10px] font-bold">
+      ET
+    </span>
+  ),
+  'Sophia Miller (SM)': (
+    <span className="w-6 h-6 rounded-full bg-[#578FCA] text-white flex items-center justify-center text-[10px] font-bold">
+      SM
+    </span>
+  ),
+  'Alexander Chen (AC)': (
+    <span className="w-6 h-6 rounded-full bg-[#115B9B] text-white flex items-center justify-center text-[10px] font-bold">
+      AC
+    </span>
+  ),
 };
 
 export const avatarOptions = Object.keys(avatarMap);
-

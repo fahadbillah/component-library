@@ -9,7 +9,11 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
   ({ className, containerClassName, children, ...props }, ref) => {
     return (
       <div className={`${styles.container} ${containerClassName || ''}`}>
-        <table ref={ref} className={`${styles.table} ${className || ''}`} {...props}>
+        <table
+          ref={ref}
+          className={`${styles.table} ${className || ''}`}
+          {...props}
+        >
           {children}
         </table>
       </div>
@@ -18,22 +22,24 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
 );
 Table.displayName = 'Table';
 
-export const TableHeader = forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
-  ({ className, children, ...props }, ref) => (
-    <thead ref={ref} className={`${styles.header} ${className || ''}`} {...props}>
-      {children}
-    </thead>
-  )
-);
+export const TableHeader = forwardRef<
+  HTMLTableSectionElement,
+  React.HTMLAttributes<HTMLTableSectionElement>
+>(({ className, children, ...props }, ref) => (
+  <thead ref={ref} className={`${styles.header} ${className || ''}`} {...props}>
+    {children}
+  </thead>
+));
 TableHeader.displayName = 'TableHeader';
 
-export const TableBody = forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
-  ({ className, children, ...props }, ref) => (
-    <tbody ref={ref} className={className} {...props}>
-      {children}
-    </tbody>
-  )
-);
+export const TableBody = forwardRef<
+  HTMLTableSectionElement,
+  React.HTMLAttributes<HTMLTableSectionElement>
+>(({ className, children, ...props }, ref) => (
+  <tbody ref={ref} className={className} {...props}>
+    {children}
+  </tbody>
+));
 TableBody.displayName = 'TableBody';
 
 export interface TableRowProps extends React.HTMLAttributes<HTMLTableRowElement> {
@@ -76,7 +82,10 @@ export interface TableCellProps extends React.TdHTMLAttributes<HTMLTableCellElem
 }
 
 export const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(
-  ({ align = 'left', isNumeric = false, className, children, ...props }, ref) => (
+  (
+    { align = 'left', isNumeric = false, className, children, ...props },
+    ref
+  ) => (
     <td
       ref={ref}
       className={`${styles.cell} ${styles[`align-${align}`]} ${isNumeric ? styles.tabularNums : ''} ${className || ''}`}

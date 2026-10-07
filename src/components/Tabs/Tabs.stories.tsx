@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Tabs, TabPanel } from './Tabs';
 import { Card, CardContent } from '../Card';
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '../Table';
+import {
+  Table,
+  TableHeader,
+  TableRow,
+  TableHead,
+  TableBody,
+  TableCell,
+} from '../Table';
 import { Badge } from '../Badge';
 
 const sampleTabs = [

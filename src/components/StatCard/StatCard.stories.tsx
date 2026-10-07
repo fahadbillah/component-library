@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { StatCard } from './StatCard';
 import { UserFallbackIcon } from '../common/Icons';
-import { CalendarIcon, iconMap, iconOptions } from '../common/storybookIconHelper';
+import {
+  CalendarIcon,
+  iconMap,
+  iconOptions,
+} from '../common/storybookIconHelper';
 
 const meta: Meta<typeof StatCard> = {
   title: 'Components/StatCard',
@@ -18,7 +22,6 @@ const meta: Meta<typeof StatCard> = {
     },
   },
 };
-
 
 export default meta;
 type Story = StoryObj<typeof StatCard>;
@@ -55,7 +58,14 @@ export const Highlighted: Story = {
 
 export const DashboardGrid: Story = {
   render: () => (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', maxWidth: '960px' }}>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: '16px',
+        maxWidth: '960px',
+      }}
+    >
       <StatCard
         title="Overall Attendance"
         value="98.2%"

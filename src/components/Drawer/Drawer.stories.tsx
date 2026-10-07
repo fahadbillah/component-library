@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Drawer } from './Drawer';
 import { Button } from '../Button';
@@ -31,16 +31,26 @@ export const RightSlideOver: Story = {
           placement="right"
           footer={
             <>
-              <Button variant="outline" size="sm" onClick={() => setOpen(false)}>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setOpen(false)}
+              >
                 Dismiss
               </Button>
-              <Button variant="primary" size="sm" onClick={() => setOpen(false)}>
+              <Button
+                variant="primary"
+                size="sm"
+                onClick={() => setOpen(false)}
+              >
                 Save Changes
               </Button>
             </>
           }
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
+          >
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <Avatar name="Eleanor Vance" size="lg" status="online" />
               <div>
@@ -51,16 +61,30 @@ export const RightSlideOver: Story = {
               </div>
             </div>
             <div>
-              <p style={{ margin: '0 0 4px 0', fontSize: '12px', color: 'var(--ui-text-muted)' }}>
+              <p
+                style={{
+                  margin: '0 0 4px 0',
+                  fontSize: '12px',
+                  color: 'var(--ui-text-muted)',
+                }}
+              >
                 Candidate ID
               </p>
               <p style={{ margin: 0, fontWeight: 600 }}>STU-2026-0042</p>
             </div>
             <div>
-              <p style={{ margin: '0 0 4px 0', fontSize: '12px', color: 'var(--ui-text-muted)' }}>
+              <p
+                style={{
+                  margin: '0 0 4px 0',
+                  fontSize: '12px',
+                  color: 'var(--ui-text-muted)',
+                }}
+              >
                 Academic Cohort
               </p>
-              <p style={{ margin: 0 }}>Grade 11 • Honors Physics & Mathematics</p>
+              <p style={{ margin: 0 }}>
+                Grade 11 • Honors Physics & Mathematics
+              </p>
             </div>
           </div>
         </Drawer>

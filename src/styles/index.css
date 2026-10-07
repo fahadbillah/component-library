@@ -1,7 +1,9 @@
 @import './tokens.css';
 
 /* Universal resets within components context */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 

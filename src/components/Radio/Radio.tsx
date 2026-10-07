@@ -31,7 +31,9 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   className,
   children,
 }) => {
-  const [internalValue, setInternalValue] = React.useState(value || defaultValue);
+  const [internalValue, setInternalValue] = React.useState(
+    value || defaultValue
+  );
 
   const currentValue = value !== undefined ? value : internalValue;
 
@@ -49,7 +51,11 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
         disabled,
       }}
     >
-      <div role="radiogroup" aria-label={label} className={`${styles.group} ${className || ''}`}>
+      <div
+        role="radiogroup"
+        aria-label={label}
+        className={`${styles.group} ${className || ''}`}
+      >
         {label && <span className={styles.groupLabel}>{label}</span>}
         {children}
       </div>
@@ -59,14 +65,29 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
 
 RadioGroup.displayName = 'RadioGroup';
 
-export interface RadioProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+export interface RadioProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'type'
+> {
   value: string;
   label?: React.ReactNode;
   description?: React.ReactNode;
 }
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ value, label, description, disabled, className, checked, onChange, ...props }, ref) => {
+  (
+    {
+      value,
+      label,
+      description,
+      disabled,
+      className,
+      checked,
+      onChange,
+      ...props
+    },
+    ref
+  ) => {
     const group = useContext(RadioGroupContext);
 
     const isChecked = group ? group.value === value : checked;
@@ -106,7 +127,9 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         {(label || description) && (
           <span className={styles.textGroup}>
             {label && <span className={styles.label}>{label}</span>}
-            {description && <span className={styles.description}>{description}</span>}
+            {description && (
+              <span className={styles.description}>{description}</span>
+            )}
           </span>
         )}
       </label>

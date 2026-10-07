@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useId, useMemo } from 'react';
 import styles from './MultiSelect.module.css';
-import { Chip } from '../Chip';
+import { Chip, ChipShape } from '../Chip';
 import { Avatar, AvatarProps } from '../Avatar';
 import { ChevronDownIcon, CheckIcon } from '../common/Icons';
 
@@ -27,6 +27,8 @@ export interface MultiSelectProps {
   defaultValue?: string[];
   onChange?: (values: string[], selectedOptions: MultiSelectOption[]) => void;
   size?: MultiSelectSize;
+  /** Shape style for the selected chips */
+  chipShape?: ChipShape;
   disabled?: boolean;
   isRequired?: boolean;
   isSearchable?: boolean;
@@ -45,6 +47,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   defaultValue,
   onChange,
   size = 'md',
+  chipShape,
   disabled = false,
   isRequired = false,
   isSearchable = true,
@@ -59,7 +62,9 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [internalValues, setInternalValues] = useState<string[]>(value || defaultValue || []);
+  const [internalValues, setInternalValues] = useState<string[]>(
+    value || defaultValue || []
+  );
   const [focusedIndex, setFocusedIndex] = useState<number>(-1);
 
   useEffect(() => {
@@ -86,7 +91,10 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   // Close on outside click
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
         setSearchQuery('');
         setFocusedIndex(-1);
@@ -131,7 +139,11 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (disabled) return;
 
-    if (e.key === 'Backspace' && searchQuery === '' && internalValues.length > 0) {
+    if (
+      e.key === 'Backspace' &&
+      searchQuery === '' &&
+      internalValues.length > 0
+    ) {
       removeValue(internalValues[internalValues.length - 1]);
       return;
     }
@@ -150,11 +162,19 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
       setSearchQuery('');
     } else if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setFocusedIndex((prev) => (prev < filteredOptions.length - 1 ? prev + 1 : 0));
+      setFocusedIndex((prev) =>
+        prev < filteredOptions.length - 1 ? prev + 1 : 0
+      );
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setFocusedIndex((prev) => (prev > 0 ? prev - 1 : filteredOptions.length - 1));
-    } else if (e.key === 'Enter' && focusedIndex >= 0 && focusedIndex < filteredOptions.length) {
+      setFocusedIndex((prev) =>
+        prev > 0 ? prev - 1 : filteredOptions.length - 1
+      );
+    } else if (
+      e.key === 'Enter' &&
+      focusedIndex >= 0 &&
+      focusedIndex < filteredOptions.length
+    ) {
       e.preventDefault();
       toggleOption(filteredOptions[focusedIndex]);
     }
@@ -213,7 +233,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
               key={opt.value}
               label={opt.label}
               variant="tonal"
-              shape={opt.avatar ? 'pill' : 'rounded'}
+              shape={chipShape || (opt.avatar ? 'pill' : 'rounded')}
               size={size === 'sm' ? 'sm' : size === 'lg' ? 'lg' : 'md'}
               avatar={
                 opt.avatar ? (
@@ -229,8 +249,6 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
               disabled={disabled}
             />
           ))}
-
-
 
           {remainingCount > 0 && (
             <span className={styles.moreCount}>+{remainingCount} more</span>
@@ -309,18 +327,19 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                   onMouseEnter={() => setFocusedIndex(index)}
                 >
                   <div className={styles.checkboxSlot}>
-                    <div className={[styles.checkboxBox, isSelected ? styles.checkboxChecked : ''].join(' ')}>
+                    <div
+                      className={[
+                        styles.checkboxBox,
+                        isSelected ? styles.checkboxChecked : '',
+                      ].join(' ')}
+                    >
                       {isSelected && <CheckIcon size={11} />}
                     </div>
                   </div>
 
                   {opt.avatar && (
                     <div className={styles.avatarSlot}>
-                      <Avatar
-                        size="sm"
-                        name={opt.label}
-                        {...opt.avatar}
-                      />
+                      <Avatar size="sm" name={opt.label} {...opt.avatar} />
                     </div>
                   )}
 
@@ -343,7 +362,9 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                       )}
                     </div>
                     {opt.description && (
-                      <div className={styles.optionDescription}>{opt.description}</div>
+                      <div className={styles.optionDescription}>
+                        {opt.description}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -354,8 +375,9 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
       )}
 
       {errorMessage && <span className={styles.errorText}>{errorMessage}</span>}
-      {!errorMessage && helperText && <span className={styles.helperText}>{helperText}</span>}
+      {!errorMessage && helperText && (
+        <span className={styles.helperText}>{helperText}</span>
+      )}
     </div>
   );
 };
-

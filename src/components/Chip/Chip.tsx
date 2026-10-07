@@ -61,8 +61,6 @@ export const Chip: React.FC<ChipProps> = ({
     .filter(Boolean)
     .join(' ');
 
-
-
   return (
     <div
       className={chipClasses}
@@ -76,10 +74,16 @@ export const Chip: React.FC<ChipProps> = ({
           <CheckIcon size={size === 'sm' ? 10 : size === 'lg' ? 14 : 12} />
         </span>
       )}
-      {!selected && avatar && <span className={styles.avatarSlot}>{avatar}</span>}
-      {!selected && !avatar && icon && <span className={styles.iconSlot}>{icon}</span>}
+      {!selected && avatar && (
+        <span className={styles.avatarSlot}>{avatar}</span>
+      )}
+      {!selected && !avatar && icon && (
+        <span className={styles.iconSlot}>{icon}</span>
+      )}
       <span className={styles.label}>{label}</span>
-      {count !== undefined && <span className={styles.countBadge}>{count}</span>}
+      {count !== undefined && (
+        <span className={styles.countBadge}>{count}</span>
+      )}
       {onRemove && (
         <button
           type="button"
@@ -99,4 +103,3 @@ export const Chip: React.FC<ChipProps> = ({
     </div>
   );
 };
-

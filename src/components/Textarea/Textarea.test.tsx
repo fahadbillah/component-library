@@ -5,9 +5,16 @@ import { Textarea } from './Textarea';
 
 describe('Textarea', () => {
   it('renders textarea with label and helper text', () => {
-    render(<Textarea label="Academic Notes" helperText="Add any remarks for the term." />);
+    render(
+      <Textarea
+        label="Academic Notes"
+        helperText="Add any remarks for the term."
+      />
+    );
     expect(screen.getByLabelText(/academic notes/i)).toBeInTheDocument();
-    expect(screen.getByText('Add any remarks for the term.')).toBeInTheDocument();
+    expect(
+      screen.getByText('Add any remarks for the term.')
+    ).toBeInTheDocument();
   });
 
   it('handles user typing and character count', async () => {
@@ -27,7 +34,11 @@ describe('Textarea', () => {
   });
 
   it('renders error state', () => {
-    render(<Textarea label="Remarks" errorMessage="Remarks cannot be empty." />);
-    expect(screen.getByRole('alert')).toHaveTextContent('Remarks cannot be empty.');
+    render(
+      <Textarea label="Remarks" errorMessage="Remarks cannot be empty." />
+    );
+    expect(screen.getByRole('alert')).toHaveTextContent(
+      'Remarks cannot be empty.'
+    );
   });
 });

@@ -49,7 +49,6 @@ export const Avatar: React.FC<AvatarProps> = ({
     .filter(Boolean)
     .join(' ');
 
-
   const iconSizes: Record<AvatarSize, number> = {
     xs: 12,
     sm: 16,

@@ -18,7 +18,8 @@ type Story = StoryObj<typeof Textarea>;
 export const Default: Story = {
   args: {
     label: 'Counselor Observations',
-    placeholder: 'Record detailed qualitative observations regarding student engagement...',
+    placeholder:
+      'Record detailed qualitative observations regarding student engagement...',
     helperText: 'Visible only to certified academic staff.',
   },
 };

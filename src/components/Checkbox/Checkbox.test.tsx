@@ -12,7 +12,9 @@ describe('Checkbox', () => {
       />
     );
     expect(screen.getByLabelText(/enable notifications/i)).toBeInTheDocument();
-    expect(screen.getByText('Receive daily administrative digests.')).toBeInTheDocument();
+    expect(
+      screen.getByText('Receive daily administrative digests.')
+    ).toBeInTheDocument();
   });
 
   it('handles user check toggling', async () => {
