@@ -1,4 +1,5 @@
 @import './tokens.css';
+@import './layout.css';
 
 /* Scoped root container styles (non-polluting) */
 .ui-root {

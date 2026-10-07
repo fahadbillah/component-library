@@ -13,6 +13,7 @@
       "require": "./dist/index.cjs"
     },
     "./style.css": "./dist/style.css",
+    "./layout.css": "./src/styles/layout.css",
     "./reset.css": "./src/styles/reset.css",
     "./package.json": "./package.json"
   },
@@ -24,6 +25,7 @@
   },
   "files": [
     "dist",
+    "src/styles/layout.css",
     "src/styles/reset.css"
   ],
   "scripts": {

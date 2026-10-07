@@ -141,6 +141,27 @@
   --ui-focus-ring: 0 0 0 3px rgba(87, 143, 202, 0.25);
   --ui-focus-ring-danger: 0 0 0 3px rgba(185, 28, 28, 0.25);
 
+  /* ==========================================================================
+     Layout & Container Architecture (8px Spatial Rhythm)
+     ========================================================================== */
+  --ui-container-max: 1280px; /* max-w-7xl standard desktop clamp */
+  --ui-container-narrow: 960px; /* max-w-5xl form & reading clamp */
+  --ui-container-compact: 768px; /* max-w-3xl modal & wizard clamp */
+
+  /* Responsive Horizontal Guardrails (Edge Buffer) */
+  --ui-container-px-mobile: 1rem; /* 16px (px-4) */
+  --ui-container-px-tablet: 1.5rem; /* 24px (px-6) */
+  --ui-container-px-desktop: 2rem; /* 32px (px-8) */
+
+  /* Responsive Vertical Gutters */
+  --ui-gutter-py-mobile: 1.5rem; /* 24px (py-6) */
+  --ui-gutter-py-desktop: 2rem; /* 32px (py-8) */
+
+  /* Structural Strip Heights */
+  --ui-header-height: 4rem; /* 64px (h-16) */
+  --ui-subnav-height: 3rem; /* 48px (h-12) */
+  --ui-footer-py: 1rem; /* 16px (py-4) */
+
   /* Z-Index Layers */
   --ui-z-dropdown: 100;
   --ui-z-modal: 1000;
